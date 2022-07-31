@@ -12,7 +12,7 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 
 if (command == 'gimage') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
-let url = `https://api.lolhuman.xyz/api/gimage?apikey=9b817532fadff8fc7cb86862&query=${text}`
+let url = `https://api.lolhuman.xyz/api/gimage?apikey=${global.lolkey}&query=${text}`
 await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
       ['Gimage1', usedPrefix + 'gimage1 ' + text],
       ['Gimage2', usedPrefix + 'gimage2 ' + text],
@@ -22,7 +22,7 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
 
 if (command == 'gimage1') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
-let url = `https://api.lolhuman.xyz/api/gimage2?apikey=9b817532fadff8fc7cb86862&query=${text}`
+let url = `https://api.lolhuman.xyz/api/gimage2?apikey=${global.lolkey}&query=${text}`
 let js = await fetch(url)
 let jp = await js.json()
 let x = jp.result

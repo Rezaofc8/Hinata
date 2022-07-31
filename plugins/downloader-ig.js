@@ -11,7 +11,7 @@ try {
     for (const { url } of results) await conn.sendFile(m.chat, url, 'instagram.mp4', `🔗 *Url:* ${url}`, m)
     } catch {
     if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.instagram.com/p/CU0MhPjBZO2/`
-        let res = await fetch(`https://api.lolhuman.xyz/api/instagram2?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
+        let res = await fetch(`https://api.lolhuman.xyz/api/instagram2?apikey=${global.lolkey}&url=${args[0]}`)
     let x = await res.json()
     conn.sendButton(m.chat, `*${htki} instagram ${htka}*
 *username:* ${x.result.account.username}

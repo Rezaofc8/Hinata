@@ -17,7 +17,7 @@ if (command == 'walls') {
 }
 
 if (command == 'unsplash') {
-     let res = await fetch(`https://api.lolhuman.xyz/api/unsplash?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+     let res = await fetch(`https://api.lolhuman.xyz/api/unsplash?apikey=${global.lolkey}&query=${text}`)
     let json = await res.json()
     let img = json.result
     let im = img.getRandom()
@@ -25,7 +25,7 @@ if (command == 'unsplash') {
 }
 
 if (command == 'wall3') {
-     let res = await fetch(`https://api.lolhuman.xyz/api/wallpaper3?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+     let res = await fetch(`https://api.lolhuman.xyz/api/wallpaper3?apikey=${global.lolkey}&query=${text}`)
     let json = await res.json()
     let img = json.result
     let im = img.getRandom()
@@ -33,14 +33,14 @@ if (command == 'wall3') {
 }
 
 if (command == 'wall2') {
-     let res = await fetch(`https://api.lolhuman.xyz/api/wallpaper2?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+     let res = await fetch(`https://api.lolhuman.xyz/api/wallpaper2?apikey=${global.lolkey}&query=${text}`)
     let json = await res.json()
     let img = json.result
     await conn.sendFile(m.chat, img, "walp.jpg", `Nih kak, Wallpapernya udah terkirim`, m, 0, { thumbnail: Buffer.alloc(0) })
 }
 
 if (command == 'wall') {
-     let res = await fetch(`https://api.lolhuman.xyz/api/wallpaper?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+     let res = await fetch(`https://api.lolhuman.xyz/api/wallpaper?apikey=${global.lolkey}&query=${text}`)
     let json = await res.json()
     let img = json.result
     await conn.sendFile(m.chat, img, "walp.jpg", `Nih kak, Wallpapernya udah terkirim`, m, 0, { thumbnail: Buffer.alloc(0) })

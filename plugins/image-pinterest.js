@@ -6,7 +6,7 @@ if (!text) return m.reply(`Example : ${usedPrefix + command} query`)
 
 if (command == 'pinterest') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
-let url = `https://api.lolhuman.xyz/api/pinterest?apikey=9b817532fadff8fc7cb86862&query=${text}`
+let url = `https://api.lolhuman.xyz/api/pinterest?apikey=327a6596e4c4baa20c756132&query=${text}`
 let js = await fetch(url)
 let jp = await js.json()
 let x = jp.result
@@ -87,7 +87,7 @@ const json = await pinterest(text)
 
 if (command == 'pinterest7') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Png`
-let url = `https://api.lolhuman.xyz/api/pinterest2?apikey=9b817532fadff8fc7cb86862&query=${text}`
+let url = `https://api.lolhuman.xyz/api/pinterest2?apikey=327a6596e4c4baa20c756132&query=${text}`
 let js = await fetch(url)
 let jp = await js.json()
 let x = jp.result

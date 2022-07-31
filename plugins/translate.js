@@ -4,7 +4,7 @@ let handler = async (m, { args, usedPrefix, command }) => {
     let lang = args[0]
     let text = args.slice(1).join(' ')
     if (!text && m.quoted && m.quoted.text) text = m.quoted.text
-let res = await fetch(`https://api.lolhuman.xyz/api/translate/auto/id?apikey=9b817532fadff8fc7cb86862&text=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/translate/auto/id?apikey=${global.lolkey}&text=${text}`)
 let xc = await res.json()
 let x = xc.result
   await conn.sendButton(m.chat, `*Dari:* ${x.from}

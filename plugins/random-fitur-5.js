@@ -27,7 +27,7 @@ let q = m.quoted ? m.quoted : m
     let img = await q.download?.()
     let url = await uploadImage(img)
 
-let f = await fetch(`https://api.lolhuman.xyz/api/read-qr?apikey=9b817532fadff8fc7cb86862&img=${url}`)
+let f = await fetch(`https://api.lolhuman.xyz/api/read-qr?apikey=${global.lolkey}&img=${url}`)
 let x = await f.json()
 let caption = `🤠 *Hasil:* ${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [

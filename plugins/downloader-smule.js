@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.smule.com/recording/lewis-capaldi-someone-you-loved/2027750707_2937753991`
-        let res = await fetch(`https://api.lolhuman.xyz/api/smule?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
+        let res = await fetch(`https://api.lolhuman.xyz/api/smule?apikey=${global.lolkey}&url=${args[0]}`)
     let x = await res.json()
     conn.sendButton(m.chat, `*${htki} SMULE ${htka}*
 *title:* ${x.result.title}

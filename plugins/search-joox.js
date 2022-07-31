@@ -24,7 +24,7 @@ Vip : *${v.vip_flag}*
 if (command == 'jooxp') {
 if (!text) throw `Contoh:
 ${usedPrefix + command} gustixa`
-let f = await fetch(`https://api.lolhuman.xyz/api/jooxplay?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+let f = await fetch(`https://api.lolhuman.xyz/api/jooxplay?apikey=${global.lolkey}&query=${text}`)
 let x = await f.json()
 let teks = `*Result:*
 *singer:* ${x.result.info.singer}

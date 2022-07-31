@@ -31,7 +31,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 • dance
 • cringe
 • blush`)
-        let images = `https://api.lolhuman.xyz/api/random/${text}?apikey=9b817532fadff8fc7cb86862`
+        let images = `https://api.lolhuman.xyz/api/random/${text}?apikey=${global.lolkey}`
         await conn.sendButton(m.chat, `Nih ${text}`, wm, images, [
                 ['Next', `${usedPrefix}${command}`]
             ], m)

@@ -13,7 +13,7 @@ try {
    if (!done) throw 'cant download'
    if (!isLimit) await conn.sendFile(m.chat, done, hasil.title, `🔗 *Url:* ${done}`, m, null, { asDocument: true })
    } catch {
-    let res = await fetch(`https://api.lolhuman.xyz/api/zippyshare?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
+    let res = await fetch(`https://api.lolhuman.xyz/api/zippyshare?apikey=${global.lolkey}&url=${args[0]}`)
     let x = await res.json()
     conn.sendButton(m.chat, `*${htki} zippyshare ${htka}*
 *title:* ${x.result.name_file}

@@ -15,7 +15,7 @@ try {
     m.reply(caption)
     await conn.sendFile(m.chat, url, filename, '', m, null, { mimetype: ext, asDocument: true })
     } catch {
-    let res = await fetch(`https://api.lolhuman.xyz/api/mediafire?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
+    let res = await fetch(`https://api.lolhuman.xyz/api/mediafire?apikey=${global.lolkey}&url=${args[0]}`)
     let x = await res.json()
     conn.sendButton(m.chat, `*${htki} mediafire ${htka}*
 *title:* ${x.result.filename}
@@ -24,7 +24,7 @@ try {
 *uploaded:* ${x.result.uploaded}
     `, wm, null, [['Get', `.get ${x.result.link}`]],m)
     
-    let res = await fetch(`https://api.lolhuman.xyz/api/zippyshare?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
+    let res = await fetch(`https://api.lolhuman.xyz/api/zippyshare?apikey=${global.lolkey}&url=${args[0]}`)
     let x = await res.json()
     conn.sendButton(m.chat, `*${htki} zippyshare ${htka}*
 *title:* ${x.result.name_file}

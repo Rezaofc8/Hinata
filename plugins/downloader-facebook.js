@@ -19,7 +19,7 @@ await hx.fbdown(`${args[0]}`)
             })
 
 /* Fb */
-  let llh = await fetch(`https://api.lolhuman.xyz/api/facebook?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
+  let llh = await fetch(`https://api.lolhuman.xyz/api/facebook?apikey=${global.lolkey}&url=${args[0]}`)
     let hm = await llh.json()
     let ann = "sd"
   if (args[1] == 'sd') {

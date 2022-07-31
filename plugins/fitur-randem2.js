@@ -52,7 +52,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 • nsfw_avatar
 • nsfw_neko_gif
 • random_hentai_gif`)
-        let images = `https://api.lolhuman.xyz/api/random/nsfw/${text}?apikey=9b817532fadff8fc7cb86862`
+        let images = `https://api.lolhuman.xyz/api/random/nsfw/${text}?apikey=${global.lolkey}`
         await conn.sendButton(m.chat, `Nih ${text}`, wm, images, [
                 ['Next', `${usedPrefix}${command}`]
             ], m)

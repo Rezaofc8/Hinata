@@ -9,7 +9,7 @@ let handler = async(m, { conn, text }) => {
     if (!text) return conn.reply(m.chat, 'Masukan Teksnya', m)
 
     await m.reply('Searching...')
-	axios.get(`https://api.lolhuman.xyz/api/tebakumur?apikey=9b817532fadff8fc7cb86862&name=${text}`).then ((res) => {
+	axios.get(`https://api.lolhuman.xyz/api/tebakumur?apikey=${global.lolkey}&name=${text}`).then ((res) => {
 	 	let hasil = `Namamu : ${text}\nUmurmu : ${res.data.result.age}`
 
     conn.reply(m.chat, hasil, m)

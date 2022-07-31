@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 let handler = async (m, { usedPrefix, command }) => {
-        let res = await fetch('https://api.lolhuman.xyz/api/quran?apikey=9b817532fadff8fc7cb86862')
+        let res = await fetch(`https://api.lolhuman.xyz/api/quran?apikey=${global.lolkey}`)
         let json = await res.json()
         let list_id = json.result.map((v, i) => `${i + 1}. ${json.result}`).join('\n')
 

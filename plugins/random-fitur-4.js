@@ -64,7 +64,7 @@ let res = await fetch(`https://api.goprogram.ai/inspiration`)
 }
 
 if (command == 'artinama') {
-let res = await fetch(`https://api.lolhuman.xyz/api/artinama?apikey=9b817532fadff8fc7cb86862&nama=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/artinama?apikey=${global.lolkey}&nama=${text}`)
   let x = await res.json()
   await conn.sendButton(m.chat, `*Artinama:*
   ${x.result}`, wm, null, [

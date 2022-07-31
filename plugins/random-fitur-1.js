@@ -83,10 +83,10 @@ let res = await fetch(`https://yog-apikey.herokuapp.com/api/anime/kusonime?searc
 }
 
 if (command == 'membucin') {
-let res = await fetch(`https://raw.githubusercontent.com/TianBot1/Hitomi-MdV4/master/fiturnya/katabucin.json`)
+let res = await fetch(`https://yog-apikey.herokuapp.com/api/bucin?apikey=YogGanz`)
   let sul = await res.json()
-  let has = sul.getRandom()
-  await conn.sendButton(m.chat, `*Bucin:*\n${has}`, author, null, [
+  let has = sul.result
+  await conn.sendButton(m.chat, `*Bucin:*\n${has.result}`, author, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
 }
@@ -174,7 +174,7 @@ let res = await fetch(`https://yog-apikey.herokuapp.com/api/muslim/quran?surah=$
 
 if (command == 'memeindo') {
 let caption = `Nihh banh ${command} nya`
-let url = `https://api.lolhuman.xyz/api/meme/memeindo?apikey=9b817532fadff8fc7cb86862`
+let url = `https://api.lolhuman.xyz/api/meme/memeindo?apikey=${global.lolkey}`
 await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
       ['Meme EN', usedPrefix + 'meme'],
       ['Meme ID', usedPrefix + 'memeindo'],
@@ -184,7 +184,7 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
 
 if (command == 'randommeme') {
 let caption = `Nihh banh ${command} nya`
-let url = `https://api.lolhuman.xyz/api/random/meme?apikey=9b817532fadff8fc7cb86862`
+let url = `https://api.lolhuman.xyz/api/random/meme?apikey=${global.lolkey}`
 await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
       ['Meme EN', usedPrefix + 'meme'],
       ['Meme ID', usedPrefix + 'memeindo'],
@@ -194,7 +194,7 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
 
 if (command == 'memedarkjoke') {
 let caption = `Nihh banh ${command} nya`
-let url = `https://api.lolhuman.xyz/api/meme/darkjoke?apikey=9b817532fadff8fc7cb86862`
+let url = `https://api.lolhuman.xyz/api/meme/darkjoke?apikey=${global.lolkey}`
 await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
       ['Meme', usedPrefix + 'randommeme'],
       ['Meme ID', usedPrefix + 'memeindo'],
@@ -240,7 +240,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.image, x.shop_location, 'Lokasi',
 }
 
 if (command == 'beasiswa') {
-let f = await fetch(`https://api.lolhuman.xyz/api/indbeasiswa?apikey=9b817532fadff8fc7cb86862`)
+let f = await fetch(`https://api.lolhuman.xyz/api/indbeasiswa?apikey=${global.lolkey}`)
 let xx = await f.json()
 let v = xx.result
 let teks = v.map(v => {
@@ -265,7 +265,7 @@ if (!text) throw `Contoh penggunaan ${usedPrefix}${command} anjing
 • gawrgura
 • bucinstick`
 
-await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/sticker/${text}?apikey=9b817532fadff8fc7cb86862`, 'sticker.webp', '', m)
+await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/sticker/${text}?apikey=${global.lolkey}`, 'sticker.webp', '', m)
 
 await conn.sendButton(m.chat, `*Mau Lagi Gak?*
 Pencet di bawah bang ☺️`, author, null, [
@@ -276,7 +276,7 @@ Pencet di bawah bang ☺️`, author, null, [
 if (command == 'apkdown') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} com.whatsapp`
 
-let f = await fetch(`https://api.lolhuman.xyz/api/apkdownloader?apikey=9b817532fadff8fc7cb86862&package=${text}`)
+let f = await fetch(`https://api.lolhuman.xyz/api/apkdownloader?apikey=${global.lolkey}&package=${text}`)
 let x = await f.json()
 let caption = `*Apk Name:* ${x.result.apk_name}
 *Version:* ${x.result.apk_version}
@@ -294,7 +294,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.result.apk_icon, x.result.apk_lin
 if (command == 'proxysite') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
 
-let f = await fetch(`https://api.lolhuman.xyz/api/proxysite?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+let f = await fetch(`https://api.lolhuman.xyz/api/proxysite?apikey=${global.lolkey}&url=${text}`)
 let x = await f.json()
 let caption = `🤠 *Country:* ${x.result}`
 await conn.sendButton(m.chat, caption, author, null, [
@@ -305,7 +305,7 @@ await conn.sendButton(m.chat, caption, author, null, [
 if (command == 'mirrorcreator') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://www.mirrored.to/files/EB7BOJU3/[NekoPoi]_Isekai_Harem_Monogatari_-_04_[720P][nekopoi.care].mp4_links`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/mirrorcreator?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/mirrorcreator?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*zippyshare:* ${x.zippyshare}
@@ -324,7 +324,7 @@ let caption = `*zippyshare:* ${x.zippyshare}
 if (command == 'ouo') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://ouo.io/8BgQ1w`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/ouo?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/ouo?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*Result:* ${x}`
@@ -336,7 +336,7 @@ let caption = `*Result:* ${x}`
 if (command == 'ouoshort') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/ouoshortlink?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/ouoshortlink?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*Result:* ${x}`
@@ -348,7 +348,7 @@ let caption = `*Result:* ${x}`
 if (command == 'shortlink') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*Result:* ${x}`
@@ -360,7 +360,7 @@ let caption = `*Result:* ${x}`
 if (command == 'shortlink2') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink2?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink2?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*Result:* ${x}`
@@ -372,7 +372,7 @@ let caption = `*Result:* ${x}`
 if (command == 'shortlink3') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink3?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink3?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*Result:* ${x}`
@@ -384,7 +384,7 @@ let caption = `*Result:* ${x}`
 if (command == 'shortlink4') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
 
-        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink4?apikey=9b817532fadff8fc7cb86862&url=${text}`)
+        let f = await fetch(`https://api.lolhuman.xyz/api/shortlink4?apikey=${global.lolkey}&url=${text}`)
 let jsons = await f.json()
 let x = jsons.result
 let caption = `*Result:* ${x}`

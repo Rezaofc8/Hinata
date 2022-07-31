@@ -4,7 +4,7 @@ let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
 
 if (command == 'ceritahoror') {
-let res = await fetch(`https://api.lolhuman.xyz/api/ceritahoror?apikey=9b817532fadff8fc7cb86862`)
+let res = await fetch(`https://api.lolhuman.xyz/api/ceritahoror?apikey=${global.lolkey}`)
   let sul = await res.json()
   let has = sul.result
   await conn.sendButton(m.chat, `*Judul:* ${has.title}
@@ -17,7 +17,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/ceritahoror?apikey=9b817532f
 if (command == 'growiki') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} magplant`
 
-let res = await fetch(`https://api.lolhuman.xyz/api/growiki?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/growiki?apikey=${global.lolkey}&query=${text}`)
   let sul = await res.json()
   let has = sul.result
   await conn.sendButton(m.chat, `*Name:* ${has.name}
@@ -33,7 +33,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/growiki?apikey=9b817532fadff
 if (command == 'growstocks') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} magplant`
 
-let res = await fetch(`https://api.lolhuman.xyz/api/growstocks?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/growstocks?apikey=${global.lolkey}&query=${text}`)
   let sul = await res.json()
   let has = sul.result
   await conn.sendButton(m.chat, `*Name:* ${has.name}
@@ -50,7 +50,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/growstocks?apikey=9b817532fa
 if (command == 'gsearch') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} magplant`
 
-let res = await fetch(`https://api.lolhuman.xyz/api/gsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/gsearch?apikey=${global.lolkey}&query=${text}`)
   let sul = await res.json()
   let has = sul.result
   await conn.sendButton(m.chat, `*Name:* ${has.title}
@@ -64,7 +64,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/gsearch?apikey=9b817532fadff
 if (command == 'gsmarena') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} oppo`
 
-let res = await fetch(`https://api.lolhuman.xyz/api/gsmarena?apikey=9b817532fadff8fc7cb86862&query=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/gsmarena?apikey=${global.lolkey}&query=${text}`)
   let sul = await res.json()
   let has = sul.result
   await conn.sendButton(m.chat, `*Name:* ${has.phone_name}
@@ -83,7 +83,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/gsmarena?apikey=9b817532fadf
 }
 
 if (command == 'jadwalbola') {
-let f = await fetch(`https://api.lolhuman.xyz/api/jadwalbola?apikey=9b817532fadff8fc7cb86862`)
+let f = await fetch(`https://api.lolhuman.xyz/api/jadwalbola?apikey=${global.lolkey}`)
 let xx = await f.json()
 let v = xx.result
 let teks = v.map(v => {
@@ -102,7 +102,7 @@ return `
 }
 
 if (command == 'jadwaltv') {
-let json = await fetch(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=9b817532fadff8fc7cb86862`)
+let json = await fetch(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=${global.lolkey}`)
         let has = await json.json()
         await conn.sendButton(m.chat, `
   *antv:* ${has.result.antv}
@@ -125,7 +125,7 @@ let json = await fetch(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=9b81753
 }
 
 if (command == 'jalantikus') {
-let f = await fetch(`https://api.lolhuman.xyz/api/jalantikus?apikey=9b817532fadff8fc7cb86862`)
+let f = await fetch(`https://api.lolhuman.xyz/api/jalantikus?apikey=${global.lolkey}`)
 let xx = await f.json()
 let v = xx.result
 let teks = v.map(v => {
@@ -144,7 +144,7 @@ return `
 
 if (command == 'jaraktempuh') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} aceh banten`
-let f = await fetch(`https://api.lolhuman.xyz/api/jaraktempuh?apikey=9b817532fadff8fc7cb86862&kota1=${args[0]}&kota2=${args[1]}`)
+let f = await fetch(`https://api.lolhuman.xyz/api/jaraktempuh?apikey=${global.lolkey}&kota1=${args[0]}&kota2=${args[1]}`)
 let xx = await f.json()
 let v = xx.result
 let teks = v.map(v => {

@@ -7,17 +7,17 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 
 let teks = encodeURI(text)
 if (command == 'hartacustom') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/hartacustom?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/hartacustom?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'attp1') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/attp?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/attp?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'attp2') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/attp2?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/attp2?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
@@ -31,32 +31,32 @@ if (command == 'ttp7') {
     return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
 }
 if (command == 'ttp6') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp6?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp6?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'ttp5') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp5?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp5?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'ttp4') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp4?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp4?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'ttp3') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp3?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp3?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'ttp2') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp2?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp2?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }
 if (command == 'ttp1') {
-    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
+    let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/ttp?apikey=${global.lolkey}&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)
     throw stiker.toString()
 }

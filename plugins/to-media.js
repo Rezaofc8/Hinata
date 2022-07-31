@@ -13,7 +13,7 @@ if (command == 'towebp') {
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 let img = await q.download?.()
     let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/towebp?apikey=9b817532fadff8fc7cb86862&img=${url}`
+    let res = `https://api.lolhuman.xyz/api/convert/towebp?apikey=${global.lolkey}&img=${url}`
 await conn.sendFile(m.chat, res, 'out.webp', m, false, { mimetype: 'image/webp', thumbnail: Buffer.alloc(0) })
     }
     
@@ -24,7 +24,7 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
     let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/towebpwround?apikey=9b817532fadff8fc7cb86862&img=${url}`
+    let res = `https://api.lolhuman.xyz/api/convert/towebpwround?apikey=${global.lolkey}&img=${url}`
 await conn.sendFile(m.chat, res, 'out.webp', m, false, { mimetype: 'image/webp', thumbnail: Buffer.alloc(0) })
 }
 
@@ -35,7 +35,7 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
    // let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/webptogif?apikey=9b817532fadff8fc7cb86862&img=${img}`
+    let res = `https://api.lolhuman.xyz/api/convert/webptogif?apikey=${global.lolkey}&img=${img}`
 await conn.sendFile(m.chat, res, 'out.gif', m, false, { mimetype: 'image/gif', thumbnail: Buffer.alloc(0) })
 }
 
@@ -46,7 +46,7 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
    // let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/webptomp4?apikey=9b817532fadff8fc7cb86862&img=${img}`
+    let res = `https://api.lolhuman.xyz/api/convert/webptomp4?apikey=${global.lolkey}&img=${img}`
 await conn.sendFile(m.chat, res, 'out.mp4', m, false, { mimetype: 'video/mp4', thumbnail: Buffer.alloc(0) })
 }
 
@@ -57,7 +57,7 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
     // let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/imgtopdf?apikey=9b817532fadff8fc7cb86862&img=${img}`
+    let res = `https://api.lolhuman.xyz/api/convert/imgtopdf?apikey=${global.lolkey}&img=${img}`
 await conn.sendFile(m.chat, res, 'out.pdf', m, false, { mimetype: 'application/pdf', thumbnail: Buffer.alloc(0) })
 }
 
@@ -68,7 +68,7 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
    // let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/topng?apikey=9b817532fadff8fc7cb86862&img=${img}`
+    let res = `https://api.lolhuman.xyz/api/convert/topng?apikey=${global.lolkey}&img=${img}`
 await conn.sendFile(m.chat, res, 'out.png', m, false, { mimetype: 'image/png', thumbnail: Buffer.alloc(0) })
 }
 
@@ -79,19 +79,19 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
     // let url = await uploadFile(img)
-    let res = `https://api.lolhuman.xyz/api/filetobase64?apikey=9b817532fadff8fc7cb86862&file=${img}`
+    let res = `https://api.lolhuman.xyz/api/filetobase64?apikey=${global.lolkey}&file=${img}`
 await conn.sendFile(m.chat, res, 'Hasil', '', m)
 }
 
 if (command == '64tofile') {
 if (!text) throw `balas gambar dengan perintah\n\n${usedPrefix + command} base64`
-let res = `https://api.lolhuman.xyz/api/base64tofile?apikey=9b817532fadff8fc7cb86862&base=${text}`
+let res = `https://api.lolhuman.xyz/api/base64tofile?apikey=${global.lolkey}&base=${text}`
 await conn.sendFile(m.chat, res, 'Hasil', '', m)
 }
 
 if (command == 'urltoimg') {
 if (!text) throw `balas gambar dengan perintah\n\n${usedPrefix + command} url`
-let res = `https://api.lolhuman.xyz/api/urltoimg?apikey=9b817532fadff8fc7cb86862&url=${text}`
+let res = `https://api.lolhuman.xyz/api/urltoimg?apikey=${global.lolkey}&url=${text}`
 await conn.sendFile(m.chat, res, 'out.jpeg', m, false, { mimetype: 'image/jpeg', thumbnail: Buffer.alloc(0) })
 }
 
@@ -102,7 +102,7 @@ let q = m.quoted ? m.quoted : m
 
     let img = await q.download?.()
    // let url = await uploadImage(img)
-    let res = await fetch(`https://api.lolhuman.xyz/api/filetourl?apikey=9b817532fadff8fc7cb86862&file=${img}`)
+    let res = await fetch(`https://api.lolhuman.xyz/api/filetourl?apikey=${global.lolkey}&file=${img}`)
     let p = await res.json()
     let rem = p.result
     await m.reply(`*Result:* ${rem}`)
@@ -110,7 +110,7 @@ let q = m.quoted ? m.quoted : m
 
 if (command == 'emorse') {
     if (!text) throw `balas gambar dengan perintah\n\n${usedPrefix + command} text`
-let res = await fetch(`https://api.lolhuman.xyz/api/morse/encrypt?apikey=9b817532fadff8fc7cb86862&text=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/morse/encrypt?apikey=${global.lolkey}&text=${text}`)
     let p = await res.json()
     let rem = p.result
     await m.reply(`*Result:* ${rem}`)
@@ -118,7 +118,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/morse/encrypt?apikey=9b81753
 
 if (command == 'dmorse') {
     if (!text) throw `balas gambar dengan perintah\n\n${usedPrefix + command} kode morse`
-let res = await fetch(`https://api.lolhuman.xyz/api/morse/decrypt?apikey=9b817532fadff8fc7cb86862&text=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/morse/decrypt?apikey=${global.lolkey}&text=${text}`)
     let p = await res.json()
     let rem = p.result
     await m.reply(`*Result:* ${rem}`)
@@ -130,7 +130,7 @@ let urut = text.split`+`
   let text1 = urut[0]
   let text2 = urut[1]
 
-    let res = `https://api.lolhuman.xyz/api/emojimix/${text1}+${text2}?apikey=9b817532fadff8fc7cb86862`
+    let res = `https://api.lolhuman.xyz/api/emojimix/${text1}+${text2}?apikey=${global.lolkey}`
 let stiker = await sticker(false, res, global.packname, global.author)
 conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 }
@@ -138,13 +138,13 @@ conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 if (command == 'smojimg') {
     if (!text && m.quoted && m.quoted.text) text = m.quoted.text
     
-    let res = `https://api.lolhuman.xyz/api/smoji/${text}?apikey=9b817532fadff8fc7cb86862`
+    let res = `https://api.lolhuman.xyz/api/smoji/${text}?apikey=${global.lolkey}`
 await conn.sendFile(m.chat, res, 'out.jpeg', m, false, { mimetype: 'image/jpeg', thumbnail: Buffer.alloc(0) })
 }
 
 if (command == 'smojimg2') {
     if (!text) throw `balas gambar dengan perintah\n\n${usedPrefix + command} emoji`
-let res = await fetch(`https://api.lolhuman.xyz/api/smoji3/${text}?apikey=9b817532fadff8fc7cb86862`)
+let res = await fetch(`https://api.lolhuman.xyz/api/smoji3/${text}?apikey=${global.lolkey}`)
     let p = await res.json()
     let x = p.result
     const sections = [
