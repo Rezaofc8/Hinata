@@ -1284,15 +1284,11 @@ export async function participantsUpdate({ id, participants, action }) {
   let gettext = await fetch('https://raw.githubusercontent.com/fawwaz37/random/main/bijak.txt')
   let restext = await gettext.text()
   let katarandom = restext.split('\n')
-  /*
   this.sendHydrated2(id, text, wm + '\n\n' + botdate, action === 'add' ? pp : pp, sgc, (action == 'add' ? 'Hinata Group' : 'Nitip Gorengan'), null, null, [
       ['🎀 Menu', '/menu'],
       ['🪄 Test', '/ping'],
       ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']
     ], null, false, { mentions: [user] })
-    */
-    this.sendButton(id, text, botdate, pp, [['🎀 Menu', '/menu'],
-      ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']], m, { mentions: this.parseMention(text) })
                     }
                 }
             }
@@ -1303,7 +1299,9 @@ export async function participantsUpdate({ id, participants, action }) {
            if (!text)
                 text = (chat.sDemote || this.sdemote || conn.sdemote || '@user *is no longer Admin*')
             text = text.replace('@user', '@' + participants[0].split('@')[0])
-            if (chat.detect) return this.sendButton(id, text.trim(), botdate, hwaifu.getRandom(), [['Menu', '/menu']], m, { mentions: this.parseMention(text) })
+            if (chat.detect) return this.sendHydrated(id, text.trim(), wm, logo, null, null, nomorown, nameown, [
+      ['🔖Ok', 'Huuu']
+    ], null)
             break
     }
 }
@@ -1328,8 +1326,8 @@ export async function groupsUpdate(groupsUpdate) {
             if (groupUpdate.restrict == true) text = (chats.sRestrictOn || this.sRestrictOn || conn.sRestrictOn || '*Group has been all participants!*')
             if (groupUpdate.restrict == false) text = (chats.sRestrictOff || this.sRestrictOff || conn.sRestrictOff || '*Group has been only admin!*')
             if (!text) continue
-            this.sendHydrated(id, text.trim(), botdate, null, null, null, null, null, [
-      [null, null]
+            this.sendHydrated(id, text.trim(), wm, logo, null, null, nomorown, nameown, [
+      ['🔖Ok', 'Huuu']
     ], null)
     }
 }
@@ -1362,33 +1360,33 @@ dfail
  */
 global.dfail = (type, m, conn) => {
     let msg = {
-        rowner: `*${htki} ALERT ${htka}*
+        rowner: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya dapat digunakan oleh *OWWNER* !`,
-        owner: `*${htki} ALERT ${htka}*
+        owner: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya dapat digunakan oleh *Owner Bot* !`,
-        mods: `*${htki} ALERT ${htka}*
+        mods: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya dapat digunakan oleh *Moderator* !`,
-        premium: `*${htki} ALERT ${htka}*
+        premium: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya untuk member *Premium* !`,
-        group: `*${htki} ALERT ${htka}*
+        group: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya dapat digunakan di grup !`,
-        private: `*${htki} ALERT ${htka}*
+        private: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya dapat digunakan di Chat Pribadi !`,
-        admin: `*${htki} ALERT ${htka}*
+        admin: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Perintah ini hanya untuk *Admin* grup !`,
-        botAdmin: `*${htki} ALERT ${htka}*
+        botAdmin: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Jadikan bot sebagai *Admin* untuk menggunakan perintah ini !`,
-        unreg: `*${htki} ALERT ${htka}*
+        unreg: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Hinata.18* !`,
-        nsfw: `*${htki} ALERT ${htka}*
+        nsfw: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} NSFW tidak aktif, Silahkan hubungi Team Bot Discussion untuk mengaktifkan fitur ini !`,
-        rpg: `*${htki} ALERT ${htka}*
+        rpg: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} RPG tidak aktif, Silahkan hubungi Team Bot Discussion Untuk mengaktifkan fitur ini !`,
-        restrict: `*${htki} ALERT ${htka}*
+        restrict: `*${htki} 𝐀𝐋𝐄𝐑𝐓 ${htka}*\n
 ${htjava} Fitur ini di *disable* !`
     }[type]
-    if (msg) return conn.sendHydrated(m.chat, msg, botdate, null, null, null, null, null, [
-      [null, null]
+    if (msg) return conn.sendHydrated(m.chat, msg, wm, logo, null, null, nomorown, nameown, [
+      ['🔖Ok', 'Huuu']
     ], null)
 }
 
