@@ -83,10 +83,10 @@ let res = await fetch(`https://yog-apikey.herokuapp.com/api/anime/kusonime?searc
 }
 
 if (command == 'membucin') {
-let res = await fetch(`https://yog-apikey.herokuapp.com/api/bucin?apikey=YogGanz`)
+let res = await fetch(`https://raw.githubusercontent.com/TianBot1/Hitomi-MdV4/master/fiturnya/katabucin.json`)
   let sul = await res.json()
-  let has = sul.result
-  await conn.sendButton(m.chat, `*Bucin:*\n${has.result}`, author, null, [
+  let has = sul.getRandom()
+  await conn.sendButton(m.chat, `*Bucin:*\n${has}`, author, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
 }

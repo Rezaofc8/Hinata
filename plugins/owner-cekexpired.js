@@ -7,8 +7,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     var jumlahHari = 86400000 * args[0]
     var now = new Date() * 1
     
-    conn.reply(m.chat, `*${htki} ᴇxᴘɪʀᴇᴅ ${htka}*
-${msToDate(global.db.data.chats[who].expired - now)}`, m)
+    let caption = `*${htki} ᴇxᴘɪʀᴇᴅ ${htka}*
+${msToDate(global.db.data.chats[who].expired - now)}`
+    conn.sendButton(m.chat, caption, wm, null, [['Add Expired', '/expired'], ['Delete Expired', '/delexpired']], m)
+    
 }
 handler.help = ['cekexpired']
 handler.tags = ['group']
@@ -18,7 +20,6 @@ handler.group = true
 export default handler
 
 function msToDate(ms) {
-    let temp = ms
     let days = Math.floor(ms / (24 * 60 * 60 * 1000));
     let daysms = ms % (24 * 60 * 60 * 1000);
     let hours = Math.floor((daysms) / (60 * 60 * 1000));

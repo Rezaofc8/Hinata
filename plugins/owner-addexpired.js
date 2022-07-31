@@ -9,7 +9,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     var now = new Date() * 1
     if (now < global.db.data.chats[who].expired) global.db.data.chats[who].expired += jumlahHari
     else global.db.data.chats[who].expired = now + jumlahHari
-    conn.reply(m.chat, `Berhasil menetapkan hari kedaluarsa untuk ${await conn.getName(who)} selama ${args[0]} hari.\n\nHitung Mundur : ${msToDate(global.db.data.chats[who].expired - now)}`, m)
+    let caption = `Berhasil menetapkan hari kedaluarsa untuk ${await conn.getName(who)} selama ${args[0]} hari.\n\nHitung Mundur : ${msToDate(global.db.data.chats[who].expired - now)}`
+    conn.sendButton(m.chat, caption, wm, null, [['Delete Expired', '/delexpired'], ['Cek Expired', '/cekexpired']], m)
 }
 handler.help = ['expired <hari>']
 handler.tags = ['owner']
@@ -18,14 +19,13 @@ handler.owner = true
 export default handler
 
 function msToDate(ms) {
-    temp = ms
-    days = Math.floor(ms / (24 * 60 * 60 * 1000));
-    daysms = ms % (24 * 60 * 60 * 1000);
-    hours = Math.floor((daysms) / (60 * 60 * 1000));
-    hoursms = ms % (60 * 60 * 1000);
-    minutes = Math.floor((hoursms) / (60 * 1000));
-    minutesms = ms % (60 * 1000);
-    sec = Math.floor((minutesms) / (1000));
-    return days + " hari " + hours + " jam " + minutes + " menit";
+    let days = Math.floor(ms / (24 * 60 * 60 * 1000));
+    let daysms = ms % (24 * 60 * 60 * 1000);
+    let hours = Math.floor((daysms) / (60 * 60 * 1000));
+    let hoursms = ms % (60 * 60 * 1000);
+    let minutes = Math.floor((hoursms) / (60 * 1000));
+    let minutesms = ms % (60 * 1000);
+    let sec = Math.floor((minutesms) / (1000));
+    return days + " Days ☀️\n" + hours + " Hours 🕐\n" + minutes + " Minute ⏰";
     // +minutes+":"+sec;
 }

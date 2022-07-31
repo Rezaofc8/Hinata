@@ -5,7 +5,8 @@ export async function all(m) {
     if (!chats.expired)
         return !0
     if (+new Date() > chats.expired) {
-        await this.reply(m.chat, 'Bye🖐 bot akan left!!')
+        let caption = `Bye🖐 *${this.user.name}* akan left dari grup!!`
+    await this.sendButton(m.chat, caption, wm, null, [['Delete Expired', '/delexpired'], ['Cek Expired', '/cekexpired']], null)
         await this.groupLeave(m.chat)
         chats.expired = null
     }
