@@ -6,8 +6,7 @@ if (!text) return m.reply(`Example : ${usedPrefix + command} query`)
 
 if (command == 'pinterest') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
-let url = `https://api.lolhuman.xyz/api/pinterest?apikey=327a6596e4c4baa20c756132&query=${text}`
-let js = await fetch(url)
+let js = await fetch(`https://api.lolhuman.xyz/api/pinterest?apikey=${global.lolkey}&query=${text}`)
 let jp = await js.json()
 let x = jp.result
 await conn.sendHydrated(m.chat, caption, wm, x, null, null, null, null, [
@@ -29,8 +28,7 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
     
 if (command == 'pinterest2') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Kann`
-let url = `https://kannxapi.herokuapp.com/api/pinterest?query=${text}`
-let js = await fetch(url)
+let js = await fetch(`https://kannxapi.herokuapp.com/api/pinterest?query=${text}`)
 let jp = await js.json()
 let x = jp.result
 await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
@@ -42,8 +40,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
 
 if (command == 'pinterest3') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Beni`
-let url = `https://rest-beni.herokuapp.com/api/pinterest?query=${text}`
-let js = await fetch(url)
+let js = await fetch(`https://rest-beni.herokuapp.com/api/pinterest?query=${text}`)
 let jp = await js.json()
 let x = jp.result
 await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
@@ -55,8 +52,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
 
 if (command == 'pinterest4') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Erdwpe`
-let url = `https://erdwpe-api.herokuapp.com/search/pinterest?query=${text}`
-let js = await fetch(url)
+let js = await fetch(`https://erdwpe-api.herokuapp.com/search/pinterest?query=${text}`)
 let jp = await js.json()
 let x = jp.result
 await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
@@ -68,8 +64,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
 
 if (command == 'pinterest5') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Melcanz Limit`
-let url = `https://melcanz.com/pinterestSearch?q=${text}&apikey=manHkmst`
-let js = await fetch(url)
+let js = await fetch(`https://melcanz.com/pinterestSearch?q=${text}&apikey=manHkmst`)
 let jp = await js.json()
 let x = jp.data
 await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
@@ -87,21 +82,15 @@ const json = await pinterest(text)
 
 if (command == 'pinterest7') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Png`
-let url = `https://api.lolhuman.xyz/api/pinterest2?apikey=327a6596e4c4baa20c756132&query=${text}`
-let js = await fetch(url)
+let js = await fetch(`https://api.lolhuman.xyz/api/pinterest2?apikey=${global.lolkey}&query=${text}`)
 let jp = await js.json()
 let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest', usedPrefix + 'pinterest ' + text],
-      ['Pinterest1', usedPrefix + 'pinterest1 ' + text],
-      ['Pinterest2', usedPrefix + 'Pinterest2 ' + text]
-    ], m)
+await conn.sendFile(m.chat, x.getRandom(), caption)
     }
 
 if (command == 'pinterest8') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* tzy`
-let url = `https://tyz-api.herokuapp.com/search/pinterest?query=${text}`
-let js = await fetch(url)
+let js = await fetch(`https://tyz-api.herokuapp.com/search/pinterest?query=${text}`)
 let jp = await js.json()
 let x = jp.result
 await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
@@ -113,8 +102,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
 
 if (command == 'pinterest9') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* tzy`
-let url = `https://api.vhtear.com/pinterest?query=${text}&apikey=nekobotofficial`
-let js = await fetch(url)
+let js = await fetch(`https://api.vhtear.com/pinterest?query=${text}&apikey=nekobotofficial`)
 let jp = await js.json()
 let x = jp.result
 await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
