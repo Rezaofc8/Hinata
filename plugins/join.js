@@ -4,6 +4,7 @@ import { randomBytes } from 'crypto'
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i
 
 let handler = async (m, { conn, text, usedPrefix, command, isOwner }) => {
+let chat = global.db.data.chats[m.chat]
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let names = await conn.getName(who)
 let imgr = flaaa.getRandom()
@@ -23,6 +24,7 @@ sourceUrl: sgc,
 thumbnail: fs.readFileSync('./thumbnail.jpg')
   }}})
   
+  if (chat.bcjoin) {
   let chats = Object.entries(conn.chats).filter(([_, chat]) => chat.isChats).map(v => v[0])
   let cc = conn.serializeM(text ? m : m.quoted ? await m.getQuotedObj() : false || m)
   let teks = text ? text : cc.text
@@ -30,6 +32,8 @@ thumbnail: fs.readFileSync('./thumbnail.jpg')
   for (let id of chats) {
   await conn.sendHydrated(id, "*「 New Group 」* \n\n" + text, wm, imgr + 'New Group', text, 'LINK GROUP', null, null, [[null, null]], m)
 }
+}
+
 }
 handler.command = /^join$/i
 

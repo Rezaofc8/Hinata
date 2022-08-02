@@ -9,6 +9,7 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 	{title: `🚫 ${htjava} Delete`, rowId: `${usedPrefix + command} delete`},
 	{title: `🔞 ${htjava} NSFW`, rowId: `${usedPrefix + command} nsfw`},
 	{title: `🌎 ${htjava} Public`, rowId: `${usedPrefix + command} public`},
+	{title: `🌎 ${htjava} Bc Join`, rowId: `${usedPrefix + command} bcjoin`},
 	{title: `🗣️ ${htjava} Simi`, rowId: `${usedPrefix + command} simi`},
 	{title: `🔗 ${htjava} Anti Link Wa`, rowId: `${usedPrefix + command} antilinkwa`},
 	{title: `🔗 ${htjava} Anti Link Tik`, rowId: `${usedPrefix + command} antilinktik`},
@@ -118,6 +119,15 @@ const listMessage = {
         throw false
       }
       global.opts['self'] = !isEnable
+      break
+      case 'bcjoin':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.bcjoin = isEnable
       break
     case 'antilink':
       if (m.isGroup) {
