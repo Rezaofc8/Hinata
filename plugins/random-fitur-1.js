@@ -202,41 +202,38 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
     ], m, fdoc)
 }
 
-if (command == 'shopee') {
+if (command == 'doujindesusearch') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} samsung`
-let f = await fetch(`https://bx-hunter.herokuapp.com/api/shopee-search?text=${text}&apikey=FuckBitch`)
-let x = await f.json()
-let caption = `
-*Brand:* ${x.brand}
-*Bisa pakai cod:* ${x.can_use_cod}
-*Catid:* ${x.catid}
-*Hitungan Cmt:* ${x.cmt_count}
-*Jumlah Komen:* ${x.currency}
-*Diskon:* ${x.discount}
-*Historis Terjual:* ${x.historical_sold}
-*Dewasa:* ${x.is_adult}
-*Toko Resmi:* ${x.is_official_shop}
-*Di Flash Sale:* ${x.is_on_flash_sale}
-*Peringkat barang:* ${x.item_rating}
-*Status barang:* ${x.item_status}
-*Jumlah suka:* ${x.liked_count}
-*Nama:* ${x.name}
-*Sarga sebelum diskon:* ${x.price_before_discount}
-*Harga maks sebelum diskon:* ${x.price_max_before_discount}
-*Harga maks:* ${x.price_max}
-*Harga min sebelum diskon:* ${x.price_min_before_discount}
-*Harga min:* ${x.price_min}
-*Harga:* ${x.price}
-*Toko Terverifikasi:* ${x.shopee_verified}
-*Lokasi toko:* ${x.shop_location}
-*Terjual:* ${x.sold}
-*Persediaan/Stok:* ${x.stock}
-*Jumlah tampilan:* ${x.view_count}`
-await conn.sendHydrated(m.chat, caption, wm, x.image, x.shop_location, 'Lokasi', null, null, [
-      ['Next', `${usedPrefix + command}`],
-      ['HostApk', usedPrefix + 'hostapk'],
-      ['Menu', usedPrefix + 'menu']
-    ], m, fdoc)
+let f = await fetch(`https://bx-hunter.herokuapp.com/api/anime/doujindesusearch?query=${text}&apikey=W46QBtQGOhiqfiClaxHqyAaIR`)
+let xx = await f.json()
+let v = xx.result
+let teks = v.map(v => {
+return `
+*title:* ${v.title}
+*score:* ${v.score}
+*type:* ${v.type}
+*status:* ${v.status}
+*link:* ${v.link}
+*thumb:* ${v.thumb}
+      `.trim()
+  }).filter(v => v).join('\n\n▣═━–〈 *SEARCH* 〉–━═▣\n\n')
+  //m.reply(teks)
+  await conn.sendButton(m.chat, teks, wm, v[0].thumb, [
+                ['Search!', `${usedPrefix + command}`]
+            ], m, fdoc)
+            
+}
+
+if (command == 'doujindesudl') {
+if (!text) throw `Contoh penggunaan ${usedPrefix}${command} https://212.32.226.234/manga/kyuukyoku-no-dinner-shokusareru-hitozuma`
+let f = await fetch(`https://bx-hunter.herokuapp.com/api/anime/doujindesudl?url=${text}&apikey=W46QBtQGOhiqfiClaxHqyAaIR`)
+let xx = await f.json()
+let v = xx.result
+let teks = `*link:* ${v.link_dl}`
+  await conn.sendButton(m.chat, teks, wm, null, [
+                ['Download!', `${usedPrefix}get ${v.link_dl}`]
+            ], m, fdoc)
+            
 }
 
 if (command == 'beasiswa') {
@@ -420,7 +417,7 @@ conn.sendMessage(m.chat, listMessage, {quoted:{key : {participant : '0@s.whatsap
 }
 
 }
-handler.command = handler.help = ['jadian2', 'menikah', 'metercinta', 'bertanya', 'bokep', 'kusonime', 'membucin', 'mencerpen', 'mencersex', 'asmaulhusna', 'hadistku', 'quranku', 'memeindo', 'shopee', 'stimker', 'randommeme', 'memedarkjoke', 'beasiswa', 'apkdown', 'proxysite', 'mirrorcreator', 'ouo', 'ouoshort', 'shortlink', 'shortlink2', 'shortlink3', 'shortlink4', 'tenor']
+handler.command = handler.help = ['jadian2', 'menikah', 'metercinta', 'bertanya', 'bokep', 'kusonime', 'membucin', 'mencerpen', 'mencersex', 'asmaulhusna', 'hadistku', 'quranku', 'memeindo', 'doujindesusearch', 'doujindesudl', 'stimker', 'randommeme', 'memedarkjoke', 'beasiswa', 'apkdown', 'proxysite', 'mirrorcreator', 'ouo', 'ouoshort', 'shortlink', 'shortlink2', 'shortlink3', 'shortlink4', 'tenor']
 handler.tags = ['random']
 
 export default handler

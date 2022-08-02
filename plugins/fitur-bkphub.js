@@ -3,34 +3,7 @@ import fetch from 'node-fetch'
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
 
-    if (command == 'caribokep') {
-    if (!text) throw `Contoh penggunaan ${usedPrefix}${command} japan`
-    try {
-let f = await fetch(`https://betabotz-api.herokuapp.com/api/search/xvideos?query=${text}&apikey=BetaBotz`)
-let xx = await f.json()
-let str = xx.result.map((v, index) => {
-        return `${1 + index}. Judul *${v.title}*
-Info: ${v.info}
-Link: ${v.link}`.trim()
-    }).join('\n\n')
-    await conn.sendButton(m.chat, str, wm, null, [
-                ['Dlbokep!', `${usedPrefix}dlbokep ${xx.result[0].link}`]
-            ], m, fdoc)
-            } catch {
-            let f = await fetch(`https://betabotz-api.herokuapp.com/api/search/xnxx?query=${text}&apikey=BetaBotz`)
-let xx = await f.json()
-let str = xx.result.map((v, index) => {
-        return `${1 + index}. Judul *${v.title}*
-Info: ${v.info}
-Link: ${v.link}`.trim()
-    }).join('\n\n')
-    await conn.sendButton(m.chat, str, wm, null, [
-                ['Dlbokep!', `${usedPrefix}dlbokep ${xx.result[0].link}`]
-            ], m, fdoc)
-            }
-    }
-   
-  if (command == 'caribokep2') {
+if (command == 'caribokep') {
   if (!text) throw `Contoh penggunaan ${usedPrefix}${command} japan`
 try {
 let f = await fetch(`https://api.lolhuman.xyz/api/xnxxsearch?apikey=${global.lolkey}&query=${text}`)
@@ -58,6 +31,33 @@ link: ${v.link}`.trim()
                 ['Search!', `${usedPrefix + command}`]
             ], m, fdoc)
 }
+    }
+    
+    if (command == 'caribokep2') {
+    if (!text) throw `Contoh penggunaan ${usedPrefix}${command} japan`
+    try {
+let f = await fetch(`https://betabotz-api.herokuapp.com/api/search/xvideos?query=${text}&apikey=BetaBotz`)
+let xx = await f.json()
+let str = xx.result.map((v, index) => {
+        return `${1 + index}. Judul *${v.title}*
+Info: ${v.info}
+Link: ${v.link}`.trim()
+    }).join('\n\n')
+    await conn.sendButton(m.chat, str, wm, null, [
+                ['Dlbokep!', `${usedPrefix}dlbokep ${xx.result[0].link}`]
+            ], m, fdoc)
+            } catch {
+            let f = await fetch(`https://betabotz-api.herokuapp.com/api/search/xnxx?query=${text}&apikey=BetaBotz`)
+let xx = await f.json()
+let str = xx.result.map((v, index) => {
+        return `${1 + index}. Judul *${v.title}*
+Info: ${v.info}
+Link: ${v.link}`.trim()
+    }).join('\n\n')
+    await conn.sendButton(m.chat, str, wm, null, [
+                ['Dlbokep!', `${usedPrefix}dlbokep ${xx.result[0].link}`]
+            ], m, fdoc)
+            }
     }
     
     if (command == 'dlbokep') {
