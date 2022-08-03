@@ -1,12 +1,12 @@
-# HinataNew
+# Hinata
 
 <p align="center">
-	<img src="https://p4.wallpaperbetter.com/wallpaper/888/673/160/naruto-hinata-hy%C5%ABga-naruto-uzumaki-starry-sky-hd-wallpaper-preview.jpg" width="75%" style="margin-left: auto;margin-right: auto;display: block;">
+	<img src="https://www.clipartmax.com/png/full/216-2164564_hyuga-hinata-sts-chibi-by-krizeii-hinata-hyuga-chibi-render.png" width="75%" style="margin-left: auto;margin-right: auto;display: block;">
 
 
 </p>
 <p align="center">
-<a href="#"><img title="HinataNew" src="https://img.shields.io/badge/HinataNew-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+<a href="#"><img title="Hinata" src="https://img.shields.io/badge/Hinata-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 </p>
 <p align="center">
 <a href="https://github.com/AyGemuy"><img title="AyGemuy" src="https://img.shields.io/badge/Author-AyGemuy-red.svg?style=for-the-badge&logo=github"></a>
@@ -16,9 +16,9 @@
 </div>
 <p align="center">
 <a href="https://github.com/AyGemuy/followers"><img title="Followers" src="https://img.shields.io/github/followers/AyGemuy?style=flat-square"></a>
-<a href="https://github.com/AyGemuy/HinataNew/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/AyGemuy/HinataNew?style=flat-square"></a>
-<a href="https://github.com/AyGemuy/HinataNew/network/members"><img title="Forks" src="https://img.shields.io/github/forks/AyGemuy/HinataNew?style=flat-square"></a>
-<a href="https://github.com/AyGemuy/HinataNew/watchers"><img title="watchers" src="https://img.shields.io/github/watchers/AyGemuy/HinataNew?style=flat-square"></a>
+<a href="https://github.com/AyGemuy/Hinata/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/AyGemuy/Hinata?style=flat-square"></a>
+<a href="https://github.com/AyGemuy/Hinata/network/members"><img title="Forks" src="https://img.shields.io/github/forks/AyGemuy/Hinata?style=flat-square"></a>
+<a href="https://github.com/AyGemuy/Hinata/watchers"><img title="watchers" src="https://img.shields.io/github/watchers/AyGemuy/Hinata?style=flat-square"></a>
 </p>
 
 
@@ -29,32 +29,28 @@
 [`railway.app`](https://railway.app/new/github)
 
 #### Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AyGemuy/HinataNew)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AyGemuy/Hinata)
 
-#### BUILDPACK 2
-> https://github.com/heroku/heroku-buildpack-python
-> https://github.com/heroku/heroku-buildpack-redis
-> https://github.com/HasibulKabir/heroku-buildpack-rarlab
-> https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
-> https://github.com/clhuang/heroku-buildpack-webp-binaries
-> https://github.com/opendoor-labs/heroku-buildpack-p7zip
-> https://github.com/amivin/aria2-heroku
-> https://github.com/heroku/heroku-buildpack-google-chrome
-> https://github.com/heroku/heroku-buildpack-chromedriver
-> https://github.com/nekopanic/buildpack-slug-cleaner
-> heroku/nodejs
-#### ✍️ Editing the file
-
-Edit the required value in [`config.js`](https://github.com/AyGemuy/HinataNew/blob/master/config.js)
+Edit the required value in [`config.js`](https://github.com/AyGemuy/Hinata/blob/master/config.js)
 
 #### Heroku Buildpack
 | BuildPack | LINK |
 |--------|--------|
-| **NODEJS** |[here](https://github.com/heroku/heroku-buildpack-nodejs) |
-| **FFMPEG** |[here](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git) |
-| **IMAGEMAGICK** | [here](https://github.com/mcollina/heroku-buildpack-imagemagick.git) |
+| **NODEJS** |[heroku](https://github.com/heroku/heroku-buildpack-nodejs) |
+| **FFMPEG** |[jonathanong](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git) |
+| **IMAGEMAGICK** | [mcollina](https://github.com/mcollina/heroku-buildpack-imagemagick.git) |
+| **IMAGEMAGICK** | [yespark](https://github.com/yespark/heroku-imagemagick-buildpack) |
+| **python** | [heroku](https://github.com/heroku/heroku-buildpack-python) |
+| **redis** | [heroku](https://github.com/heroku/heroku-buildpack-redis) |
+| **rarlab** | [HasibulKabir](https://github.com/HasibulKabir/heroku-buildpack-rarlab) |
+| **ffmpeg** | [jonathanong](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest) |
+| **webp** | [clhuang](https://github.com/clhuang/heroku-buildpack-webp-binaries) |
+| **p7zip** | [opendoor](https://github.com/opendoor-labs/heroku-buildpack-p7zip) |
+| **aria2** | [amivin](https://github.com/amivin/aria2-heroku) |
+| **chrome** | [heroku](https://github.com/heroku/heroku-buildpack-google-chrome) |
+| **chromedriver** | [heroku](https://github.com/heroku/heroku-buildpack-chromedriver) |
+| **slug** | [nekopanic](https://github.com/nekopanic/buildpack-slug-cleaner) |
 ---------
-
 #### Note
 ```sh
 not for termux
@@ -68,8 +64,8 @@ $ pkg install git -y
 $ pkg install nodejs -y
 $ pkg install ffmpeg -y
 $ pkg install imagemagick -y
-$ git clone https://github.com/AyGemuy/HinataNew
-$ cd HinataNew
+$ git clone https://github.com/AyGemuy/Hinata
+$ cd Hinata
 $ npm i 
 ```
 
@@ -109,14 +105,14 @@ apt install wget curl git ffmpeg imagemagick build-essential libcairo2-dev libpa
 
 ---------
 
-[ INSTALLING NODEJS & HinataNew ]
+[ INSTALLING NODEJS & Hinata ]
 
 ```bash
 ubuntu
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 apt install -y nodejs gcc g++ make
-git clone https://github.com/AyGemuy/HinataNew
-cd HinataNew
+git clone https://github.com/AyGemuy/Hinata
+cd Hinata
 npm install
 npm update
 ```
@@ -131,8 +127,8 @@ npm update
 * Download And Install ImageMagick [`Click Here`](https://imagemagick.org/script/download.php)
 
 ```bash
-git clone https://github.com/AyGemuy/HinataNew
-cd HinataNew
+git clone https://github.com/AyGemuy/Hinata
+cd Hinata
 npm install
 npm update
 ```
