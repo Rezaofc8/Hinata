@@ -2,7 +2,6 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 
 let handler = async (m, { conn, command, args, text}) => {
-const { generateWAMessageFromContent } = (await import('@adiwajshing/baileys')).default
 if (command == 'sewabot') {
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
     let name = await conn.getName(who)
@@ -13,7 +12,7 @@ if (command == 'sewabot') {
   let b = await conn.profilePictureUrl(owner[0]+'@s.whatsapp.net', 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
   let c = pickRandom([a, b])
   let d = await fetch(c).then(a => a.buffer())
-  let prepare = await generateWAMessageFromContent(m.key.remoteJid,{listMessage:{
+ await conn.relayMessage(m.chat, {listMessage:{
   title: `${await conn.getName(conn.user.jid)}`,
   description: `👋 Hai ${name}
 
@@ -47,7 +46,6 @@ wa.me/${owner[0]}
   },
   footerText: 'https://s.id/Cerdasin62',
   }},{quoted: ftroli})
-  await conn.relayMessage(prepare.key.remoteJid,prepare.message,{messageId:prepare.key.id})
   
   // Kontak
   let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;${author};;;\nFN:${author}\nORG:${author}\nTITLE:\nitem1.TEL;waid=6282195322106:+62 821-9532-2106\nitem1.X-ABLabel:${author}\nX-WA-BIZ-DESCRIPTION:${htjava} Nih owner ku kack yg mengaktifkan aq.\nX-WA-BIZ-NAME:${author}\nEND:VCARD`
@@ -56,7 +54,7 @@ await conn.sendMessage(m.chat, { contacts: { displayName: wm, contacts: [{ vcard
 
 if (command == 'mengproduk') {
 if (!text) throw `Teksnya?`
-  let prenya = await generateWAMessageFromContent(m.key.remoteJid,
+  await conn.relayMessage(m.chat, 
 {"productMessage": {
 "product": {
 		"productImage": {
@@ -81,23 +79,23 @@ if (!text) throw `Teksnya?`
 	"isForwarded": false
 }
 }},{quoted: ftroli})
-  await conn.relayMessage(prenya.key.remoteJid,prenya.message,{messageId:prenya.key.id})
+  
 }
 
 if (command == 'mengorder') {
 if (!text) throw `Teksnya?`
-let pree = await generateWAMessageFromContent(m.key.remoteJid,
+await conn.relayMessage(m.chat, 
 {"orderMessage": { "itemCount": 2021,
 "message": text,
 "footerText": wm, 
 "thumbnail": Buffer.alloc(0),
 "surface": 'CATALOG' }},{quoted: ftroli})
-  await conn.relayMessage(pree.key.remoteJid,pree.message,{messageId:pree.key.id})
+  
 }
 
 if (command == 'menggrup') {
 if (!text) throw `Teksnya?`
-let preeeeee = await generateWAMessageFromContent(m.key.remoteJid,
+await conn.relayMessage(m.chat, 
 {"groupInviteMessage": { "groupJid": '6288213840883-1616169743@g.us',
 "inviteCode": text,
 "groupName": author,
@@ -105,14 +103,14 @@ let preeeeee = await generateWAMessageFromContent(m.key.remoteJid,
 "jpegThumbnail": Buffer.alloc(0),
 "caption": 'Group: ' + text
 }},{quoted: ftroli})
-  await conn.relayMessage(preeeeee.key.remoteJid,preeeeee.message,{messageId:preeeeee.key.id})
+  
 }
 
 if (command == 'mengfake') {
 let tema = args[0]
 let filesize = args[1]
 if (tema == 'aud') {
-  let preee = await generateWAMessageFromContent(m.key.remoteJid,
+  await conn.relayMessage(m.chat, 
 {"audioMessage": {
 						"url": m.quoted.url,
 						"mimetype": m.quoted.mimetype,
@@ -126,10 +124,10 @@ if (tema == 'aud') {
 						"mediaKeyTimestamp": m.quoted.mediaKeyTimestamp.low,
 "jpegThumbnail": m.quoted.jpegThumbnail
 }},{quoted: ftroli})
-  await conn.relayMessage(preee.key.remoteJid,preee.message,{messageId:preee.key.id})
+  
   }
   if (tema == 'vid') {
-  let preeee = await generateWAMessageFromContent(m.key.remoteJid,
+ await conn.relayMessage(m.chat, 
 {"videoMessage": {
 						"url": m.quoted.url,
 						"mimetype": m.quoted.mimetype,
@@ -146,10 +144,9 @@ if (tema == 'aud') {
 						"jpegThumbnail": m.quoted.jpegThumbnail,
 						"streamingSidecar": m.quoted.streamingSidecar
 }},{quoted: ftroli})
-  await conn.relayMessage(preeee.key.remoteJid,preeee.message,{messageId:preeee.key.id})
-  }
+    }
   if (tema == 'stick') {
-  let preeeee = await generateWAMessageFromContent(m.key.remoteJid,
+ await conn.relayMessage(m.chat, 
 {"stickerMessage": {
 						"url": m.quoted.url,
 						"fileSha256": m.quoted.fileSha256,
@@ -163,10 +160,10 @@ if (tema == 'aud') {
 						"mediaKeyTimestamp": m.quoted.mediaKeyTimestamp,
 						"isAnimated": m.quoted.isAnimated
 }},{quoted: ftroli})
-  await conn.relayMessage(preeeee.key.remoteJid,preeeee.message,{messageId:preeeee.key.id})
+  
   }
   if (tema == 'img') {
-  let preeeeeee = await generateWAMessageFromContent(m.key.remoteJid,
+  await conn.relayMessage(m.chat, 
 {"imageMessage": {
 						"url": m.quoted.url,
 						"mimetype": m.quoted.mimetype,
@@ -181,7 +178,7 @@ if (tema == 'aud') {
 						"mediaKeyTimestamp": m.quoted.mediaKeyTimestamp,
 						"jpegThumbnail": m.quoted.jpegThumbnail
 }},{quoted: ftroli})
-  await conn.relayMessage(preeeeeee.key.remoteJid,preeeeeee.message,{messageId:preeeeeee.key.id})
+  
   }
   }
   }
