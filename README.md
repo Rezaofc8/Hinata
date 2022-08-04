@@ -50,6 +50,7 @@ Edit the required value in [`config.js`](https://github.com/AyGemuy/Hinata/blob/
 | **chrome** | [heroku](https://github.com/heroku/heroku-buildpack-google-chrome) |
 | **chromedriver** | [heroku](https://github.com/heroku/heroku-buildpack-chromedriver) |
 | **slug** | [nekopanic](https://github.com/nekopanic/buildpack-slug-cleaner) |
+| **imagemagick** | [nrj](https://github.com/nrj/heroku-buildpack-imagemagick-webp) |
 ---------
 #### Note
 ```sh
