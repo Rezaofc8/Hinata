@@ -1,10 +1,10 @@
 
 //Harga Build
-let rumahsakit = 5827
-let benteng = 7373
-let camptroops = 9278
-let pertanian = 7288
-let pertambangan = 6278
+let rumahsakit = 500
+let benteng = 700
+let camptroops = 900
+let pertanian = 700
+let pertambangan = 600
 
 let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
 
@@ -21,7 +21,7 @@ const sections = [
 {title: "🌾 Pertanian", rowId: usedPrefix + command + ' pertanian'},
 {title: "🏕 ️camptroop", rowId: usedPrefix + command + ' camptroop'},
 {title: "⚒️ Pertambangan", rowId: usedPrefix + command + ' pertambangan'},
-{title: "🏯 Benteng", rowId: usedPrefix + command + ' hospital'}
+{title: "🏥 Rumah Sakit", rowId: usedPrefix + command + ' hospital'}
 	]
     }
 ]

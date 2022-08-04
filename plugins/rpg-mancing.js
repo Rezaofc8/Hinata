@@ -1,16 +1,16 @@
 
-let handler = async (m, { conn, usedPrefix, command, text, args, owner }) => {
-    let user = global.db.data.users[m.sender]
-       let pancingan = user.pancingan
+let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
+let pengguna = global.db.data.users[m.sender]
+       let pancingan = pengguna.pancingan
        let pemancing = await conn.getName(m.sender)
-       let umpan = user.umpan
+       let umpan = pengguna.umpan
        let type = (args[0] || '').toLowerCase()
        const sections = [
     {
 	title: htjava + ' List Contruction For Fishing facility ' + htjava,
 	rows: [
-{title: "🎣 Mancing 1", rowId: usedPrefix + command + ' 1'},
-{title: "🎣 Mancing 2", rowId: usedPrefix + command + ' 2'},
+{title: "🎣 Mancing 1", rowId: usedPrefix + command + ' satu'},
+{title: "🎣 Mancing 2", rowId: usedPrefix + command + ' dua'},
 {title: "🎣 Mancing easy", rowId: usedPrefix + command + ' easy'},
 {title: "🎣 Mancing normal", rowId: usedPrefix + command + ' normal'},
 {title: "🎣 Mancing hard", rowId: usedPrefix + command + ' hard'},
@@ -27,9 +27,10 @@ const listMessage = {
   sections
 }
 //
-       
-        switch (type) {
-        case '1':
+        try {
+               if (/fishing|mancing/i.test(command)) {
+          switch (type) {
+          case 'satu':
         let fishes = [
 		{ area: 1, name: "Pufferfish" },
 		{ area: 1, name: "Anchovy" },
@@ -69,13 +70,13 @@ const listMessage = {
 		{ area: 12, name: "Chub" },
 		{ area: 13, name: "Slimejack" },
 		{ area: 13, name: "Void Salmon" },
-		{ area: 13, name: "Blue Discus" },
+		{ area: 13, name: "Blue Discus" }
 	]
 	let player = global.db.data.users[m.sender]
 	let pname = await conn.getName(m.sender)
 
-	let cdm = `${MeNit(new Date - player.lastfishing)}`
-	let cds = `${DeTik(new Date - player.lastfishing)}`
+	let cdm = `${clockString(new Date - player.lastfishing)}`
+	let cds = `${clockString(new Date - player.lastfishing)}`
 	let cd1 = Math.ceil(01 - cdm)
 	let cd2 = Math.ceil(60 - cds)
 
@@ -87,8 +88,8 @@ const listMessage = {
 
 	if (new Date -  global.db.data.users[m.sender].lastfishing > 120000) {
 		let durability = areaPlayer * 2
-		let coins = areaPlayer * 50
-		let exp = areaPlayer * 35
+		let coines = areaPlayer * 50
+		let expe = areaPlayer * 35
 
 		player.fishingroddurability -= durability
 		player.lastfishing = new Date * 1 // waktu fish 4menit
@@ -101,22 +102,21 @@ const listMessage = {
 			return
 		}
 
-		player.money += coins * 1
-		player.exp += exp * 1
+		player.money += coines * 1
+		player.exp += expe * 1
 
-		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${new Intl.NumberFormat('en-US').format(coins)} coins & ${new Intl.NumberFormat('en-US').format(exp)} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
+		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${new Intl.NumberFormat('en-US').format(coines)} coins & ${new Intl.NumberFormat('en-US').format(expe)} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
 		m.reply(pesan)
 	} else throw `Tunggu *${cd1}:${cd2}* Untuk Memancing Lagi`
 	break
-	case '2':
+	case 'dua':
 	let __timers = (new Date - global.db.data.users[m.sender].lastfishing)
         let _timers = (240000 - __timers) 
         let timers = clockString(_timers)
         let you = conn.getName(m.sender)
-        let user = global.db.data.users[m.sender]
         
-        if (user.stamina < 20) return m.reply(`Stamina anda tidak cukup\nharap isi stamina anda dengan *${usedPrefix}eat8`)
-    if (user.lastfishing > 10800000) throw m.reply(`Kamu masih kelelahan\nHarap tunggu *${timers}* lagi`)
+        if (pengguna.stamina < 20) return m.reply(`Stamina anda tidak cukup\nharap isi stamina anda dengan *${usedPrefix}eat8`)
+    if (pengguna.lastfishing > 10800000) throw m.reply(`Kamu masih kelelahan\nHarap tunggu *${timers}* lagi`)
     
         if (global.db.data.users[m.sender].fishingrod > 0 ) {
         if (new Date - global.db.data.users[m.sender].lastfishing > 240000) {
@@ -187,17 +187,17 @@ ${ usedPrefix }cook`
          global.db.data.users[m.sender].bawal += bawal * 1
          global.db.data.users[m.sender].udang += udang * 1
          global.db.data.users[m.sender].lastfishing += new Date * 1
-         user.paus += paus * 1
-         user.kepiting += kepiting * 1
+         pengguna.paus += paus * 1
+         pengguna.kepiting += kepiting * 1
 
         	  } else m.reply(`You're already fishing, wait until ${timers}`)
            } else conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan 🎣*`, wm, [[`Craft Fishingrod`, '.craft fishingrod']], m)
            break
            
 	          case 'easy':
-                                  let __timersa = (new Date - global.db.data.users[m.sender].lastmancingeasy)
-                                  let _timersa = (28800000 - __timersa)
-                                  let timersa = clockString(_timersa) 
+                                  let _coinesa = (new Date - global.db.data.users[m.sender].lastmancingeasy)
+                                  let coinesa = (28800000 - coinesa)
+                                  let timersa = clockString(coinesa) 
                                   if (pancingan == 0 || umpan == 0) return m.reply('*Kamu belum memiliki Pancingan dan Umpan, Silahkan beli dulu..*')
                                   if (new Date - global.db.data.users[m.sender].lastmancingeasy > 28800000) {
                                   if (global.db.data.users[m.sender].pancingan > 1) {
@@ -244,7 +244,7 @@ ${ usedPrefix }cook`
                                   let zero12 = `${rbrb12}`
 
                                  let hsl = `
-*《 Hasil Memancing ${pemancing} 》*
+*${htjava} Hasil Memancing ${pemancing} ${htjava}*
  *🦀 = [ ${zero2} ]*			*🐠 = [ ${zero6} ]*
  *🦞 = [ ${zero8} ]*			 *🐟 = [ ${zero11} ]*
  *🦐 = [ ${zero10} ]*			 *🐬 = [ ${zero7} ]*
@@ -289,7 +289,7 @@ ${ usedPrefix }cook`
       [null, null]
     ], null)
                                  }, 0) 
-                                 user.lastmancingeasy = new Date * 1
+                                 pengguna.lastmancingeasy = new Date * 1
                                  } else conn.reply(m.chat, 'Minimal umpan kamu *100* untuk memancing level mudah', m)
                             } else conn.reply(m.chat, 'Minimal pancingan kamu *Level 2* untuk memancing level mudah', m)
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timersa}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
@@ -344,7 +344,7 @@ ${ usedPrefix }cook`
                                   let aine12 = `${rbrbs12}`
 
                                  let hsls = `
-*《 Hasil Memancing ${pemancing} 》*
+*${htjava} Hasil Memancing ${pemancing} ${htjava}*
  *🦀 = [ ${aine2} ]*			*🐠 = [ ${aine6} ]*
  *🦞 = [ ${aine8} ]*			 *🐟 = [ ${aine11} ]*
  *🦐 = [ ${aine10} ]*			 *🐬 = [ ${aine7} ]*
@@ -389,7 +389,7 @@ ${ usedPrefix }cook`
       [null, null]
     ], null)
                                  }, 0) 
-                                 user.lastmancingeasy = new Date * 1
+                                 pengguna.lastmancingeasy = new Date * 1
                                  } else conn.reply(m.chat, 'Minimal umpan kamu *150* untuk memancing level normal', m)
                             } else conn.reply(m.chat, 'Minimal pancingan kamu *Level 3* untuk memancing level normal', m)
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timerl}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
@@ -444,7 +444,7 @@ ${ usedPrefix }cook`
                                   let aines12 = `${rbrbsh12}`
 
                                  let hslsh = `
-*《 Hasil Memancing ${pemancing} 》*
+*${htjava} Hasil Memancing ${pemancing} ${htjava}*
  *🦀 = [ ${aines2} ]*			*🐠 = [ ${aines6} ]*
  *🦞 = [ ${aines8} ]*			 *🐟 = [ ${aines11} ]*
  *🦐 = [ ${aines10} ]*			 *🐬 = [ ${aines7} ]*
@@ -489,7 +489,7 @@ ${ usedPrefix }cook`
       [null, null]
     ], null)
                                  }, 0) 
-                                 user.lastmancingeasy = new Date * 1
+                                 pengguna.lastmancingeasy = new Date * 1
                                  } else conn.reply(m.chat, 'Minimal umpan kamu *200* untuk memancing level hard', m)
                             } else conn.reply(m.chat, 'Minimal pancingan kamu *Level 4* untuk memancing level hard', m)
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timerh}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
@@ -544,7 +544,7 @@ ${ usedPrefix }cook`
                                   let ainese12 = `${rbrbshe12}`
 
                                  let hslse = `
-*《 Hasil Memancing ${pemancing} 》*
+*${htjava} Hasil Memancing ${pemancing} ${htjava}*
  *🦀 = [ ${ainese2} ]*			*🐠 = [ ${ainese6} ]*
  *🦞 = [ ${ainese8} ]*			 *🐟 = [ ${ainese11} ]*
  *🦐 = [ ${ainese10} ]*			 *🐬 = [ ${ainese7} ]*
@@ -589,33 +589,32 @@ ${ usedPrefix }cook`
       [null, null]
     ], null)
                                  }, 0) 
-                                 user.lastmancingeasy = new Date * 1
+                                 pengguna.lastmancingeasy = new Date * 1
                                  } else conn.reply(m.chat, 'Minimal umpan kamu *250* untuk memancing level extreme', m)
                             } else conn.reply(m.chat, 'Minimal pancingan kamu *Level 5* untuk memancing level extreme', m)
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timere}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
                  break
-                 default:
-                 try {
-        return conn.sendMessage(m.chat, listMessage, {quoted: fgif})
-           } catch (e) {
+                       default:
+                        return conn.sendMessage(m.chat, listMessage, {quoted: fgif})
+                }
+        }
+    } catch (e) {
+        conn.reply(m.chat, caption, m)
         console.log(e)
-        conn.reply(m.chat, 'Error', m)
-        if (owner) {
-            let file = require.resolve(__filename)
+        if (DevMode) {
             for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) {
-            conn.reply(jid, file + ' error\nNo: *' + m.sender.split`@`[0] + '*\nCommand: *' + m.text + '*\n\n*' + e + '*', m)
-                
+                conn.reply(jid, 'shop.js error\nNo: *' + m.sender.split`@`[0] + '*\nCommand: *' + m.text + '*\n\n*' + e + '*', m)
             }
         }
     }
-                 }
-      }
-handler.help = ['mancing','fishing']
+}
+
+handler.help = ['fishing <args>']
 handler.tags = ['rpg']
-handler.command = /^(mancing|memancing|fish)$/i 
-handler.group = true
-export default handler 
-//JANGAN DIUBAH YA YG DIBAWAH
+handler.owner = false
+handler.command = /^(fishing|mancing)$/i
+export default handler
+
 function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)]
 }
@@ -626,14 +625,3 @@ function clockString(ms) {
   console.log({ms,h,m,s})
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
 }
-
-function MeNit(ms) {
-	let m = isNaN(ms) ? '02' : Math.floor(ms / 60000) % 60
-	return [m].map(v => v.toString().padStart(2, 0)).join(':')
-}
-
-function DeTik(ms) {
-	let s = isNaN(ms) ? '60' : Math.floor(ms / 1000) % 60
-	return [s].map(v => v.toString().padStart(2, 0)).join(':')
-}
-

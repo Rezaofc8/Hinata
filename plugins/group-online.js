@@ -1,14 +1,22 @@
-let handler = async (m, { conn, args, isAdmin, participants, isOwner }) => {
+let handler = async (m, { conn, args, isAdmin, participants, groupMetadata, isOwner }) => {
   if (m.isGroup) {
     if (!(isAdmin || isOwner)) {
       dfail('admin', m, conn)
       throw false
     }
   }
+  const getGroupAdmins = (participants) => {
+        let admins = []
+        for (let i of participants) {
+            i.presences === "presences" ? admins.push(i.id) : ''
+        }
+        return admins
+    }
+    const groupAdmins = getGroupAdmins(participants)
+        let listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.split('@')[0]}`).join('\n')
   // let id = args && /.*@g.us/.test(args[0]) ? args[0] : m.chat
-  let online = [...Object.keys(conn.chats(participants).presences), conn.user.jid]
-  conn.reply(m.chat, '┌「 *Daftar Wibu* 」\n' + online.map(v => '├ @' + v.replace(/@.+/, '')).join`\n` + '\n└────', m, {
-    contextInfo: { mentionedJid: online }
+  conn.reply(m.chat, '┌「 *Daftar Wibu* 」\n' + listAdmin + '\n└────', m, {
+    contextInfo: { mentionedJid: listAdmin }
   })
 }
 handler.help = ['online']
