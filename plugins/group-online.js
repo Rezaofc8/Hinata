@@ -8,7 +8,7 @@ let handler = async (m, { conn, args, isAdmin, participants, groupMetadata, isOw
   const getGroupAdmins = (participants) => {
         let admins = []
         for (let i of participants) {
-            i.presences === "presences" ? admins.push(i.id) : ''
+            i.participants === "presences" ? admins.push(i.id) : ''
         }
         return admins
     }

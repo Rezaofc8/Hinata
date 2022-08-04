@@ -1,6 +1,6 @@
 
-let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
-let pengguna = global.db.data.users[m.sender]
+let handler  = async (m, { conn, command, args, usedPrefix }) => {
+       let pengguna = global.db.data.users[m.sender]
        let pancingan = pengguna.pancingan
        let pemancing = await conn.getName(m.sender)
        let umpan = pengguna.umpan
@@ -104,8 +104,10 @@ const listMessage = {
 
 		player.money += coines * 1
 		player.exp += expe * 1
-
+/*
 		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${new Intl.NumberFormat('en-US').format(coines)} coins & ${new Intl.NumberFormat('en-US').format(expe)} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
+		*/
+		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${coines} coins & ${expe} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
 		m.reply(pesan)
 	} else throw `Tunggu *${cd1}:${cd2}* Untuk Memancing Lagi`
 	break
@@ -601,17 +603,11 @@ ${ usedPrefix }cook`
     } catch (e) {
         conn.reply(m.chat, 'Error', m)
         console.log(e)
-        if (DevMode) {
-            for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) {
-                conn.reply(jid, 'shop.js error\nNo: *' + m.sender.split`@`[0] + '*\nCommand: *' + m.text + '*\n\n*' + e + '*', m)
-            }
-        }
     }
 }
 
 handler.help = ['fishing <args>']
 handler.tags = ['rpg']
-handler.owner = false
 handler.command = /^(fishing|mancing)$/i
 export default handler
 

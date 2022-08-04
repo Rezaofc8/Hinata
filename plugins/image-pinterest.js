@@ -1,120 +1,140 @@
 import fetch from 'node-fetch'
 import { pinterest } from '@bochilteam/scraper'
+import { readFileSync } from 'fs'
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
-if (!text) return m.reply(`Example : ${usedPrefix + command} query`)
-
-if (command == 'pinterest') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
-let js = await fetch(`https://api.lolhuman.xyz/api/pinterest?apikey=${global.lolkey}&query=${text}`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x, null, null, null, null, [
-      ['Pinterest1', usedPrefix + 'pinterest1 ' + text],
-      ['Pinterest2', usedPrefix + 'pinterest2 ' + text],
-      ['Pinterest3', usedPrefix + 'pinterest3 ' + text]
-    ], m)
+  let res = JSON.parse(readFileSync('./json/emoji.json'))
+  let em = res.emoji
+  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let name = await conn.getName(who)
+    let type = (args[0] || '').toLowerCase()
+    let urut = text.split`|`
+    let one = urut[1]
+    let caption = `*Hasil pencarian* ${one}`
+    if (!text) throw 'Masukkan Teks\nApa yang kamu cari?'
+  
+const sections = [
+    {
+	title: htjava + ' List Pinterest Search ' + htjava,
+	rows: [
+{title: em.getRandom() + " Pinterest 1", rowId: usedPrefix + command + ' pinterest1 |' + text},
+{title: em.getRandom() + " Pinterest 2", rowId: usedPrefix + command + ' pinterest2 |' + text},
+{title: em.getRandom() + " Pinterest 3", rowId: usedPrefix + command + ' pinterest3 |' + text},
+{title: em.getRandom() + " Pinterest 4", rowId: usedPrefix + command + ' pinterest4 |' + text},
+{title: em.getRandom() + " Pinterest 5", rowId: usedPrefix + command + ' pinterest5 |' + text},
+{title: em.getRandom() + " Pinterest 6", rowId: usedPrefix + command + ' pinterest6 |' + text},
+{title: em.getRandom() + " Pinterest 7", rowId: usedPrefix + command + ' pinterest7 |' + text},
+{title: em.getRandom() + " Pinterest 8", rowId: usedPrefix + command + ' pinterest8 |' + text},
+{title: em.getRandom() + " Pinterest 9", rowId: usedPrefix + command + ' pinterest9 |' + text}
+	]
     }
+]
 
-if (command == 'pinterest1') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Leys`
-let url = `https://leyscoders-api.herokuapp.com/api/pinsearch?q=${text}&apikey=MIMINGANZ`
-await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
-      ['Pinterest2', usedPrefix + 'pinterest2 ' + text],
-      ['Pinterest3', usedPrefix + 'pinterest3 ' + text],
-      ['Pinterest4', usedPrefix + 'pinterest4 ' + text]
+const listMessage = {
+  text: '👋 Hai, ' + name + ' ' + ucapan + '\n⚡ Silakan pilih pencarian di bawah...',
+  footer: global.wm,
+  title: `${htki} ${command} ${htka}`,
+  buttonText: `☂️ Klik Disini ☂️`,
+  sections
+}
+
+
+try {
+               if (/pinterest|pin/i.test(command)) {
+          switch (type) {
+case 'pinterest':
+let js0 = await fetch(`https://api.lolhuman.xyz/api/pinterest?apikey=${global.lolkey}&query=${one}`)
+let jp0 = await js0.json()
+let x0 = jp0.result
+await conn.sendHydrated(m.chat, caption, wm, x0, null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
     ], m)
-    }
+    break
+
+case 'pinterest1':
+let js1 = `https://leyscoders-api.herokuapp.com/api/pinsearch?q=${one}&apikey=MIMINGANZ`
+await conn.sendHydrated(m.chat, caption, wm, js1, null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
+    ], m)
+    break
     
-if (command == 'pinterest2') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Kann`
-let js = await fetch(`https://kannxapi.herokuapp.com/api/pinterest?query=${text}`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest3', usedPrefix + 'pinterest1 ' + text],
-      ['Pinterest4', usedPrefix + 'pinterest4 ' + text],
-      ['Pinterest5', usedPrefix + 'pinterest5 ' + text]
+case 'pinterest2':
+let js2 = await fetch(`https://kannxapi.herokuapp.com/api/pinterest?query=${one}`)
+let jp2 = await js2.json()
+let x2 = jp2.result
+await conn.sendHydrated(m.chat, caption, wm, x2.getRandom(), null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
     ], m)
-    }
+    break
 
-if (command == 'pinterest3') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Beni`
-let js = await fetch(`https://rest-beni.herokuapp.com/api/pinterest?query=${text}`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest4', usedPrefix + 'pinterest1 ' + text],
-      ['Pinterest5', usedPrefix + 'pinterest5 ' + text],
-      ['Pinterest6', usedPrefix + 'pinterest6 ' + text]
+case 'pinterest3':
+let js3 = await fetch(`https://rest-beni.herokuapp.com/api/pinterest?query=${one}`)
+let jp3 = await js3.json()
+let x3 = jp3.result
+await conn.sendHydrated(m.chat, caption, wm, x3.getRandom(), null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
     ], m)
-    }
+    break
 
-if (command == 'pinterest4') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Erdwpe`
-let js = await fetch(`https://erdwpe-api.herokuapp.com/search/pinterest?query=${text}`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest5', usedPrefix + 'pinterest1 ' + text],
-      ['Pinterest6', usedPrefix + 'pinterest6 ' + text],
-      ['Pinterest', usedPrefix + 'pinterest ' + text]
+case 'pinterest4':
+let js4 = await fetch(`https://erdwpe-api.herokuapp.com/search/pinterest?query=${one}`)
+let jp4 = await js4.json()
+let x4 = jp4.result
+await conn.sendHydrated(m.chat, caption, wm, x4.getRandom(), null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
     ], m)
-    }
+    break
 
-if (command == 'pinterest5') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Melcanz Limit`
-let js = await fetch(`https://melcanz.com/pinterestSearch?q=${text}&apikey=manHkmst`)
-let jp = await js.json()
-let x = jp.data
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest6', usedPrefix + 'pinterest6 ' + text],
-      ['Pinterest', usedPrefix + 'pinterest ' + text],
-      ['Pinterest1', usedPrefix + 'pinterest1 ' + text]
+case 'pinterest5':
+let js5 = await fetch(`https://melcanz.com/pinterestSearch?q=${one}&apikey=manHkmst`)
+let jp5 = await js5.json()
+let x5 = jp5.data
+await conn.sendHydrated(m.chat, caption, wm, x5.getRandom(), null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
     ], m)
-    }
+    break
 
-if (command == 'pinterest6') {
-    let caption = `*Hasil pencarian* ${text}\n\n*Note:* Gak sesuai`
-const json = await pinterest(text)
-  conn.sendFile(m.chat, json.getRandom(), 'pinterest.jpg', caption.trim(), m)
+case 'pinterest6':
+let js6 = await pinterest(text)
+  conn.sendFile(m.chat, js6.getRandom(), 'pinterest.jpg', caption.trim(), m)
+break
+
+case 'pinterest7':
+let js7 = await fetch(`https://api.lolhuman.xyz/api/pinterest2?apikey=${global.lolkey}&query=${one}`)
+let jp7 = await js7.json()
+let x7 = jp7.result
+await conn.sendFile(m.chat, x7.getRandom(), caption)
+    break
+
+case 'pinterest8':
+let js8 = await fetch(`https://tyz-api.herokuapp.com/search/pinterest?query=${one}`)
+let jp8 = await js8.json()
+let x8 = jp8.result
+await conn.sendHydrated(m.chat, caption, wm, x8.getRandom(), null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
+    ], m)
+    break
+
+case 'pinterest9':
+let js9 = await fetch(`https://api.vhtear.com/pinterest?query=${one}&apikey=nekobotofficial`)
+let jp9 = await js9.json()
+let x9 = jp9.result
+await conn.sendHydrated(m.chat, caption, wm, x9.getRandom(), null, null, null, null, [
+      ['Pinterest', usedPrefix + command + ' ' + one]
+    ], m)
+break
+
+                       default:
+                        return conn.sendMessage(m.chat, listMessage, {quoted: fgif})
+                }
+        }
+    } catch (e) {
+        conn.reply(m.chat, 'Error', m)
+        console.log(e)
+    }
 }
-
-if (command == 'pinterest7') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* Png`
-let js = await fetch(`https://api.lolhuman.xyz/api/pinterest2?apikey=${global.lolkey}&query=${text}`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendFile(m.chat, x.getRandom(), caption)
-    }
-
-if (command == 'pinterest8') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* tzy`
-let js = await fetch(`https://tyz-api.herokuapp.com/search/pinterest?query=${text}`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest7', usedPrefix + 'pinterest7 ' + text],
-      ['Pinterest', usedPrefix + 'pinterest ' + text],
-      ['Pinterest1', usedPrefix + 'Pinterest1 ' + text]
-    ], m)
-    }
-
-if (command == 'pinterest9') {
-let caption = `*Hasil pencarian* ${text}\n\n*Note:* tzy`
-let js = await fetch(`https://api.vhtear.com/pinterest?query=${text}&apikey=nekobotofficial`)
-let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
-      ['Pinterest6', usedPrefix + 'pinterest6 ' + text],
-      ['Pinterest7', usedPrefix + 'pinterest7 ' + text],
-      ['Pinterest', usedPrefix + 'Pinterest ' + text]
-    ], m)
-    }
-
-
-}
-handler.command = handler.help = ['pinterest', 'pinterest1', 'pinterest2', 'pinterest3', 'pinterest4', 'pinterest5', 'pinterest6', 'pinterest7', 'pinterest8', 'pinterest9']
+handler.help = ['pinterest <query>']
+handler.command = /^pin(terest)$/i
 handler.tags = ['random']
 
 export default handler

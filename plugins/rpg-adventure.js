@@ -26,10 +26,16 @@ let imgr = flaaa.getRandom()
 ], m)
     const rewards = reward(user)
     let text = `🔖 ᴀᴅᴠᴇɴᴛᴜʀᴇ ᴛᴏ *${kt[1][0].name}*
-*ɪᴅ :* ${kt[1][0].id}
-*ᴄɪᴛʏ :* ${kt[1][0].capitalCity}
-*ʟᴏɴɢɪᴛᴜᴅᴇ :* ${kt[1][0].longitude}
-*ʟᴀᴛɪᴛᴜᴅᴇ :* ${kt[1][0].latitude}`
+
+${cmenut}
+${cmenub} *ɪᴅ :* ${kt[1][0].id}
+${cmenub} *ᴄɪᴛʏ :* ${kt[1][0].capitalCity}
+${cmenub} *ʟᴏɴɢɪᴛᴜᴅᴇ :* ${kt[1][0].longitude}
+${cmenub} *ʟᴀᴛɪᴛᴜᴅᴇ :* ${kt[1][0].latitude}
+${cmenuf}
+
+ᴀᴅᴠᴇɴᴛᴜʀᴇ ғɪɴɪsʜ (. ❛ ᴗ ❛.)
+${cmenua}`
     for (const lost in rewards.lost) if (user[lost]) {
         const total = rewards.lost[lost].getRandom()
         user[lost] -= total * 1
@@ -84,6 +90,21 @@ function reward(user = {}) {
                     (user.dog > 8 && user.dog) || 4
                 )).fill(0)
             ),
+            cat: [0, 1, 0, 0, 0],
+            centaur: [0, 1, 0, 0, 0],
+            dog: [0, 1, 0, 0, 0],
+            dragon: [0, 1, 0, 0, 0],
+            emerald: [0, 1, 0, 0, 0],
+            fox: [0, 1, 0, 0, 0],
+            griffin: [0, 1, 0, 0, 0],
+            horse: [0, 1, 0, 0, 0],
+            kyubi: [0, 1, 0, 0, 0],
+            lion: [0, 1, 0, 0, 0],
+            pet: [0, 1, 0, 0, 0],
+            phonix: [0, 1, 0, 0, 0],
+            rhinoceros: [0, 1, 0, 0, 0],
+            robo: [0, 1, 0, 0, 0],
+            wolf: [0, 1, 0, 0, 0],
             iron: [0, 0, 0, 1, 0, 0],
             gold: [0, 0, 0, 0, 0, 1, 0],
             diamond: [0, 0, 0, 0, 0, 0, 1, 0].concat(

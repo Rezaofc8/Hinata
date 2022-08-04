@@ -130,7 +130,7 @@ ${usedPrefix}open mythic 3
 `.trim()
     let type = (args[0] || '').toLowerCase()
     let count = Math.floor(isNumber(args[1]) ? Math.min(Math.max(parseInt(args[1]), 1), Number.MAX_SAFE_INTEGER) : 1) * 1
-    if (!(type in listCrate)) return conn.sendButton(m.chat, `*––––『 OPEN CRATES 』––––*`, info, imgr + 'open', [
+    if (!(type in listCrate)) return conn.sendButton(m.chat, `*${htki} OPEN CRATES ${htka}*`, info, imgr + 'open', [
 [`ᴄᴏᴍᴍᴏɴ`, `${usedPrefix}open common`],
 [`ᴜɴᴄᴏᴍᴍᴏɴ`, `${usedPrefix}open uncommon`]
 ], m)

@@ -59,35 +59,332 @@ const items = {
         },
         pet: {
             money: 120000
+        },
+        anggur: {
+            money: 2000
+        },
+        apel: {
+            money: 2000
+        },
+        batu: {
+            money: 2000
+        },
+        berlian: {
+            money: 2000
+        },
+        bibitanggur: {
+            money: 2000
+        },
+        bibitapel: {
+            money: 2000
+        },
+        bibitjeruk: {
+            money: 2000
+        },
+        bibitmangga: {
+            money: 2000
+        },
+        bibitpisang: {
+            money: 2000
+        },
+        botol: {
+            money: 2000
+        },
+        centaur: {
+            money: 2000
+        },
+        eleksirb: {
+            money: 2000
+        },
+        emasbatang: {
+            money: 2000
+        },
+        emasbiasa: {
+            money: 2000
+        },
+        exp: {
+            money: 2000
+        },
+        gardenboc: {
+            money: 2000
+        },
+        gardenboxs: {
+            money: 2000
+        },
+        griffin: {
+            money: 2000
+        },
+        healtmonster: {
+            money: 2000
+        },
+        jeruk: {
+            money: 2000
+        },
+        kaleng: {
+            money: 2000
+        },
+        kardus: {
+            money: 2000
+        },
+        kayu: {
+            money: 2000
+        },
+        ketake: {
+            money: 2000
+        },
+        koinexpg: {
+            money: 2000
+        },
+        kucing: {
+            money: 2000
+        },
+        kuda: {
+            money: 2000
+        },
+        kyubi: {
+            money: 2000
+        },
+        makanancentaur: {
+            money: 2000
+        },
+        makanangriffin: {
+            money: 2000
+        },
+        makanankyubi: {
+            money: 2000
+        },
+        makanannaga: {
+            money: 2000
+        },
+        makananpet: {
+            money: 2000
+        },
+        makananphonix: {
+            money: 2000
+        },
+        mangga: {
+            money: 2000
+        },
+        pancingan: {
+            money: 2000
+        },
+        phonix: {
+            money: 2000
+        },
+        pisang: {
+            money: 2000
+        },
+        rubah: {
+            money: 2000
+        },
+        sampah: {
+            money: 2000
+        },
+        serigala: {
+            money: 2000
+        },
+        sword: {
+            money: 2000
+        },
+        tiketcoin: {
+            money: 2000
+        },
+        umpan: {
+            money: 2000
         }
     },
     sell: {
+        limit: {
+            exp: 999
+        },
         potion: {
-            money: 125,
+            money: 1250,
+        },
+        aqua: {
+           money: 500
         },
         trash: {
-            money: 2
+            money: 4,
         },
         wood: {
-            money: 600
+            money: 700
         },
         rock: {
-            money: 750
+            money: 850
         },
         string: {
-            money: 300
+            money: 400
         },
-        iron: {
-            money: 2500
-        },
-        gold: {
-            money: 4700
+        iron: { 
+        	money: 3000
         },
         diamond: {
-            money: 9000
+            money: 7500
         },
         emerald: {
-            money: 15000
+            money: 8500
+        },
+        gold: {
+            money: 3500
+        },
+        coal: {
+            money: 1500
+        },
+        common: {
+            money: 200
+        },
+        uncommon: {
+            money: 2000
+        },
+        mythic: {
+            money: 25000
+        },
+        legendary: {
+            money: 75000
+        },
+        foodpet: {
+            money: 3500
+        },
+        Fox: {
+            money: 40000
+        },
+        naga: {
+            money: 120000
+        },
+        pet: {
+            money: 120000
+        },
+        anggur: {
+            money: 2000
+        },
+        apel: {
+            money: 2000
+        },
+        batu: {
+            money: 2000
+        },
+        berlian: {
+            money: 2000
+        },
+        bibitanggur: {
+            money: 2000
+        },
+        bibitapel: {
+            money: 2000
+        },
+        bibitjeruk: {
+            money: 2000
+        },
+        bibitmangga: {
+            money: 2000
+        },
+        bibitpisang: {
+            money: 2000
+        },
+        botol: {
+            money: 2000
+        },
+        centaur: {
+            money: 2000
+        },
+        eleksirb: {
+            money: 2000
+        },
+        emasbatang: {
+            money: 2000
+        },
+        emasbiasa: {
+            money: 2000
+        },
+        exp: {
+            money: 2000
+        },
+        gardenboc: {
+            money: 2000
+        },
+        gardenboxs: {
+            money: 2000
+        },
+        griffin: {
+            money: 2000
+        },
+        healtmonster: {
+            money: 2000
+        },
+        jeruk: {
+            money: 2000
+        },
+        kaleng: {
+            money: 2000
+        },
+        kardus: {
+            money: 2000
+        },
+        kayu: {
+            money: 2000
+        },
+        ketake: {
+            money: 2000
+        },
+        koinexpg: {
+            money: 2000
+        },
+        kucing: {
+            money: 2000
+        },
+        kuda: {
+            money: 2000
+        },
+        kyubi: {
+            money: 2000
+        },
+        makanancentaur: {
+            money: 2000
+        },
+        makanangriffin: {
+            money: 2000
+        },
+        makanankyubi: {
+            money: 2000
+        },
+        makanannaga: {
+            money: 2000
+        },
+        makananpet: {
+            money: 2000
+        },
+        makananphonix: {
+            money: 2000
+        },
+        mangga: {
+            money: 2000
+        },
+        pancingan: {
+            money: 2000
+        },
+        phonix: {
+            money: 2000
+        },
+        pisang: {
+            money: 2000
+        },
+        rubah: {
+            money: 2000
+        },
+        sampah: {
+            money: 2000
+        },
+        serigala: {
+            money: 2000
+        },
+        sword: {
+            money: 2000
+        },
+        tiketcoin: {
+            money: 2000
+        },
+        umpan: {
+            money: 2000
         }
     }
 }
