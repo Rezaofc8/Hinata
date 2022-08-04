@@ -138,7 +138,7 @@ await conn.sendButton(m.chat, `*Result:* ${command}
 
 if (command == 'sfilesearch') {
 if (!text) throw `Contoh:\n${usedPrefix + command} Naruto`
-let f = await fetch(`https://bx-hunter.herokuapp.com/api/sfilesearch?apikey=dno8pZJW&text=${text}`)
+let f = await fetch(`https://bx-hunter.herokuapp.com/api/sfilesearch?apikey=W46QBtQGOhiqfiClaxHqyAaIR&text=${text}`)
 let x = await f.json()
 await conn.sendButton(m.chat, `*Result:*
 *Title:* ${x.result[0].nama}

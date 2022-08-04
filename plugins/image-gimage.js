@@ -35,7 +35,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
     
 if (command == 'gimage2') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* bx-hunter`
-let url = `https://bx-hunter.herokuapp.com/api/googleimage?query=${text}&apikey=dno8pZJW`
+let url = `https://bx-hunter.herokuapp.com/api/googleimage?query=${text}&apikey=W46QBtQGOhiqfiClaxHqyAaIR`
 let js = await fetch(url)
 let jp = await js.json()
 let x = jp.result

@@ -8,7 +8,7 @@ import fetch from 'node-fetch'
 let emot = `${pickRandom(['⎔', '✦', '⭑', 'ᯬ', '⭔', '◉', '⬟', '▢', '᭻', '»', '〆', '々', '⛥', '✗', '⛊', '⚜', '⚝', '⚚', '♪'])}`
 const defaultMenu = {
   before: `
-Hai, *%name!*
+Hai, *%name!* %ucapan
 
 *Tanggal:* %week, %date
 *Waktu:* %time
@@ -269,9 +269,9 @@ let handler = async (m, { conn, command, groupMetadata, usedPrefix: _p, __dirnam
   }
 ]
 
-let tek = `👋 Hai @${who.split("@")[0]}
+let tek = `👋 Hai @${who.split("@")[0]}\n${ucapan}
 
-*YOUR PROFILE*
+*${htjava} YOUR PROFILE ${htjava}*
 *🏷️ Nama:* *${name}* ${registered ? '(' + name + ') ' : ''}
 *💲 Money:* *RP* ${money}
 *🏆 Level* ${level}
@@ -384,7 +384,7 @@ const listMessage = {
       totalexp: exp,
       xp4levelup: max - exp,
       github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
-      level, totalfeatures, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      level, totalfeatures, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role, ucapan,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])

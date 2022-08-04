@@ -1,11 +1,13 @@
+import fetch from 'node-fetch'
+
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 if (args[0] == 'all') {
 let user = global.db.data.users[m.sender]
-        conn.reply(m.chat, `*Succes Cheat!*`, m)
+        conn.reply(m.chat, `*Succes Cheat Infinity!*`, m, { contextInfo: { externalAdReply: { title: botdate, body: bottime, mediaType: 2, sourceUrl: sig, mediaUrl: sig, thumbnail: await(await fetch('https://telegra.ph/file/1836eec6c22d949829474.jpg')).buffer()}}})
         user.money = Infinity
         user.limit = Infinity
         user.level = Infinity
-        }
+        } else {
     let who
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     else who = m.sender
@@ -25,15 +27,17 @@ let user = global.db.data.users[m.sender]
      let niatm = cht.atm += ran
      
      // Button
-    await conn.sendButton(m.chat, `*${hore}* ${emot}
+    conn.sendHydrated(m.chat, `*${hore}* ${emot}
 *${niexp}* EXP Total
 *${nilim}* Limit Total
 *${nimon}* Money Total
 *${niatm}* ATM Total
     
-    Ketik *.limit* untuk cek limit`, author, jir + 'Jir Ngechit', [
-        ['Nambah', `${usedPrefix + command}`]
-    ], m, {quoted: fkontak})
+    Ketik *.limit* untuk cek limit`, botdate, jir + 'Jir Ngechit', null, null, null, null, [
+      ['Cheat', '/ngechit'],
+      ['Cheat Infinity', '/ngechit all']
+    ], null)
+    }
 }
 handler.help = ['ngechit'].map(v => v + ' *hehe..*')
 handler.tags = ['xp']

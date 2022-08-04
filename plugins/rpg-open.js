@@ -111,7 +111,11 @@ const rewards = {
         phonix: [0, 1, 0, 0, 0, 0, 0]
     },
 }
+
+const cooldown = 86400000
 let handler = async (m, { command, args, usedPrefix }) => {
+let user = global.db.data.users[m.sender]
+if (new Date - user.lastclaim < cooldown) throw `You have already opened this!, wait for *${((user.lastclaim + cooldown) - new Date()).toTimeString()}*`
 let imgr = flaaa.getRandom()
     let user = global.db.data.users[m.sender]
     const tfcrates = Object.keys(tfinventory.tfcrates).map(v => user[v] && `⮕ ${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
@@ -167,7 +171,7 @@ Congrats you got a epic item, which is ${pet ? `*${pet}* ${rpg.emoticon('pet')}p
 handler.help = ['open'].map(v => v + ' [crate] [count]')
 handler.tags = ['rpg']
 handler.command = /^(open|buka|gacha)$/i
-
+handler.cooldown = cooldown
 export default handler
 
 function isNumber(number) {

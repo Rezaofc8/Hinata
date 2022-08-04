@@ -62,7 +62,7 @@ let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam pengguna
 'mediaUrl': lin_.getRandom(),
 'mediaType': 2,
 'previewType': 'pdf',
-'title': '👋 Hai, ' + name ,
+'title': '👋 Hai, ' + name + ' ' + ucapan,
 'body': 'Role ' + role + ' bang',
 'thumbnail': await( await fetch(pp)).buffer(),
 'sourceUrl': sgc}},

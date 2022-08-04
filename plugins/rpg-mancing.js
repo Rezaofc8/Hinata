@@ -5,7 +5,195 @@ let handler = async (m, { conn, usedPrefix, command, text, args, owner }) => {
        let pemancing = await conn.getName(m.sender)
        let umpan = user.umpan
        let type = (args[0] || '').toLowerCase()
+       const sections = [
+    {
+	title: htjava + ' List Contruction For Fishing facility ' + htjava,
+	rows: [
+{title: "🎣 Mancing 1", rowId: usedPrefix + command + ' 1'},
+{title: "🎣 Mancing 2", rowId: usedPrefix + command + ' 2'},
+{title: "🎣 Mancing easy", rowId: usedPrefix + command + ' easy'},
+{title: "🎣 Mancing normal", rowId: usedPrefix + command + ' normal'},
+{title: "🎣 Mancing hard", rowId: usedPrefix + command + ' hard'},
+{title: "🎣 Mancing extreme", rowId: usedPrefix + command + ' extreme'}
+	]
+    }
+]
+
+const listMessage = {
+  text: `⚡ Silakan pilih Fishing di bawah...`,
+  footer: global.wm,
+  title: `⎔───「 ${command} 」───⎔`,
+  buttonText: `☂️ Klik Disini ☂️`,
+  sections
+}
+//
+       
         switch (type) {
+        case '1':
+        let fishes = [
+		{ area: 1, name: "Pufferfish" },
+		{ area: 1, name: "Anchovy" },
+		{ area: 1, name: "Tuna" },
+		{ area: 2, name: "Sardine" },
+		{ area: 2, name: "Bream" },
+		{ area: 2, name: "Largemouth Bass" },
+		{ area: 3, name: "Smallmouth Bass" },
+		{ area: 3, name: "Rainbow Trout" },
+		{ area: 3, name: "Salmon" },
+		{ area: 4, name: "Walleye" },
+		{ area: 4, name: "Perch" },
+		{ area: 4, name: "Carp" },
+		{ area: 5, name: "Catfish" },
+		{ area: 5, name: "Pike" },
+		{ area: 5, name: "Sunfish" },
+		{ area: 6, name: "Red Mullet" },
+		{ area: 6, name: "Herring" },
+		{ area: 6, name: "Eel" },
+		{ area: 7, name: "Octopus" },
+		{ area: 7, name: "Red Snapper" },
+		{ area: 7, name: "Squid" },
+		{ area: 8, name: "Sea Cucumber" },
+		{ area: 8, name: "Super Cucumber" },
+		{ area: 8, name: "Ghostfish" },
+		{ area: 9, name: "Stonefish" },
+		{ area: 9, name: "Ice Pip" },
+		{ area: 9, name: "Lava Eel" },
+		{ area: 10, name: "Sandfish" },
+		{ area: 10, name: "Scorpion Carp" },
+		{ area: 10, name: "Flounder" },
+		{ area: 11, name: "Midnight Carp" },
+		{ area: 11, name: "Sturgeon" },
+		{ area: 11, name: "Tiger Trout" },
+		{ area: 12, name: "Bullhead" },
+		{ area: 12, name: "Tilapia" },
+		{ area: 12, name: "Chub" },
+		{ area: 13, name: "Slimejack" },
+		{ area: 13, name: "Void Salmon" },
+		{ area: 13, name: "Blue Discus" },
+	]
+	let player = global.db.data.users[m.sender]
+	let pname = await conn.getName(m.sender)
+
+	let cdm = `${MeNit(new Date - player.lastfishing)}`
+	let cds = `${DeTik(new Date - player.lastfishing)}`
+	let cd1 = Math.ceil(01 - cdm)
+	let cd2 = Math.ceil(60 - cds)
+
+	let areaPlayer = fishes.map(v => v.area)
+    areaPlayer = areaPlayer[Math.floor(Math.random() * areaPlayer.length)]
+	let area_fish = fishes.filter(fishtype => { return fishtype.area === areaPlayer })
+	let fishtype = area_fish[Math.floor(Math.random() * area_fish.length)]
+	let fishName = fishtype.name.toUpperCase()
+
+	if (new Date -  global.db.data.users[m.sender].lastfishing > 120000) {
+		let durability = areaPlayer * 2
+		let coins = areaPlayer * 50
+		let exp = areaPlayer * 35
+
+		player.fishingroddurability -= durability
+		player.lastfishing = new Date * 1 // waktu fish 4menit
+
+		if (player.fishingroddurability < 0) {
+            player.fishingrod = 0
+			let msg = `*${pname}* Fishingrod anda hancur`
+			player.fishingroddurability = 0
+			m.reply(msg)
+			return
+		}
+
+		player.money += coins * 1
+		player.exp += exp * 1
+
+		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${new Intl.NumberFormat('en-US').format(coins)} coins & ${new Intl.NumberFormat('en-US').format(exp)} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
+		m.reply(pesan)
+	} else throw `Tunggu *${cd1}:${cd2}* Untuk Memancing Lagi`
+	break
+	case '2':
+	let __timers = (new Date - global.db.data.users[m.sender].lastfishing)
+        let _timers = (240000 - __timers) 
+        let timers = clockString(_timers)
+        let you = conn.getName(m.sender)
+        let user = global.db.data.users[m.sender]
+        
+        if (user.stamina < 20) return m.reply(`Stamina anda tidak cukup\nharap isi stamina anda dengan *${usedPrefix}eat8`)
+    if (user.lastfishing > 10800000) throw m.reply(`Kamu masih kelelahan\nHarap tunggu *${timers}* lagi`)
+    
+        if (global.db.data.users[m.sender].fishingrod > 0 ) {
+        if (new Date - global.db.data.users[m.sender].lastfishing > 240000) {
+        	
+        
+        let ikan = `${Math.floor(Math.random() * 30)}`.trim() 
+        let lele = `${Math.floor(Math.random() * 15)}`.trim() 
+        let nila = `${Math.floor(Math.random() * 10)}`.trim() 
+        let bawal = `${Math.floor(Math.random() * 10)}`.trim() 
+        let udang = `${Math.floor(Math.random() * 39)}`.trim()
+        let paus = `${Math.floor(Math.random() * 2)}`.trim() 
+        let kepiting = `${Math.floor(Math.random() * 27)}`.trim()
+        
+        
+        
+           let _psepick= `${pickRandom(['1', '0', '0', '1'])}`
+            let psepick = (_psepick * 1)
+            let _psenjata = `${pickRandom(['1', '0', '0', '0'])}`
+           let psenjata = (_psenjata * 1)
+           
+        let mcng = `
+*Hasil 🎣Fishing ${pemancing}!*
+        
+🐟 nila : ${nila}
+🐡 bawal : ${bawal}
+🐟 lele : ${lele}
+🐟 ikan : ${ikan}
+🦐 udang : ${udang}
+🐋 paus: ${paus}
+🦀 kepiting: ${kepiting}
+
+Kamu bisa memasak ini, dan memakannya💉
+_example:_
+${ usedPrefix }cook`    
+        setTimeout(() => {
+        conn.sendHydrated(m.chat, mcng, botdate, null, null, null, null, null, [
+      [null, null]
+    ], null)
+         if (psepick > 0 ) {
+         	global.db.data.users[m.sender].psepick += psepick * 1
+         conn.sendButton( m.chat, `You Get 🎁chest weapons epic ${psepick} item`, wm, [[`again`, `.mancing`]], m)
+         } 
+        if  (psenjata > 0 ) {
+        	global.db.data.users[m.sender].psenjata+= psenjata * 1
+        conn.sendButton( m.chat, `You Get 🎁chest weapons ${psenjata} item`, wm, [[`Again`, `.mancing`]], m)
+        	}
+        }, 38000)
+
+        setTimeout(() => {
+                     conn.sendHydrated(m.chat, `${pemancing} Sepertinya dapat sesuatu..`, botdate, null, null, null, null, null, [
+      [null, null]
+    ], null)
+                      }, 28000)
+       setTimeout(() => {
+                     conn.sendHydrated(m.chat, `${pemancing} Menunggu`, botdate, null, null, null, null, null, [
+      [null, null]
+    ], null)
+                      }, 8000)
+       setTimeout(() => {
+                     conn.sendHydrated(m.chat, `${pemancing} Sedang Memancing...`, botdate, null, null, null, null, null, [
+      [null, null]
+    ], null)
+                      }, 0)
+                      
+        global.db.data.users[m.sender].nila += nila * 1
+         global.db.data.users[m.sender].ikan += ikan * 1
+         global.db.data.users[m.sender].lele += lele * 1
+         global.db.data.users[m.sender].bawal += bawal * 1
+         global.db.data.users[m.sender].udang += udang * 1
+         global.db.data.users[m.sender].lastfishing += new Date * 1
+         user.paus += paus * 1
+         user.kepiting += kepiting * 1
+
+        	  } else m.reply(`You're already fishing, wait until ${timers}`)
+           } else conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan 🎣*`, wm, [[`Craft Fishingrod`, '.craft fishingrod']], m)
+           break
+           
 	          case 'easy':
                                   let __timersa = (new Date - global.db.data.users[m.sender].lastmancingeasy)
                                   let _timersa = (28800000 - __timersa)
@@ -408,89 +596,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args, owner }) => {
                  break
                  default:
                  try {
-        let __timers = (new Date - global.db.data.users[m.sender].lastfishing)
-        let _timers = (240000 - __timers) 
-        let timers = clockString(_timers)
-        let you = conn.getName(m.sender)
-        let user = global.db.data.users[m.sender]
-        
-        if (user.stamina < 20) return m.reply(`Stamina anda tidak cukup\nharap isi stamina anda dengan *${usedPrefix}eat8`)
-    if (user.lastfishing > 10800000) throw m.reply(`Kamu masih kelelahan\nHarap tunggu *${timers}* lagi`)
-    
-        if (global.db.data.users[m.sender].fishingrod > 0 ) {
-        if (new Date - global.db.data.users[m.sender].lastfishing > 240000) {
-        	
-        
-        let ikan = `${Math.floor(Math.random() * 30)}`.trim() 
-        let lele = `${Math.floor(Math.random() * 15)}`.trim() 
-        let nila = `${Math.floor(Math.random() * 10)}`.trim() 
-        let bawal = `${Math.floor(Math.random() * 10)}`.trim() 
-        let udang = `${Math.floor(Math.random() * 39)}`.trim()
-        let paus = `${Math.floor(Math.random() * 2)}`.trim() 
-        let kepiting = `${Math.floor(Math.random() * 27)}`.trim()
-        
-        
-        
-           let _psepick= `${pickRandom(['1', '0', '0', '1'])}`
-            let psepick = (_psepick * 1)
-            let _psenjata = `${pickRandom(['1', '0', '0', '0'])}`
-           let psenjata = (_psenjata * 1)
-           
-        let mcng = `
-*Hasil 🎣Fishing ${pemancing}!*
-        
-🐟 nila : ${nila}
-🐡 bawal : ${bawal}
-🐟 lele : ${lele}
-🐟 ikan : ${ikan}
-🦐 udang : ${udang}
-🐋 paus: ${paus}
-🦀 kepiting: ${kepiting}
-
-Kamu bisa memasak ini, dan memakannya💉
-_example:_
-${ usedPrefix }cook`    
-        setTimeout(() => {
-        conn.sendHydrated(m.chat, mcng, botdate, null, null, null, null, null, [
-      [null, null]
-    ], null)
-         if (psepick > 0 ) {
-         	global.db.data.users[m.sender].psepick += psepick * 1
-         conn.sendButton( m.chat, `You Get 🎁chest weapons epic ${psepick} item`, wm, [[`again`, `.mancing`]], m)
-         } 
-        if  (psenjata > 0 ) {
-        	global.db.data.users[m.sender].psenjata+= psenjata * 1
-        conn.sendButton( m.chat, `You Get 🎁chest weapons ${psenjata} item`, wm, [[`Again`, `.mancing`]], m)
-        	}
-        }, 38000)
-
-        setTimeout(() => {
-                     conn.sendHydrated(m.chat, `${pemancing} Sepertinya dapat sesuatu..`, botdate, null, null, null, null, null, [
-      [null, null]
-    ], null)
-                      }, 28000)
-       setTimeout(() => {
-                     conn.sendHydrated(m.chat, `${pemancing} Menunggu`, botdate, null, null, null, null, null, [
-      [null, null]
-    ], null)
-                      }, 8000)
-       setTimeout(() => {
-                     conn.sendHydrated(m.chat, `${pemancing} Sedang Memancing...`, botdate, null, null, null, null, null, [
-      [null, null]
-    ], null)
-                      }, 0)
-                      
-        global.db.data.users[m.sender].nila += nila * 1
-         global.db.data.users[m.sender].ikan += ikan * 1
-         global.db.data.users[m.sender].lele += lele * 1
-         global.db.data.users[m.sender].bawal += bawal * 1
-         global.db.data.users[m.sender].udang += udang * 1
-         global.db.data.users[m.sender].lastfishing += new Date * 1
-         user.paus += paus * 1
-         user.kepiting += kepiting * 1
-
-        	  } else m.reply(`You're already fishing, wait until ${timers}`)
-           } else conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan 🎣*`, wm, [[`Craft Fishingrod`, '.craft fishingrod']], m)
+        return conn.sendMessage(m.chat, listMessage, {quoted: fgif})
            } catch (e) {
         console.log(e)
         conn.reply(m.chat, 'Error', m)
@@ -520,3 +626,14 @@ function clockString(ms) {
   console.log({ms,h,m,s})
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
 }
+
+function MeNit(ms) {
+	let m = isNaN(ms) ? '02' : Math.floor(ms / 60000) % 60
+	return [m].map(v => v.toString().padStart(2, 0)).join(':')
+}
+
+function DeTik(ms) {
+	let s = isNaN(ms) ? '60' : Math.floor(ms / 1000) % 60
+	return [s].map(v => v.toString().padStart(2, 0)).join(':')
+}
+

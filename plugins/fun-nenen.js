@@ -11,7 +11,7 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 } : {})
 }
 if (command == 'lastanime') {
-let f = await fetch(`https://bx-hunter.herokuapp.com/api/anime/getlastanime?apikey=dno8pZJW`)
+let f = await fetch(`https://bx-hunter.herokuapp.com/api/anime/getlastanime?apikey=W46QBtQGOhiqfiClaxHqyAaIR`)
 let xx = await f.json()
 let str = xx.result.map((v, index) => {
         return `${1 + index}. Judul *${v.title}*

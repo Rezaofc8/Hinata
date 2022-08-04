@@ -5,6 +5,7 @@ let handler = async function (m, { conn, text, usedPrefix }) {
   let sn = createHash('md5').update(m.sender).digest('hex')
 
 m.reply(`*📮 SN:* ${sn}`)
+conn.reply(m.sender, `*📮 SN:* ${sn}`)
 }
 
 handler.help = ['ceksn']

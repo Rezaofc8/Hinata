@@ -11,39 +11,39 @@ let handler = async function (m, { text, usedPrefix, command }) {
 	{
 	title: "Select Your Age Here !",
 	rows: [
-	    {title: "Random Years", rowId: '.daftar ' + namae + '.' + pickRandom(['30','29','28','27','26','25','24','23','22','21','20','19','18','17','16','15','14','13','12','11','10','9'])}
+	    {title: "Random Tahun", rowId: '.daftar ' + namae + '.' + pickRandom(['30','29','28','27','26','25','24','23','22','21','20','19','18','17','16','15','14','13','12','11','10','9'])}
 	]
     },
     {
 	title: "O L D",
 	rows: [
-	    {title: "30 Years", rowId: '.daftar ' + namae + '.30 '},
-	    {title: "29 Years", rowId: '.daftar ' + namae + '.29 '},
-	    {title: "28 Years", rowId: '.daftar ' + namae + '.28 '},
-	{title: "27 Years", rowId: '.daftar ' + namae + '.27 '},
-	{title: "26 Years", rowId: '.daftar ' + namae + '.26 '},
-	{title: "25 Years", rowId: '.daftar ' + namae + '.25 '},
-	{title: "24 Years", rowId: '.daftar ' + namae + '.24 '},
-	{title: "23 Years", rowId: '.daftar ' + namae + '.23 '},
-	{title: "22 Years", rowId: '.daftar ' + namae + '.22 '},
-	{title: "21 Years", rowId: '.daftar ' + namae + '.21 '}
+	    {title: "30 Tahun", rowId: '.daftar ' + namae + '.30 '},
+	    {title: "29 Tahun", rowId: '.daftar ' + namae + '.29 '},
+	    {title: "28 Tahun", rowId: '.daftar ' + namae + '.28 '},
+	{title: "27 Tahun", rowId: '.daftar ' + namae + '.27 '},
+	{title: "26 Tahun", rowId: '.daftar ' + namae + '.26 '},
+	{title: "25 Tahun", rowId: '.daftar ' + namae + '.25 '},
+	{title: "24 Tahun", rowId: '.daftar ' + namae + '.24 '},
+	{title: "23 Tahun", rowId: '.daftar ' + namae + '.23 '},
+	{title: "22 Tahun", rowId: '.daftar ' + namae + '.22 '},
+	{title: "21 Tahun", rowId: '.daftar ' + namae + '.21 '}
 	]
     },
     {
 	title: "Y O U N G",
 	rows: [
-	    {title: "20 Years", rowId: '.daftar ' + namae + '.20 '},
-	    {title: "19 Years", rowId: '.daftar ' + namae + '.19 '},
-	    {title: "18 Years", rowId: '.daftar ' + namae + '.18 '},
-	{title: "17 Years", rowId: '.daftar ' + namae + '.17 '},
-	{title: "16 Years", rowId: '.daftar ' + namae + '.16 '},
-	{title: "15 Years", rowId: '.daftar ' + namae + '.15 '},
-	{title: "14 Years", rowId: '.daftar ' + namae + '.14 '},
-	{title: "13 Years", rowId: '.daftar ' + namae + '.13 '},
-	{title: "12 Years", rowId: '.daftar ' + namae + '.12 '},
-	{title: "11 Years", rowId: '.daftar ' + namae + '.11 '},
-	{title: "10 Years", rowId: '.daftar ' + namae + '.10 '},
-	{title: "9 Years", rowId: '.daftar ' + namae + '.9 '}
+	    {title: "20 Tahun", rowId: '.daftar ' + namae + '.20 '},
+	    {title: "19 Tahun", rowId: '.daftar ' + namae + '.19 '},
+	    {title: "18 Tahun", rowId: '.daftar ' + namae + '.18 '},
+	{title: "17 Tahun", rowId: '.daftar ' + namae + '.17 '},
+	{title: "16 Tahun", rowId: '.daftar ' + namae + '.16 '},
+	{title: "15 Tahun", rowId: '.daftar ' + namae + '.15 '},
+	{title: "14 Tahun", rowId: '.daftar ' + namae + '.14 '},
+	{title: "13 Tahun", rowId: '.daftar ' + namae + '.13 '},
+	{title: "12 Tahun", rowId: '.daftar ' + namae + '.12 '},
+	{title: "11 Tahun", rowId: '.daftar ' + namae + '.11 '},
+	{title: "10 Tahun", rowId: '.daftar ' + namae + '.10 '},
+	{title: "9 Tahun", rowId: '.daftar ' + namae + '.9 '}
 	]
     },
 ]
@@ -51,7 +51,7 @@ let handler = async function (m, { text, usedPrefix, command }) {
 const listMessage = {
   text: `│›Please select your age at the bottom button...`,
   footer: `┗ *ʏᴏᴜʀ ɴᴀᴍᴇ:* ${conn.getName(m.sender)}\n<❔> Want a costume name? type *${usedPrefix + command} yourname.age*`,
-  title: "▢- - - - - ʀᴇɢɪsᴛᴇʀ - - - - -",
+  title: htki + ' ʀᴇɢɪsᴛᴇʀ ' + htka,
   buttonText: "Click Here !",
   sections
 }
@@ -63,8 +63,8 @@ const listMessage = {
   if (!name) throw 'Nama tidak boleh kosong (Alphanumeric)'
   if (!age) throw 'Umur tidak boleh kosong (Angka)'
   age = parseInt(age)
-  if (age > 30) throw 'WOI TUA (。-`ω´-)'
-  if (age < 5) throw 'Halah dasar bocil'
+  if (age > 30) throw '*Gak boleh!*,\nTua amat dah 🗿'
+  if (age < 5) throw '*Gak boleh!*,\nBanyak pedo 🗿'
   user.name = name.trim()
   user.age = age
   user.regTime = + new Date
@@ -75,19 +75,20 @@ const listMessage = {
 let ngelink_ = ["https://www.youtube.com","https://www.instagram.com","http://facebook.com"]
 
   let cap = `
-┏─• *ᴜsᴇʀs*
-│▸ *sᴛᴀᴛᴜs:* ☑️ sᴜᴄᴄᴇssғᴜʟ
-│▸ *ɴᴀᴍᴇ:* ${name}
-│▸ *ᴀɢᴇ:* ${age} ʏᴇᴀʀs
-│▸ *sɴ:* ${sn}
-┗────···
+${cmenut} *ᴜsᴇʀs*
+${cmenub} *sᴛᴀᴛᴜs:* ☑️ sᴜᴄᴄᴇssғᴜʟ
+${cmenub} *ɴᴀᴍᴇ:* ${name}
+${cmenub} *ᴀɢᴇ:* ${age} ʏᴇᴀʀs
+${cmenub} *sɴ:* ${sn}
+${cmenuf}
 
 ᴅᴀᴛᴀ ᴜsᴇʀ ʏᴀɴɢ ᴛᴇʀsɪᴍᴘᴀɴ ᴅɪᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ, ᴅɪᴊᴀᴍɪɴ ᴀᴍᴀɴ ᴛᴀɴᴘᴀ ᴛᴇʀsʜᴀʀᴇ (. ❛ ᴗ ❛.)
+${cmenua}
 `
   let buttonMessage= {
 'document':{'url':gcwangsaf},
 'mimetype':mim_.getRandom(),
-'fileName':'- - - - - ʀᴇɢɪsᴛᴇʀ - - - - -',
+'fileName':htjava + ' ʀᴇɢɪsᴛᴇʀ ' + htjava,
 'fileLength':fsizedoc,
 'pageCount':fpagedoc,
 'contextInfo':{
