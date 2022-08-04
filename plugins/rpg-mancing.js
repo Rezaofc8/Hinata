@@ -599,7 +599,7 @@ ${ usedPrefix }cook`
                 }
         }
     } catch (e) {
-        conn.reply(m.chat, caption, m)
+        conn.reply(m.chat, 'Error', m)
         console.log(e)
         if (DevMode) {
             for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) {
