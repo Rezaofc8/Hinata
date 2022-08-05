@@ -38,7 +38,10 @@ try {
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
-  if (!isLimit) await conn.sendButton(m.chat, wm, title + '.mp4', await(await fetch(link)).buffer(), [['To Mp3', '/tomp3'], ['To Gif', '/togif']], m, { contextInfo: {
+  if (!isLimit) await conn.sendButton(m.chat, `*${htki} YOUTUBE ${htka}*
+
+*${htjava} Title:* ${title}
+*${htjava} Filesize:* ${video.fileSizeH}`, title + '.mp4', await(await fetch(link)).buffer(), [['Mp3', '/tomp3'], ['Back', '/menu']], m, { contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
