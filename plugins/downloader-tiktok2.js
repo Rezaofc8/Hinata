@@ -7,17 +7,37 @@ try {
     const { author: { nickname }, video, description } = await tiktokdl(args[0])
     const url = video.no_watermark || video.no_watermark2 || video.no_watermark_raw
     if (!url) throw 'Can\'t download video!'
-    conn.sendFile(m.chat, url, 'tiktok.mp4', `
-*Nickname:* ${nickname}
+conn.sendButton(m.chat, `*Nickname:* ${nickname}
 *Description:* ${description}
-`.trim(), m)
+`.trim(), 'tiktok.mp4', await(await fetch(url)).buffer(), [['🎀 Menu', '/menu']], m, { contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: url
+     }}
+  })
 } catch {
 const { res } = await aiovideodl(args[0])
     const urll = res.data.url
     if (!urll) throw 'Can\'t download video!'
-    conn.sendFile(m.chat, urll, 'tiktok.mp4', `
-*Nickname:* ${wm}
-`.trim(), m)
+conn.sendButton(m.chat, `*Nickname:* ${wm}
+`.trim(), 'tiktok.mp4', await(await fetch(urll)).buffer(), [['Mp3', '/tomp3'], ['Back', '/menu']], m, { contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: urll
+     }}
+  })
 }
 }
 handler.help = ['tiktok2'].map(v => v + ' <url>')

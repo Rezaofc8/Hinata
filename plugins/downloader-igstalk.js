@@ -10,14 +10,16 @@ let handler= async (m, { args, usedPrefix, command }) => {
         followingH,
         postsH,
     } = await instagramStalk(args[0])
-    m.reply(`
+await conn.sendHydrated(m.chat, `
 ${name} *(${username})*
 https://instagram.com/${username.replace(/^@/, '')}
 *${followersH}* Followers
 *${followingH}* Following
 *${postsH}* Posts
 *Bio:* ${description}
-`.trim())
+`.trim(), botdate, null, 'https://www.whatsapp.com/otp/copy/'+'https://chat.whatsapp.com/' + 'https://instagram.com/' +username.replace(/^@/, ''), 'C O P Y', nomorown, nameown, [
+      ['🎀 Menu', '/menu']
+    ], null)
 }
 
 handler.help = ['igstalk'].map(v => v + ' <username>')

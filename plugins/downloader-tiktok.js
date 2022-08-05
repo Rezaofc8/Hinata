@@ -7,19 +7,16 @@ let pp = await conn.profilePictureUrl(who).catch(_ => hoppai.getRandom())
 let name = await conn.getName(who)
 
 if (!args[0]) throw `Use example ${usedPrefix}${command} https://vt.tiktok.com/ZSwWCk5o/`
-let buttons = [
-	{ buttonText: { displayText: 'With Wm' }, buttonId: `${usedPrefix}tiktokwm ${args[0]}` },
-	{ buttonText: { displayText: 'No Wm' }, buttonId: `${usedPrefix}tiktoknowm ${args[0]}` }
-	]
+
 if (command == 'tiktok') {
     const { author: { nickname }, video, description } = await tiktokdl(args[0]).catch(async _ => await tiktokdlv2(args[0]))
     const url = video.no_watermark || video.no_watermark_hd || video.with_watermark || video.no_watermark_raw
     if (!url) throw 'Can\'t download video!'
-let caption = `${htki} *TIKTOK* ${htka}
-🧏 *Nickname:* ${nickname}
-🔗 *Url:* ${await shortUrl(url)}
+let caption = `
+🧏 Nickname: ${nickname}
+🔗 Url: ${await shortUrl(url)}
 
-*Description:* ${description}`
+Description: ${description}`
 	conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, caption, `${await shortUrl(url)}`, url, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
       ['🎀 Menu', '/menu']
     ], m)
@@ -28,8 +25,8 @@ let caption = `${htki} *TIKTOK* ${htka}
 if (command == 'tiktokwm') {
 let linkwm = `https://api.lolhuman.xyz/api/tiktokwm?apikey=${global.lolkey}&url=${args[0]}`
 if (!linkwm) throw 'Can\'t download video!'
-let caption2 = `*TIKTOK WM*
-*Url:* ${await shortUrl(`${args[0]}`)}`
+let caption2 = `
+Url: ${await shortUrl(`${args[0]}`)}`
     conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, caption2, `${await shortUrl(linkwm)}`, linkwm, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
       ['🎀 Menu', '/menu']
     ], m)
@@ -40,11 +37,11 @@ let link = await fetch(`https://api.lolhuman.xyz/api/tiktok?apikey=${global.lolk
 let has = await link.json()
 let x = has.result
 if (!x.link) throw 'Can\'t download video!'
-let caption3 = `*TIKTOK NO WM*
-*Title:* ${x.title}
-*Keyword:* ${x.keywords}
-*Description:* ${x.description}
-*Url:* ${await shortUrl(x.link)}`
+let caption3 = `
+Title: ${x.title}
+Keyword: ${x.keywords}
+Description: ${x.description}
+Url: ${await shortUrl(x.link)}`
 	conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, caption3, `${await shortUrl(x.link)}`, x.link, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
       ['🎀 Menu', '/menu']
     ], m)

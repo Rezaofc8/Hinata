@@ -4,11 +4,24 @@ import util from 'util';
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let name = await conn.getName(who)
     if (!args[0]) throw `Use example ${usedPrefix}${command} link`
 soundcloud.download(args[0], CLIENT_ID).then(async (buff) => {
             let hasil = await fetch(buff)
-            conn.sendFile(m.chat, hasil, "soundcloud.mp3", null, m)
-        })
+        await conn.sendFile(m.chat, hasil, command + '.mp3', '', m, null, { contextInfo: {
+            mimetype: 'audio/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: hasil
+     }}
+  })
+  }
     }
 handler.help = ['soundcloud'].map(v => v + ' <url>')
 handler.tags = ['downloader']

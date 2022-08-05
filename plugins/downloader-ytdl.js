@@ -10,7 +10,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
     if (!args[0]) return m.reply('Link?')
     const sections = [
 	{
-	title: "Select Type Media Here !",
+	title: htjava + "Select Type Media Here !" + htjava,
 	rows: [
 	    {title: "Audio", rowId: `-getaud ${args[0]} audio`}
 	]
@@ -31,12 +31,12 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 const listMessage = {
   text: `›  ᴩʟᴇᴀꜱᴇ ꜱᴇʟᴇᴄᴛ yᴏᴜʀ ᴍᴇᴅɪᴀ ᴛyᴩᴇ...`,
   footer: wm,
-  title: "『 - - - - - 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 - - - - - 』",
+  title: htki + " 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 " + htki,
   buttonText: "Click Here !",
   sections
 }
 
-return conn.sendMessage(m.chat, listMessage, { quoted: fkontak  })
+return conn.sendMessage(m.chat, listMessage, { quoted: fgif  })
 }
 
 handler.help = ['ytd']

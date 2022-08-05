@@ -8,7 +8,18 @@ try {
 	await m.reply('_In progress, please wait..._')
 	for (let x = 0; x < res.media.length; x++) {
 		let caption = x === 0 ? res.caption.replace(/https:\/\/t.co\/[a-zA-Z0-9]+/gi, '').trim() : ''
-		conn.sendFile(m.chat, res.media[x].url, '', caption, m)
+		conn.sendButton(m.chat, caption, 'twitter.mp4', await(await fetch(res.media[x].url)).buffer(), [['🎀 Menu', '/menu']], m, { contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: res.media[x].url
+     }}
+  })
 	}
 	} catch {
 	/* Twit */
