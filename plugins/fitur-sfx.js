@@ -1,6 +1,9 @@
 import fetch from 'node-fetch'
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let name = await conn.getName(who)
+
 let urut = text.split`|`
   let one = urut[0]
   let two = urut[1]
@@ -21,10 +24,18 @@ try {
     let hasil = json.results
     let ke = args[1]
     let sound = hasil[ke].sound
-    await conn.sendFile(m.chat, sound, 'song.mp3', null, m, {
-type: 'audioMessage', 
-ptt: true 
-})
+    await conn.sendFile(m.chat, sound, ke + '.mp3', '', m, null, { contextInfo: {
+            mimetype: 'audio/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: sound
+     }}
+  })
 } catch (e) {
 return m.reply('Error kan')
 }

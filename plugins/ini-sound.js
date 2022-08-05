@@ -2,6 +2,8 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let name = await conn.getName(who)
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
 let imgr = flaaa.getRandom()
@@ -93,17 +95,33 @@ List Alphabet
 if (isNumber(text)) {
 //VN 1
 let vn = `https://hansxd.nasihosting.com/sound/sound${text}.mp3`
-await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
-type: 'audioMessage', 
-ptt: true 
-})
+await conn.sendFile(m.chat, vn, text + '.mp3', '', m, null, { contextInfo: {
+            mimetype: 'audio/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: vn
+     }}
+  })
 } else if (!isNumber(text)) {
 //VN 2
 let vn = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${text}.mp3`
-await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
-type: 'audioMessage', 
-ptt: true 
-})
+await conn.sendFile(m.chat, vn, text + '.mp3', '', m, null, { contextInfo: {
+            mimetype: 'audio/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: vn
+     }}
+  })
 } else if (e) {
 throw `Error`
 }
@@ -115,10 +133,18 @@ if (!text) throw `Contoh:
 ${usedPrefix + command} black cover`
 let vn = await fetch(`https://fatiharridho.herokuapp.com/api/search/ringtone?query=${text}`)
 let x = await vn.json()
-await conn.sendFile(m.chat, `${x.result[0].audio}`, 'song.mp3', null, m, true, {
-type: 'audioMessage', 
-ptt: true 
-})
+await conn.sendFile(m.chat, x.result[0].audio, text + '.mp3', '', m, null, { contextInfo: {
+            mimetype: 'audio/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: vn
+     }}
+  })
 }
 
 }

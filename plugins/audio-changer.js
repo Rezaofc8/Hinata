@@ -1,8 +1,12 @@
 import { promises } from 'fs'
 import { join } from 'path'
 import { exec } from 'child_process'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let name = await conn.getName(who)
+
     try {
         let q = m.quoted ? m.quoted : m
         let mime = (q.msg || q).mimetype || ''
@@ -35,7 +39,19 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             if (err) return Promise.reject( `_*Error!*_`)
             let buff = await promises.readFile(filename)
             m.reply(wait)
-            conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
+            // conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
+            conn.sendFile(m.chat, buff, ran + '.mp3', '', m, /vn/.test(args[0]), { contextInfo: {
+            mimetype: 'audio/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(logo)).buffer(),
+    sourceUrl: ran
+     }}
+  })
             await promises.unlink(filename)
         })
     } catch (e) {

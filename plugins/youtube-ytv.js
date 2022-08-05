@@ -2,6 +2,8 @@ let limit = 80
 import fetch from 'node-fetch'
 import { youtubeSearch, youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper';
 let handler = async (m, { conn, groupMetadata, usedPrefix, text, args, command, isPrems, isOwner }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let name = await conn.getName(who)
 
 try {
   if (!args || !args[0]) throw 'Uhm... urlnya mana?'
@@ -36,14 +38,17 @@ try {
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
-  if (!isLimit) await conn.sendFile(m.chat, link, title + '.mp4', `
-*${htki} YOUTUBE ${htka}*
-
-*${htjava} Title:* ${title}
-*${htjava} Filesize:* ${video.fileSizeH}
-`.trim(), m, false, {
-    ..._thumb,
-    asDocument: true
+  if (!isLimit) await conn.sendButton(m.chat, wm, title + '.mp4', await(await fetch(link)).buffer(), [['To Mp3', '/tomp3'], ['To Gif', '/togif']], m, { contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(thumbnail)).buffer(),
+    sourceUrl: link
+     }}
   })
   } catch {
 let res = await fetch(`https://rest-beni.herokuapp.com/api/youtube?url=${args[0]}`)
