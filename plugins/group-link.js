@@ -9,8 +9,9 @@ let handler = async (m, { conn, args }) => {
     let me = groupMetadata.participants.find(user => areJidsSameUser(user.id, conn.user.id))
     if (!me) throw 'Gw gk ada di grup itu 🗿'
     if (!me.admin) throw 'Gw bukan atmin bg 🗿'
-    conn.sendHydrated(m.chat, `*${htki} L I N K ${htka}*`, botdate, null, 'https://www.whatsapp.com/otp/copy/'+'https://chat.whatsapp.com/' + await conn.groupInviteCode(group), 'C O P Y', null, null, [
-      ['LIST GROUP', '/listgroup']
+    await conn.sendHydrated(m.chat, `*${htki} L I N K ${htka}*`, botdate, null, 'https://www.whatsapp.com/otp/copy/'+'https://chat.whatsapp.com/' + await conn.groupInviteCode(group), 'C O P Y', nomorown, nameown, [
+      ['LIST GROUP', '/listgroup'],
+      ['ANTILINK', '/on antilink']
     ], null)
 }
 handler.help = ['linkgroup']

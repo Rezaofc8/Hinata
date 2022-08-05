@@ -7,10 +7,9 @@ let handler  = async (m, { conn, command, args, usedPrefix }) => {
        let type = (args[0] || '').toLowerCase()
        const sections = [
     {
-	title: htjava + ' List Contruction For Fishing facility ' + htjava,
+	title: htjava + ' List Contruction For Fishing ' + htjava,
 	rows: [
-{title: "🎣 Mancing 1", rowId: usedPrefix + command + ' satu'},
-{title: "🎣 Mancing 2", rowId: usedPrefix + command + ' dua'},
+{title: "🎣 Mancing emosi", rowId: usedPrefix + command + ' emosi'},
 {title: "🎣 Mancing easy", rowId: usedPrefix + command + ' easy'},
 {title: "🎣 Mancing normal", rowId: usedPrefix + command + ' normal'},
 {title: "🎣 Mancing hard", rowId: usedPrefix + command + ' hard'},
@@ -27,92 +26,14 @@ const listMessage = {
   sections
 }
 //
+let bhnhabis = await conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan dan umpan 🎣*`, wm, [[`Buy Pancingan`, '.buy pancingan 1'], [`Buy Umpan`, '.buy umpan 1']], m)
+
         try {
                if (/fishing|mancing/i.test(command)) {
           switch (type) {
-          case 'satu':
-        let fishes = [
-		{ area: 1, name: "Pufferfish" },
-		{ area: 1, name: "Anchovy" },
-		{ area: 1, name: "Tuna" },
-		{ area: 2, name: "Sardine" },
-		{ area: 2, name: "Bream" },
-		{ area: 2, name: "Largemouth Bass" },
-		{ area: 3, name: "Smallmouth Bass" },
-		{ area: 3, name: "Rainbow Trout" },
-		{ area: 3, name: "Salmon" },
-		{ area: 4, name: "Walleye" },
-		{ area: 4, name: "Perch" },
-		{ area: 4, name: "Carp" },
-		{ area: 5, name: "Catfish" },
-		{ area: 5, name: "Pike" },
-		{ area: 5, name: "Sunfish" },
-		{ area: 6, name: "Red Mullet" },
-		{ area: 6, name: "Herring" },
-		{ area: 6, name: "Eel" },
-		{ area: 7, name: "Octopus" },
-		{ area: 7, name: "Red Snapper" },
-		{ area: 7, name: "Squid" },
-		{ area: 8, name: "Sea Cucumber" },
-		{ area: 8, name: "Super Cucumber" },
-		{ area: 8, name: "Ghostfish" },
-		{ area: 9, name: "Stonefish" },
-		{ area: 9, name: "Ice Pip" },
-		{ area: 9, name: "Lava Eel" },
-		{ area: 10, name: "Sandfish" },
-		{ area: 10, name: "Scorpion Carp" },
-		{ area: 10, name: "Flounder" },
-		{ area: 11, name: "Midnight Carp" },
-		{ area: 11, name: "Sturgeon" },
-		{ area: 11, name: "Tiger Trout" },
-		{ area: 12, name: "Bullhead" },
-		{ area: 12, name: "Tilapia" },
-		{ area: 12, name: "Chub" },
-		{ area: 13, name: "Slimejack" },
-		{ area: 13, name: "Void Salmon" },
-		{ area: 13, name: "Blue Discus" }
-	]
-	let player = global.db.data.users[m.sender]
-	let pname = await conn.getName(m.sender)
-
-	let cdm = `${clockString(new Date - player.lastfishing)}`
-	let cds = `${clockString(new Date - player.lastfishing)}`
-	let cd1 = Math.ceil(01 - cdm)
-	let cd2 = Math.ceil(60 - cds)
-
-	let areaPlayer = fishes.map(v => v.area)
-    areaPlayer = areaPlayer[Math.floor(Math.random() * areaPlayer.length)]
-	let area_fish = fishes.filter(fishtype => { return fishtype.area === areaPlayer })
-	let fishtype = area_fish[Math.floor(Math.random() * area_fish.length)]
-	let fishName = fishtype.name.toUpperCase()
-
-	if (new Date -  global.db.data.users[m.sender].lastfishing > 120000) {
-		let durability = areaPlayer * 2
-		let coines = areaPlayer * 50
-		let expe = areaPlayer * 35
-
-		player.fishingroddurability -= durability
-		player.lastfishing = new Date * 1 // waktu fish 4menit
-
-		if (player.fishingroddurability < 0) {
-            player.fishingrod = 0
-			let msg = `*${pname}* Fishingrod anda hancur`
-			player.fishingroddurability = 0
-			m.reply(msg)
-			return
-		}
-
-		player.money += coines * 1
-		player.exp += expe * 1
-/*
-		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${new Intl.NumberFormat('en-US').format(coines)} coins & ${new Intl.NumberFormat('en-US').format(expe)} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
-		*/
-		let pesan = `*${pname}* Menangkap *${fishName}*\nMendapatkan ${coines} coins & ${expe} XP\nBerkurang -${durability}Durability, Tersisa ${player.fishingroddurability}/${100}`
-		m.reply(pesan)
-	} else throw `Tunggu *${cd1}:${cd2}* Untuk Memancing Lagi`
-	break
-	case 'dua':
-	let __timers = (new Date - global.db.data.users[m.sender].lastfishing)
+          
+	case 'emosi':
+	let __timers = (new Date - pengguna.lastfishing)
         let _timers = (240000 - __timers) 
         let timers = clockString(_timers)
         let you = conn.getName(m.sender)
@@ -120,8 +41,8 @@ const listMessage = {
         if (pengguna.stamina < 20) return m.reply(`Stamina anda tidak cukup\nharap isi stamina anda dengan *${usedPrefix}eat8`)
     if (pengguna.lastfishing > 10800000) throw m.reply(`Kamu masih kelelahan\nHarap tunggu *${timers}* lagi`)
     
-        if (global.db.data.users[m.sender].fishingrod > 0 ) {
-        if (new Date - global.db.data.users[m.sender].lastfishing > 240000) {
+        if (pengguna.fishingrod > 0 ) {
+        if (new Date - pengguna.lastfishing > 240000) {
         	
         
         let ikan = `${Math.floor(Math.random() * 30)}`.trim() 
@@ -158,11 +79,11 @@ ${ usedPrefix }cook`
       [null, null]
     ], null)
          if (psepick > 0 ) {
-         	global.db.data.users[m.sender].psepick += psepick * 1
+         	pengguna.psepick += psepick * 1
          conn.sendButton( m.chat, `You Get 🎁chest weapons epic ${psepick} item`, wm, [[`again`, `.mancing`]], m)
          } 
         if  (psenjata > 0 ) {
-        	global.db.data.users[m.sender].psenjata+= psenjata * 1
+        	pengguna.psenjata+= psenjata * 1
         conn.sendButton( m.chat, `You Get 🎁chest weapons ${psenjata} item`, wm, [[`Again`, `.mancing`]], m)
         	}
         }, 38000)
@@ -183,54 +104,54 @@ ${ usedPrefix }cook`
     ], null)
                       }, 0)
                       
-        global.db.data.users[m.sender].nila += nila * 1
-         global.db.data.users[m.sender].ikan += ikan * 1
-         global.db.data.users[m.sender].lele += lele * 1
-         global.db.data.users[m.sender].bawal += bawal * 1
-         global.db.data.users[m.sender].udang += udang * 1
-         global.db.data.users[m.sender].lastfishing += new Date * 1
+        pengguna.nila += nila * 1
+         pengguna.ikan += ikan * 1
+         pengguna.lele += lele * 1
+         pengguna.bawal += bawal * 1
+         pengguna.udang += udang * 1
+         pengguna.lastfishing += new Date * 1
          pengguna.paus += paus * 1
          pengguna.kepiting += kepiting * 1
 
         	  } else m.reply(`You're already fishing, wait until ${timers}`)
-           } else conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan 🎣*`, wm, [[`Craft Fishingrod`, '.craft fishingrod']], m)
+           } else return bhnhabis
            break
            
 	          case 'easy':
-                                  let _coinesa = (new Date - global.db.data.users[m.sender].lastmancingeasy)
-                                  let coinesa = (28800000 - coinesa)
+                                  let _coinesa = (new Date - pengguna.lastmancingeasy)
+                                  let coinesa = (28800000 - _coinesa)
                                   let timersa = clockString(coinesa) 
-                                  if (pancingan == 0 || umpan == 0) return m.reply('*Kamu belum memiliki Pancingan dan Umpan, Silahkan beli dulu..*')
-                                  if (new Date - global.db.data.users[m.sender].lastmancingeasy > 28800000) {
-                                  if (global.db.data.users[m.sender].pancingan > 1) {
-                                  if (global.db.data.users[m.sender].umpan > 99) {
-                                  let randomaku1 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku2 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku3 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku4 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku5 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku6 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku7 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku8 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku9 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku10 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku11 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku12 = `${Math.floor(Math.random() * 10)}`
-                                  let randomaku13 = `${Math.floor(Math.random() * 50)}`
+                                  if (pancingan == 0 || umpan == 0) return bhnhabis
+                                  if (new Date - pengguna.lastmancingeasy > 28800000) {
+                                  if (pengguna.pancingan > 1) {
+                                  if (pengguna.umpan > 99) {
+                                  let mcing1 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing2 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing3 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing4 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing5 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing6 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing7 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing8 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing9 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing10 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing11 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing12 = `${Math.floor(Math.random() * 10)}`
+                                  let mcing13 = `${Math.floor(Math.random() * 50)}`
 
-                                  let rbrb1 = (randomaku1 * 1)
-                                  let rbrb2 = (randomaku2 * 1) 
-                                  let rbrb3 = (randomaku3 * 1)
-                                  let rbrb4 = (randomaku4 * 1)
-                                  let rbrb5 = (randomaku5 * 1)
-                                  let rbrb6 = (randomaku6 * 1)
-                                  let rbrb7 = (randomaku7 * 1)
-                                  let rbrb8 = (randomaku8 * 1)
-                                  let rbrb9 = (randomaku9 * 1)
-                                  let rbrb10 = (randomaku10 * 1)
-                                  let rbrb11 = (randomaku11 * 1)
-                                  let rbrb12 = (randomaku12 * 1)
-                                  let rbrb13 = (randomaku13 * 1)
+                                  let rbrb1 = (mcing1 * 1)
+                                  let rbrb2 = (mcing2 * 1) 
+                                  let rbrb3 = (mcing3 * 1)
+                                  let rbrb4 = (mcing4 * 1)
+                                  let rbrb5 = (mcing5 * 1)
+                                  let rbrb6 = (mcing6 * 1)
+                                  let rbrb7 = (mcing7 * 1)
+                                  let rbrb8 = (mcing8 * 1)
+                                  let rbrb9 = (mcing9 * 1)
+                                  let rbrb10 = (mcing10 * 1)
+                                  let rbrb11 = (mcing11 * 1)
+                                  let rbrb12 = (mcing12 * 1)
+                                  let rbrb13 = (mcing13 * 1)
 
                                   let zero1 = `${rbrb1}`
                                   let zero2 = `${rbrb2}`
@@ -256,20 +177,20 @@ ${ usedPrefix }cook`
   
 +1 Tiketcoin
 `.trim()
-                                 global.db.data.users[m.sender].paus += rbrb1
-                                 global.db.data.users[m.sender].kepiting += rbrb2
-                                 global.db.data.users[m.sender].gurita += rbrb3
-                                 global.db.data.users[m.sender].cumi += rbrb4
-                                 global.db.data.users[m.sender].buntal += rbrb5
-                                 global.db.data.users[m.sender].dory += rbrb6
-                                 global.db.data.users[m.sender].lumba += rbrb7
-                                 global.db.data.users[m.sender].lobster += rbrb8
-                                 global.db.data.users[m.sender].hiu += rbrb9
-                                 global.db.data.users[m.sender].udang += rbrb10
-                                 global.db.data.users[m.sender].ikan += rbrb11
-                                 global.db.data.users[m.sender].orca += rbrb12
-                                 global.db.data.users[m.sender].tiketcoin += 1
-                                 global.db.data.users[m.sender].umpan -= rbrb13
+                                 pengguna.paus += rbrb1
+                                 pengguna.kepiting += rbrb2
+                                 pengguna.gurita += rbrb3
+                                 pengguna.cumi += rbrb4
+                                 pengguna.buntal += rbrb5
+                                 pengguna.dory += rbrb6
+                                 pengguna.lumba += rbrb7
+                                 pengguna.lobster += rbrb8
+                                 pengguna.hiu += rbrb9
+                                 pengguna.udang += rbrb10
+                                 pengguna.ikan += rbrb11
+                                 pengguna.orca += rbrb12
+                                 pengguna.tiketcoin += 1
+                                 pengguna.umpan -= rbrb13
 
                                 setTimeout(() => {
                                 conn.sendHydrated(m.chat, `${pemancing} Yuk mancing mania level easy lagi`, botdate, null, null, null, null, null, [
@@ -297,53 +218,53 @@ ${ usedPrefix }cook`
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timersa}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
                  break
 	          case 'normal':
-                                  let __timerl = (new Date - global.db.data.users[m.sender].lastmancingeasy)
+                                  let __timerl = (new Date - pengguna.lastmancingeasy)
                                   let _timerl = (28800000 - __timerl)
                                   let timerl = clockString(_timerl) 
-                                  if (pancingan == 0 || umpan == 0) return m.reply('*Kamu belum memiliki Pancingan dan Umpan, Silahkan beli dulu..*')
-                                  if (new Date - global.db.data.users[m.sender].lastmancingeasy > 28800000) {
-                                  if (global.db.data.users[m.sender].pancingan > 2) {
-                                  if (global.db.data.users[m.sender].umpan > 149) {
-                                  let randomakud1 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud2 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud3 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud4 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud5 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud6 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud7 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud8 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud9 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud10 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud11 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud12 = `${Math.floor(Math.random() * 50)}`
-                                  let randomakud13 = `${Math.floor(Math.random() * 100)}`
+                                  if (pancingan == 0 || umpan == 0) return bhnhabis
+                                  if (new Date - pengguna.lastmancingeasy > 28800000) {
+                                  if (pengguna.pancingan > 2) {
+                                  if (pengguna.umpan > 149) {
+                                  let mcingd1 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd2 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd3 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd4 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd5 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd6 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd7 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd8 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd9 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd10 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd11 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd12 = `${Math.floor(Math.random() * 50)}`
+                                  let mcingd13 = `${Math.floor(Math.random() * 100)}`
 
-                                  let rbrbs1 = (randomakud1 * 1)
-                                  let rbrbs2 = (randomakud2 * 1) 
-                                  let rbrbs3 = (randomakud3 * 1)
-                                  let rbrbs4 = (randomakud4 * 1)
-                                  let rbrbs5 = (randomakud5 * 1)
-                                  let rbrbs6 = (randomakud6 * 1)
-                                  let rbrbs7 = (randomakud7 * 1)
-                                  let rbrbs8 = (randomakud8 * 1)
-                                  let rbrbs9 = (randomakud9 * 1)
-                                  let rbrbs10 = (randomakud10 * 1)
-                                  let rbrbs11 = (randomakud11 * 1)
-                                  let rbrbs12 = (randomakud12 * 1)
-                                  let rbrbs13 = (randomakud13 * 1)
+                                  let mcg1 = (mcingd1 * 1)
+                                  let mcg2 = (mcingd2 * 1) 
+                                  let mcg3 = (mcingd3 * 1)
+                                  let mcg4 = (mcingd4 * 1)
+                                  let mcg5 = (mcingd5 * 1)
+                                  let mcg6 = (mcingd6 * 1)
+                                  let mcg7 = (mcingd7 * 1)
+                                  let mcg8 = (mcingd8 * 1)
+                                  let mcg9 = (mcingd9 * 1)
+                                  let mcg10 = (mcingd10 * 1)
+                                  let mcg11 = (mcingd11 * 1)
+                                  let mcg12 = (mcingd12 * 1)
+                                  let mcg13 = (mcingd13 * 1)
 
-                                  let aine1 = `${rbrbs1}`
-                                  let aine2 = `${rbrbs2}`
-                                  let aine3 = `${rbrbs3}`
-                                  let aine4 = `${rbrbs4}`
-                                  let aine5 = `${rbrbs5}`
-                                  let aine6 = `${rbrbs6}`
-                                  let aine7 = `${rbrbs7}`
-                                  let aine8 = `${rbrbs8}`
-                                  let aine9 = `${rbrbs9}`
-                                  let aine10 = `${rbrbs10}`
-                                  let aine11 = `${rbrbs11}`
-                                  let aine12 = `${rbrbs12}`
+                                  let aine1 = `${mcg1}`
+                                  let aine2 = `${mcg2}`
+                                  let aine3 = `${mcg3}`
+                                  let aine4 = `${mcg4}`
+                                  let aine5 = `${mcg5}`
+                                  let aine6 = `${mcg6}`
+                                  let aine7 = `${mcg7}`
+                                  let aine8 = `${mcg8}`
+                                  let aine9 = `${mcg9}`
+                                  let aine10 = `${mcg10}`
+                                  let aine11 = `${mcg11}`
+                                  let aine12 = `${mcg12}`
 
                                  let hsls = `
 *${htjava} Hasil Memancing ${pemancing} ${htjava}*
@@ -356,20 +277,20 @@ ${ usedPrefix }cook`
   
 +1 Tiketcoin
 `.trim()
-                                 global.db.data.users[m.sender].paus += rbrbs1
-                                 global.db.data.users[m.sender].kepiting += rbrbs2
-                                 global.db.data.users[m.sender].gurita += rbrbs3
-                                 global.db.data.users[m.sender].cumi += rbrbs4
-                                 global.db.data.users[m.sender].buntal += rbrbs5
-                                 global.db.data.users[m.sender].dory += rbrbs6
-                                 global.db.data.users[m.sender].lumba += rbrbs7
-                                 global.db.data.users[m.sender].lobster += rbrbs8
-                                 global.db.data.users[m.sender].hiu += rbrbs9
-                                 global.db.data.users[m.sender].udang += rbrbs10
-                                 global.db.data.users[m.sender].ikan += rbrbs11
-                                 global.db.data.users[m.sender].orca += rbrbs12 
-                                 global.db.data.users[m.sender].tiketcoin += 1
-                                 global.db.data.users[m.sender].umpan -= rbrbs13 
+                                 pengguna.paus += mcg1
+                                 pengguna.kepiting += mcg2
+                                 pengguna.gurita += mcg3
+                                 pengguna.cumi += mcg4
+                                 pengguna.buntal += mcg5
+                                 pengguna.dory += mcg6
+                                 pengguna.lumba += mcg7
+                                 pengguna.lobster += mcg8
+                                 pengguna.hiu += mcg9
+                                 pengguna.udang += mcg10
+                                 pengguna.ikan += mcg11
+                                 pengguna.orca += mcg12 
+                                 pengguna.tiketcoin += 1
+                                 pengguna.umpan -= mcg13 
                                  
                                 setTimeout(() => {
                                 conn.sendHydrated(m.chat, `${pemancing} Yuk mancing mania level normal lagi`, botdate, null, null, null, null, null, [
@@ -397,53 +318,53 @@ ${ usedPrefix }cook`
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timerl}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
                  break 
 	          case 'hard':
-                                  let __timerh = (new Date - global.db.data.users[m.sender].lastmancingeasy)
+                                  let __timerh = (new Date - pengguna.lastmancingeasy)
                                   let _timerh = (28800000 - __timerh)
                                   let timerh = clockString(_timerh) 
-                                  if (pancingan == 0 || umpan == 0) return m.reply('*Kamu belum memiliki Pancingan dan Umpan, Silahkan beli dulu..*')
-                                  if (new Date - global.db.data.users[m.sender].lastmancingeasy > 28800000) {
-                                  if (global.db.data.users[m.sender].pancingan > 3) {
-                                  if (global.db.data.users[m.sender].umpan > 199) {
-                                  let randomakur1 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur2 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur3 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur4 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur5 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur6 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur7 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur8 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur9 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur10 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur11 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur12 = `${Math.floor(Math.random() * 100)}`
-                                  let randomakur13 = `${Math.floor(Math.random() * 150)}`
+                                  if (pancingan == 0 || umpan == 0) return bhnhabis
+                                  if (new Date - pengguna.lastmancingeasy > 28800000) {
+                                  if (pengguna.pancingan > 3) {
+                                  if (pengguna.umpan > 199) {
+                                  let mcingr1 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr2 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr3 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr4 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr5 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr6 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr7 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr8 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr9 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr10 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr11 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr12 = `${Math.floor(Math.random() * 100)}`
+                                  let mcingr13 = `${Math.floor(Math.random() * 150)}`
 
-                                  let rbrbsh1 = (randomakur1 * 1)
-                                  let rbrbsh2 = (randomakur2 * 1) 
-                                  let rbrbsh3 = (randomakur3 * 1)
-                                  let rbrbsh4 = (randomakur4 * 1)
-                                  let rbrbsh5 = (randomakur5 * 1)
-                                  let rbrbsh6 = (randomakur6 * 1)
-                                  let rbrbsh7 = (randomakur7 * 1)
-                                  let rbrbsh8 = (randomakur8 * 1)
-                                  let rbrbsh9 = (randomakur9 * 1)
-                                  let rbrbsh10 = (randomakur10 * 1)
-                                  let rbrbsh11 = (randomakur11 * 1)
-                                  let rbrbsh12 = (randomakur12 * 1)
-                                  let rbrbsh13 = (randomakur13 * 1)
+                                  let mcgh1 = (mcingr1 * 1)
+                                  let mcgh2 = (mcingr2 * 1) 
+                                  let mcgh3 = (mcingr3 * 1)
+                                  let mcgh4 = (mcingr4 * 1)
+                                  let mcgh5 = (mcingr5 * 1)
+                                  let mcgh6 = (mcingr6 * 1)
+                                  let mcgh7 = (mcingr7 * 1)
+                                  let mcgh8 = (mcingr8 * 1)
+                                  let mcgh9 = (mcingr9 * 1)
+                                  let mcgh10 = (mcingr10 * 1)
+                                  let mcgh11 = (mcingr11 * 1)
+                                  let mcgh12 = (mcingr12 * 1)
+                                  let mcgh13 = (mcingr13 * 1)
 
-                                  let aines1 = `${rbrbsh1}`
-                                  let aines2 = `${rbrbsh2}`
-                                  let aines3 = `${rbrbsh3}`
-                                  let aines4 = `${rbrbsh4}`
-                                  let aines5 = `${rbrbsh5}`
-                                  let aines6 = `${rbrbsh6}`
-                                  let aines7 = `${rbrbsh7}`
-                                  let aines8 = `${rbrbsh8}`
-                                  let aines9 = `${rbrbsh9}`
-                                  let aines10 = `${rbrbsh10}`
-                                  let aines11 = `${rbrbsh11}`
-                                  let aines12 = `${rbrbsh12}`
+                                  let aines1 = `${mcgh1}`
+                                  let aines2 = `${mcgh2}`
+                                  let aines3 = `${mcgh3}`
+                                  let aines4 = `${mcgh4}`
+                                  let aines5 = `${mcgh5}`
+                                  let aines6 = `${mcgh6}`
+                                  let aines7 = `${mcgh7}`
+                                  let aines8 = `${mcgh8}`
+                                  let aines9 = `${mcgh9}`
+                                  let aines10 = `${mcgh10}`
+                                  let aines11 = `${mcgh11}`
+                                  let aines12 = `${mcgh12}`
 
                                  let hslsh = `
 *${htjava} Hasil Memancing ${pemancing} ${htjava}*
@@ -456,20 +377,20 @@ ${ usedPrefix }cook`
   
 +1 Tiketcoin
 `.trim()
-                                 global.db.data.users[m.sender].paus += rbrbsh1
-                                 global.db.data.users[m.sender].kepiting += rbrbsh2
-                                 global.db.data.users[m.sender].gurita += rbrbsh3
-                                 global.db.data.users[m.sender].cumi += rbrbsh4
-                                 global.db.data.users[m.sender].buntal += rbrbsh5
-                                 global.db.data.users[m.sender].dory += rbrbsh6
-                                 global.db.data.users[m.sender].lumba += rbrbsh7
-                                 global.db.data.users[m.sender].lobster += rbrbsh8
-                                 global.db.data.users[m.sender].hiu += rbrbsh9
-                                 global.db.data.users[m.sender].udang += rbrbsh10
-                                 global.db.data.users[m.sender].ikan += rbrbsh11
-                                 global.db.data.users[m.sender].orca += rbrbsh12 
-                                 global.db.data.users[m.sender].tiketcoin += 1
-                                 global.db.data.users[m.sender].umpan -= rbrbsh13
+                                 pengguna.paus += mcgh1
+                                 pengguna.kepiting += mcgh2
+                                 pengguna.gurita += mcgh3
+                                 pengguna.cumi += mcgh4
+                                 pengguna.buntal += mcgh5
+                                 pengguna.dory += mcgh6
+                                 pengguna.lumba += mcgh7
+                                 pengguna.lobster += mcgh8
+                                 pengguna.hiu += mcgh9
+                                 pengguna.udang += mcgh10
+                                 pengguna.ikan += mcgh11
+                                 pengguna.orca += mcgh12 
+                                 pengguna.tiketcoin += 1
+                                 pengguna.umpan -= mcgh13
 
                                 setTimeout(() => {
                                 conn.sendHydrated(m.chat, `${pemancing} Yuk mancing mania level hard lagi`, botdate, null, null, null, null, null, [
@@ -497,53 +418,53 @@ ${ usedPrefix }cook`
                        } else conn.reply(m.chat, `*Sepertinya Anda Sudah Lelah*\n*Silahkan Istirahat Sejenak Sekitar ${timerh}*\n*Untuk Bisa Melanjutkan Memancing Lagi*`, m)
                  break
 	          case 'extreme':
-                                  let __timere = (new Date - global.db.data.users[m.sender].lastmancingeasy)
+                                  let __timere = (new Date - pengguna.lastmancingeasy)
                                   let _timere = (28800000 - __timere)
                                   let timere = clockString(_timere) 
-                                  if (pancingan == 0 || umpan == 0) return m.reply('*Kamu belum memiliki Pancingan dan Umpan, Silahkan beli dulu..*')
-                                  if (new Date - global.db.data.users[m.sender].lastmancingeasy > 28800000) {
-                                  if (global.db.data.users[m.sender].pancingan > 4) {
-                                  if (global.db.data.users[m.sender].umpan > 249) {
-                                  let randomakue1 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue2 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue3 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue4 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue5 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue6 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue7 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue8 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue9 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue10 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue11 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue12 = `${Math.floor(Math.random() * 500)}`
-                                  let randomakue13 = `${Math.floor(Math.random() * 200)}`
+                                  if (pancingan == 0 || umpan == 0) return bhnhabis
+                                  if (new Date - pengguna.lastmancingeasy > 28800000) {
+                                  if (pengguna.pancingan > 4) {
+                                  if (pengguna.umpan > 249) {
+                                  let mcinge1 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge2 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge3 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge4 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge5 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge6 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge7 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge8 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge9 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge10 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge11 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge12 = `${Math.floor(Math.random() * 500)}`
+                                  let mcinge13 = `${Math.floor(Math.random() * 200)}`
 
-                                  let rbrbshe1 = (randomakue1 * 1)
-                                  let rbrbshe2 = (randomakue2 * 1) 
-                                  let rbrbshe3 = (randomakue3 * 1)
-                                  let rbrbshe4 = (randomakue4 * 1)
-                                  let rbrbshe5 = (randomakue5 * 1)
-                                  let rbrbshe6 = (randomakue6 * 1)
-                                  let rbrbshe7 = (randomakue7 * 1)
-                                  let rbrbshe8 = (randomakue8 * 1)
-                                  let rbrbshe9 = (randomakue9 * 1)
-                                  let rbrbshe10 = (randomakue10 * 1)
-                                  let rbrbshe11 = (randomakue11 * 1)
-                                  let rbrbshe12 = (randomakue12 * 1)
-                                  let rbrbshe13 = (randomakue13 * 1)
+                                  let mcghe1 = (mcinge1 * 1)
+                                  let mcghe2 = (mcinge2 * 1) 
+                                  let mcghe3 = (mcinge3 * 1)
+                                  let mcghe4 = (mcinge4 * 1)
+                                  let mcghe5 = (mcinge5 * 1)
+                                  let mcghe6 = (mcinge6 * 1)
+                                  let mcghe7 = (mcinge7 * 1)
+                                  let mcghe8 = (mcinge8 * 1)
+                                  let mcghe9 = (mcinge9 * 1)
+                                  let mcghe10 = (mcinge10 * 1)
+                                  let mcghe11 = (mcinge11 * 1)
+                                  let mcghe12 = (mcinge12 * 1)
+                                  let mcghe13 = (mcinge13 * 1)
 
-                                  let ainese1 = `${rbrbshe1}`
-                                  let ainese2 = `${rbrbshe2}`
-                                  let ainese3 = `${rbrbshe3}`
-                                  let ainese4 = `${rbrbshe4}`
-                                  let ainese5 = `${rbrbshe5}`
-                                  let ainese6 = `${rbrbshe6}`
-                                  let ainese7 = `${rbrbshe7}`
-                                  let ainese8 = `${rbrbshe8}`
-                                  let ainese9 = `${rbrbshe9}`
-                                  let ainese10 = `${rbrbshe10}`
-                                  let ainese11 = `${rbrbshe11}`
-                                  let ainese12 = `${rbrbshe12}`
+                                  let ainese1 = `${mcghe1}`
+                                  let ainese2 = `${mcghe2}`
+                                  let ainese3 = `${mcghe3}`
+                                  let ainese4 = `${mcghe4}`
+                                  let ainese5 = `${mcghe5}`
+                                  let ainese6 = `${mcghe6}`
+                                  let ainese7 = `${mcghe7}`
+                                  let ainese8 = `${mcghe8}`
+                                  let ainese9 = `${mcghe9}`
+                                  let ainese10 = `${mcghe10}`
+                                  let ainese11 = `${mcghe11}`
+                                  let ainese12 = `${mcghe12}`
 
                                  let hslse = `
 *${htjava} Hasil Memancing ${pemancing} ${htjava}*
@@ -556,20 +477,20 @@ ${ usedPrefix }cook`
   
 +1 Tiketcoin
 `.trim()
-                                 global.db.data.users[m.sender].paus += rbrbshe1
-                                 global.db.data.users[m.sender].kepiting += rbrbshe2
-                                 global.db.data.users[m.sender].gurita += rbrbshe3
-                                 global.db.data.users[m.sender].cumi += rbrbshe4
-                                 global.db.data.users[m.sender].buntal += rbrbshe5
-                                 global.db.data.users[m.sender].dory += rbrbshe6
-                                 global.db.data.users[m.sender].lumba += rbrbshe7
-                                 global.db.data.users[m.sender].lobster += rbrbshe8
-                                 global.db.data.users[m.sender].hiu += rbrbshe9
-                                 global.db.data.users[m.sender].udang += rbrbshe10
-                                 global.db.data.users[m.sender].ikan += rbrbshe11
-                                 global.db.data.users[m.sender].orca += rbrbshe12 
-                                 global.db.data.users[m.sender].tiketcoin += 1
-                                 global.db.data.users[m.sender].umpan -= rbrbshe13
+                                 pengguna.paus += mcghe1
+                                 pengguna.kepiting += mcghe2
+                                 pengguna.gurita += mcghe3
+                                 pengguna.cumi += mcghe4
+                                 pengguna.buntal += mcghe5
+                                 pengguna.dory += mcghe6
+                                 pengguna.lumba += mcghe7
+                                 pengguna.lobster += mcghe8
+                                 pengguna.hiu += mcghe9
+                                 pengguna.udang += mcghe10
+                                 pengguna.ikan += mcghe11
+                                 pengguna.orca += mcghe12 
+                                 pengguna.tiketcoin += 1
+                                 pengguna.umpan -= mcghe13
 
                                 setTimeout(() => {
                                 conn.sendHydrated(m.chat, `${pemancing} Yuk mancing mania level extreme lagi`, botdate, null, null, null, null, null, [
