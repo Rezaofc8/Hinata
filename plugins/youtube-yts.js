@@ -23,7 +23,7 @@ let imgr = flaaa.getRandom()
   }).filter(v => v).join('\n\n▣═━–〈 *YT SEARCH* 〉–━═▣\n\n')
   //m.reply(teks)
   await conn.sendButton(m.chat, teks, wm, `${imgr + command}`, [
-                ['Yts!', `${usedPrefix + command} ${text}`]
+                ['Youtube Search🔎', `${usedPrefix + command} ${text}`]
             ], m, fdoc)
 }
 handler.help = ['', 'earch'].map(v => 'yts' + v + ' <pencarian>')
