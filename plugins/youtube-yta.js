@@ -66,4 +66,4 @@ handler.exp = 0
 handler.register = false
 handler.limit = true
 
-export default handler)
+export default handler
