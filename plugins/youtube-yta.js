@@ -46,7 +46,7 @@ let name = await conn.getName(who)
 *${htjava} Filesize:* ${audio.fileSizeH}
 
 *L O A D I N G. . .*
-`.trim(), m, null, { asDocument: true, fileLength: fsizedoc, seconds: fsizedoc, mimetype: 'audio/mp4', contextInfo: {
+`.trim(), m, null, { fileLength: fsizedoc, seconds: fsizedoc, mimetype: 'audio/mp4', contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,
