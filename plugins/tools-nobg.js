@@ -13,7 +13,7 @@ let name = await conn.getName(who)
   let media = await q.download()
   let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
   let link = await (isTele ? uploadImage : uploadFile : webp2png)(media)
-  let url = API('violetics', '/api/media/removebg', { link }, 'apikey')
+  let url = global.API('violetics', '/api/media/removebg', { link }, 'APIKEY')
   let caption = `📮 *L I N K :*
 ${link}
 📊 *S I Z E :* ${media.length} Byte

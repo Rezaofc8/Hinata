@@ -186,6 +186,8 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         m.reply(`*Team A kurang ${teamB-teamA} orang lagi agar permainan adil.*`)
       }
     }
+  } else {
+  throw 'Join Dulu'
   }
 
 }

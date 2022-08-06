@@ -3,6 +3,9 @@ import fetch from 'node-fetch'
 let toM = a => '@' + a.split('@')[0]
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
 
 if (command == 'jadian2') {
 let ps = groupMetadata.participants.map(v => v.id)
@@ -262,7 +265,17 @@ if (!text) throw `Contoh penggunaan ${usedPrefix}${command} anjing
 • gawrgura
 • bucinstick`
 
-await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/sticker/${text}?apikey=${global.lolkey}`, 'sticker.webp', '', m)
+await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/sticker/${text}?apikey=${global.lolkey}`, 'sticker.webp', '', m, null, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
 
 await conn.sendButton(m.chat, `*Mau Lagi Gak?*
 Pencet di bawah bang ☺️`, author, null, [
@@ -395,7 +408,7 @@ if (!text) throw `Gunakan contoh ${usedPrefix + command} spongebob`
 
 	const sections = [
     {
-	title: "Theme",
+	title: htki + ' Theme ' + htka
 	rows: [
 	{title: "1 Aja banh", rowId: usedPrefix + 'gettenor ' + text + '|1'},
 	{title: "2 Aja banh", rowId: usedPrefix + 'gettenor ' + text + '|2'},
