@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
 let urut = text.split`|`
@@ -24,7 +25,7 @@ try {
     let hasil = json.results
     let ke = args[1]
     let sound = hasil[ke].sound
-    await conn.sendFile(m.chat, sound, ke + '.mp3', '', m, null, { contextInfo: {
+    await conn.sendFile(m.chat, sound, ke + '.mp3', '', m, null, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'audio/mp4',
           externalAdReply :{
     mediaUrl: sig,
@@ -32,7 +33,7 @@ try {
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sound
      }}
   })

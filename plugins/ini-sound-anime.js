@@ -3,6 +3,7 @@ import fs from 'fs'
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 
@@ -17,7 +18,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/voices/${vr}.wav`, c
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -32,7 +33,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/A_Flea/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -47,7 +48,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Abominab
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -62,7 +63,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Angus_Mc
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -76,7 +77,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Angus_Mc
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -91,7 +92,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Banty_Ro
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -105,7 +106,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Banty_Ro
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -120,7 +121,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Barney/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -135,7 +136,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Barnyard
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -149,7 +150,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Barnyard
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -164,7 +165,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Beaky_Bu
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -178,7 +179,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Beaky_Bu
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -193,7 +194,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Benny/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -208,7 +209,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Big_Bad_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -222,7 +223,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Big_Bad_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -237,7 +238,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Blacque_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -251,7 +252,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Blacque_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -266,7 +267,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Bruno_Be
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -281,7 +282,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Bugs_Bun
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -295,7 +296,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Bugs_Bun
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -309,7 +310,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Bugs_Bun
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -324,7 +325,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Cat_and_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -339,7 +340,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Cecil_Tu
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -353,7 +354,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Cecil_Tu
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -368,7 +369,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Charlie_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -383,7 +384,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Claude_C
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -398,7 +399,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Colonel_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -413,7 +414,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Count_Bl
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -427,7 +428,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Count_Bl
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -442,7 +443,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Daffy_Du
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -456,7 +457,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Daffy_Du
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -470,7 +471,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Daffy_Du
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -485,7 +486,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Dumb_dog
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -500,7 +501,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Elmer_Fu
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -514,7 +515,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Elmer_Fu
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -529,7 +530,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Evil_Sci
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -544,7 +545,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/FX/ltfx_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -558,7 +559,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/FX/ltfx_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -572,7 +573,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/FX/ltfx_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -587,7 +588,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Foghorn_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -601,7 +602,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Foghorn_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -616,7 +617,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Genie/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -630,7 +631,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Genie/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -645,7 +646,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Granny/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -659,7 +660,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Granny/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -674,7 +675,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Gremlin/
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -689,7 +690,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Hassan/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -704,7 +705,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Henery_H
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -718,7 +719,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Henery_H
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -732,7 +733,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Honeymou
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -747,7 +748,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/House_De
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -762,7 +763,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Hubie_an
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -777,7 +778,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Little_R
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -792,7 +793,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Mac_and_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -806,7 +807,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Mac_and_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -821,7 +822,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Marvin_T
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -835,7 +836,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Marvin_T
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -850,7 +851,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Michigan
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -864,7 +865,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Michigan
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -879,7 +880,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Miscella
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -893,7 +894,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Miscella
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -907,7 +908,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Miscella
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -922,7 +923,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Monty/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -937,7 +938,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Mugsy/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -952,7 +953,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Music/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -966,7 +967,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Music/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -981,7 +982,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Nasty_Ca
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -995,7 +996,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Nasty_Ca
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1010,7 +1011,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Pappy_an
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1025,7 +1026,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Pepe_Le_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1039,7 +1040,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Pepe_Le_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1054,7 +1055,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Pete_Pum
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1068,7 +1069,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Pete_Pum
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1083,7 +1084,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Porky_Pi
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1097,7 +1098,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Porky_Pi
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1112,7 +1113,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Prissy/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1127,7 +1128,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Ralph_Wo
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1142,7 +1143,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Red_Ridi
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1157,7 +1158,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Road_Run
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1172,7 +1173,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Rocky/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1186,7 +1187,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Rocky/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1201,7 +1202,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Sargeant
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1216,7 +1217,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Sheriff_
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1231,7 +1232,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Speedy_G
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1245,7 +1246,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Speedy_G
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1260,7 +1261,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Spike/lt
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1275,7 +1276,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Sylveste
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1289,7 +1290,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Sylveste
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1304,7 +1305,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Tasmania
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1318,7 +1319,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Tasmania
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1333,7 +1334,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/The_Thre
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1347,7 +1348,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/The_Thre
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1362,7 +1363,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Tweety/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1376,7 +1377,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Tweety/l
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1391,7 +1392,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Wile_E_C
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1405,7 +1406,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Wile_E_C
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1420,7 +1421,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Witch_Ha
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1434,7 +1435,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Witch_Ha
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1449,7 +1450,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Yosemite
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1463,7 +1464,7 @@ await conn.sendFile(m.chat, `https://www.nonstick.com/audio/soundsource/Yosemite
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1478,7 +1479,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/ara-
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1493,7 +1494,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/ganb
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1508,7 +1509,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/hash
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1523,7 +1524,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/nani
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1538,7 +1539,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/rikk
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1553,7 +1554,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/ultr
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1568,7 +1569,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/yeme
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1583,7 +1584,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/yeme
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
@@ -1598,7 +1599,7 @@ await conn.sendFile(m.chat, `https://andgyk.is-a.dev/anime-soundboard/audio/yuno
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })

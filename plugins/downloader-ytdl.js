@@ -12,11 +12,11 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 	{
 	title: htjava + "Select Type Media Here !" + htjava,
 	rows: [
-	    {title: "Audio", rowId: `-getaud ${args[0]} audio`}
+	    {title: "🎙️ Audio", rowId: `-getaud ${args[0]} audio`}
 	]
     },
     {
-	title: "Video",
+	title: "🎥 Video",
 	rows: [
 	    {title: "1080p", rowId: `-getvid ${args[0]} 1080`},
 {title: "720p", rowId: `-getvid ${args[0]} 720`},
@@ -31,7 +31,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 const listMessage = {
   text: `›  ᴩʟᴇᴀꜱᴇ ꜱᴇʟᴇᴄᴛ yᴏᴜʀ ᴍᴇᴅɪᴀ ᴛyᴩᴇ...`,
   footer: wm,
-  title: htki + " 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 " + htki,
+  title: htki + " 📥 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 " + htki,
   buttonText: "Click Here !",
   sections
 }

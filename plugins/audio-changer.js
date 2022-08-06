@@ -5,6 +5,7 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
     try {
@@ -40,15 +41,14 @@ let name = await conn.getName(who)
             let buff = await promises.readFile(filename)
             m.reply(wait)
             // conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
-            conn.sendFile(m.chat, buff, ran + '.mp3', '', m, /vn/.test(args[0]), { contextInfo: {
-            mimetype: 'audio/mp4',
+            conn.sendFile(m.chat, buff, ran + '.mp3', '', m, /vn/.test(args[0]), { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: ran
      }}
   })

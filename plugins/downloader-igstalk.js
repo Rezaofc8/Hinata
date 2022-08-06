@@ -17,7 +17,7 @@ https://instagram.com/${username.replace(/^@/, '')}
 *${followingH}* Following
 *${postsH}* Posts
 *Bio:* ${description}
-`.trim(), botdate, null, 'https://www.whatsapp.com/otp/copy/'+'https://chat.whatsapp.com/' + 'https://instagram.com/' +username.replace(/^@/, ''), 'C O P Y', nomorown, nameown, [
+`.trim(), botdate, null, 'https://www.whatsapp.com/otp/copy/' + 'https://instagram.com/' +username.replace(/^@/, ''), 'C O P Y', nomorown, nameown, [
       ['🎀 Menu', '/menu']
     ], null)
 }

@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper';
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
   if (!args || !args[0]) throw 'Uhm... urlnya mana?'
@@ -37,8 +38,15 @@ let name = await conn.getName(who)
 
 *L O A D I N G. . .*
 `.trim(), m)
-  if (!isLimit) await conn.sendFile(m.chat, source, title + '.mp3', '', m, null, { contextInfo: {
-            mimetype: 'audio/mp4',
+  if (!isLimit) await conn.sendFile(m.chat, source, title + '.mp3', `
+*${htki} YOUTUBE ${htka}*
+
+*${htjava} Title:* ${title}
+*${htjava} Type:* mp3
+*${htjava} Filesize:* ${audio.fileSizeH}
+
+*L O A D I N G. . .*
+`.trim(), m, null, { asDocument: true, fileLength: fsizedoc, seconds: fsizedoc, mimetype: 'audio/mp4', contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,
@@ -46,7 +54,7 @@ let name = await conn.getName(who)
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
     thumbnail: await(await fetch(thumbnail)).buffer(),
-    sourceUrl: link
+    sourceUrl: source
      }}
   })
 }
@@ -58,4 +66,4 @@ handler.exp = 0
 handler.register = false
 handler.limit = true
 
-export default handler
+export default handler)

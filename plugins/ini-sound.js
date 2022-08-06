@@ -3,6 +3,7 @@ import fs from 'fs'
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
@@ -103,7 +104,7 @@ await conn.sendFile(m.chat, vn, text + '.mp3', '', m, null, { contextInfo: {
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: vn
      }}
   })
@@ -118,7 +119,7 @@ await conn.sendFile(m.chat, vn, text + '.mp3', '', m, null, { contextInfo: {
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: vn
      }}
   })
@@ -141,8 +142,8 @@ await conn.sendFile(m.chat, x.result[0].audio, text + '.mp3', '', m, null, { con
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
-    sourceUrl: vn
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: x.result[0].audio
      }}
   })
 }

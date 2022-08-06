@@ -26,9 +26,8 @@ const listMessage = {
   sections
 }
 //
-let bhnhabis = await conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan dan umpan 🎣*`, wm, [[`Buy Pancingan`, '.buy pancingan 1'], [`Buy Umpan`, '.buy umpan 1']], m)
-
         try {
+        let bhnhabis = await conn.sendButton(m.chat, `*[❗] kamu tidak punya kail pancingan dan umpan 🎣*`, wm, [[`Buy Pancingan`, '.buy pancingan 1'], [`Buy Umpan`, '.buy umpan 1']], m)
                if (/fishing|mancing/i.test(command)) {
           switch (type) {
           

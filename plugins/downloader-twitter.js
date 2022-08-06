@@ -2,13 +2,16 @@ import fetch from 'node-fetch'
 import hx from 'hxz-api'
 
 let handler = async (m, { conn, text }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
+
+if (!text) throw 'Input URL'
 try {
-	if (!text) throw 'Input URL'
 	let res = await twitterDl(text)
-	await m.reply('_In progress, please wait..._')
 	for (let x = 0; x < res.media.length; x++) {
 		let caption = x === 0 ? res.caption.replace(/https:\/\/t.co\/[a-zA-Z0-9]+/gi, '').trim() : ''
-		conn.sendButton(m.chat, caption, 'twitter.mp4', await(await fetch(res.media[x].url)).buffer(), [['🎀 Menu', '/menu']], m, { contextInfo: {
+		conn.sendButton(m.chat, caption, 'twitter.mp4', await(await fetch(res.media[x].url)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
@@ -16,7 +19,7 @@ try {
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: res.media[x].url
      }}
   })

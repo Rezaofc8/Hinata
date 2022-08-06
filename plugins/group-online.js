@@ -1,23 +1,8 @@
-let handler = async (m, { conn, args, isAdmin, participants, groupMetadata, isOwner }) => {
-  if (m.isGroup) {
-    if (!(isAdmin || isOwner)) {
-      dfail('admin', m, conn)
-      throw false
-    }
-  }
-  const getGroupAdmins = (participants) => {
-        let admins = []
-        for (let i of participants) {
-            i.participants === "presences" ? admins.push(i.id) : ''
-        }
-        return admins
-    }
-    const groupAdmins = getGroupAdmins(participants)
-        let listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.split('@')[0]}`).join('\n')
-  // let id = args && /.*@g.us/.test(args[0]) ? args[0] : m.chat
-  conn.reply(m.chat, '┌「 *Daftar Wibu* 」\n' + listAdmin + '\n└────', m, {
-    contextInfo: { mentionedJid: listAdmin }
-  })
+let handler = async (m, { conn, text, participants, isAdmin, isOwner }) => {
+  let users = participants.map(u => u.presences.id).filter(v => v !== conn.user.jid)
+    m.reply(`*Teks:*\n${text ? `${text}\n` : ''}\n⛊──⛾「 ONLINE 」⛾──⛊\n` + users.map(v => '│♪ @' + v.replace(/@.+/, '')).join`\n` + '\n⛊──⛾「 ONLINE 」⛾──⛊', null, {
+        mentions: users
+    })
 }
 handler.help = ['online']
 handler.tags = ['group']

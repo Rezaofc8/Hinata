@@ -2,6 +2,9 @@ import { tiktokdl } from '@bochilteam/scraper'
 import { aiovideodl } from './lib/tiktokdl.js'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
 if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/@omagadsus/video/7025456384175017243`
 try {
     const { author: { nickname }, video, description } = await tiktokdl(args[0])
@@ -9,7 +12,7 @@ try {
     if (!url) throw 'Can\'t download video!'
 conn.sendButton(m.chat, `*Nickname:* ${nickname}
 *Description:* ${description}
-`.trim(), 'tiktok.mp4', await(await fetch(url)).buffer(), [['🎀 Menu', '/menu']], m, { contextInfo: {
+`.trim(), 'tiktok.mp4', await(await fetch(url)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
@@ -17,7 +20,7 @@ conn.sendButton(m.chat, `*Nickname:* ${nickname}
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: url
      }}
   })
@@ -26,7 +29,7 @@ const { res } = await aiovideodl(args[0])
     const urll = res.data.url
     if (!urll) throw 'Can\'t download video!'
 conn.sendButton(m.chat, `*Nickname:* ${wm}
-`.trim(), 'tiktok.mp4', await(await fetch(urll)).buffer(), [['Mp3', '/tomp3'], ['Back', '/menu']], m, { contextInfo: {
+`.trim(), 'tiktok.mp4', await(await fetch(urll)).buffer(), [['🎙️ Mp3', '/tomp3'], ['Back', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
@@ -34,7 +37,7 @@ conn.sendButton(m.chat, `*Nickname:* ${wm}
     description: wm, 
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
-    thumbnail: await(await fetch(logo)).buffer(),
+    thumbnail: await(await fetch(pp)).buffer(),
     sourceUrl: urll
      }}
   })

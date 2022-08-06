@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import { youtubeSearch, youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper';
 let handler = async (m, { conn, groupMetadata, usedPrefix, text, args, command, isPrems, isOwner }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
 try {
@@ -41,7 +42,10 @@ try {
   if (!isLimit) await conn.sendButton(m.chat, `*${htki} YOUTUBE ${htka}*
 
 *${htjava} Title:* ${title}
-*${htjava} Filesize:* ${video.fileSizeH}`, title + '.mp4', await(await fetch(link)).buffer(), [['Mp3', '/tomp3'], ['Back', '/menu']], m, { contextInfo: {
+*${htjava} Filesize:* ${video.fileSizeH}`, title + '.mp4', await(await fetch(link)).buffer(), [['🎀 Menu', '/menu']], m, {
+            fileLength: fsizedoc,
+            seconds: fsizedoc,
+            jpegThumbnail: Buffer.alloc(0), contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
