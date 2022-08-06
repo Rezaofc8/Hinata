@@ -2,6 +2,9 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
     if (!text) throw `Contoh:\n${usedPrefix + command} 1\n\nMaka hasilnya adalah surah Al-Fatihah ayat beserta audionya, dan ayatnya 1 aja`
     let f = await fetch(`https://api.alquran.cloud/v1/surah/${text}/ar.alafasy`)
         let xx = await f.json()
@@ -17,7 +20,18 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 *hizbQuarter:* ${v.hizbQuarter}
 `.trim()
     }).join('\n\n')
-    conn.reply(m.chat, str, m, { contextInfo: { externalAdReply: { title: botdate, body: bottime, mediaType: 2, sourceUrl: sig, mediaUrl: sig, thumbnail: await(await fetch('https://telegra.ph/file/1836eec6c22d949829474.jpg')).buffer()}}})
+    
+    conn.reply(m.chat, str, m, { contextInfo: {
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
 }
 handler.help = ['alquran'].map(v => v + ' <no surah>')
 handler.tags = ['quran']
