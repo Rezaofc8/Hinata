@@ -67,6 +67,8 @@ global.APIKeys = {
 
 /*Lolkey*/
 global.lolkey = 'sonelganz'
+/*Xteam*/
+global.xteamkey = 'NezukoTachibana281207'
 
 /*List Lolkey
 'sonelganz'
