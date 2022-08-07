@@ -29,6 +29,7 @@ Link : ${x.link}
 📖Sinopsis : ${x.desc}`
     await conn.sendButton(m.chat, hasil, wm, await(await fetch(i[0].thumb)).buffer(), [[' Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
+          showAdAttribution: true,
     mediaUrl: sig,
     mediaType: 2,
     description: wm, 
@@ -50,6 +51,7 @@ let txt = `*${htki} FILM-SEARCH ${htka}*\n\n*📫 Judul :* ${i[0].judul}\n*🎞�
 
 await conn.sendButton(m.chat, txt, wm, await(await fetch(i[0].thumb)).buffer(), [[' Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
+          showAdAttribution: true,
     mediaUrl: sig,
     mediaType: 2,
     description: wm, 

@@ -102,16 +102,22 @@ let handler = async (m, { conn }) => {
   const crates = Object.keys(inventory.crates).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v]}`).filter(v => v).join('\n').trim()
   const pets = Object.keys(inventory.pets).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v] >= inventory.pets[v] ? 'Max Levels' : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
   const cooldowns = Object.entries(inventory.cooldowns).map(([cd, { name, time }]) => cd in user && `*✧ ${name}*: ${new Date() - user[cd] >= time ? '✅' : '❌'}`).filter(v => v).join('\n').trim()
-  const caption = `
-⃝▣「 *S T A T U S  U S E R* 」
-│ 📛 *Name:* ${user.registered ? user.name : conn.getName(m.sender)}
-│ ${items}
-│ 🏅 *Role:* ${user.role}
-│ 🌟 *Status:* ${user.premiumTime > 0 ? 'Premium' : 'Free'}
-│ 📑 *Registered:* ${user.registered ? 'Yes':'No'}
-▣──···
+  const caption = `*🧑🏻‍🏫 ɴᴀᴍᴇ:* ${user.registered ? user.name : conn.getName(m.sender)}
+*▸ ᴇxᴘ:* ${user.exp}
+*▸ ʟᴇᴠᴇʟ:* ${user.level}
+*▸ ʀᴏʟᴇ:* ${user.role}
+*▸ ʜᴇᴀʟᴛʜ:* ${user.health}
+*▸ ʟɪᴍɪᴛ:* ${user.limit}
+*▸ ᴍᴏɴᴇʏ:* ${user.money}${user.atm ? `
+*▸ ᴀᴛᴍ:* ʟᴠ.${user.atm}
+*▸ ʙᴀɴᴋ:* ${user.bank} $ / ${user.fullatm} $`: ''}
+
+▸ *sᴛᴀᴛᴜs:* ${user.premiumTime > 0 ? 'Premium' : 'Free'}
+▸ *ʀᴇɢɪsᴛᴇʀᴇᴅ:* ${user.registered ? 'Yes':'No'}${user.premiumTime >= 1 ? `
+▸ *ᴇxᴘɪʀᴇᴅ:*
+${clockString(user.premiumTime - new Date() * 1)}`: ''}
 `.trim()
-  conn.sendButton(m.chat, caption, global.wm, null, [`Inventory`, '.inv'],m)
+  conn.sendButton(m.chat, `${htki} ᴜ s ᴇ ʀ s ${htka}`, caption, null, [`ɪɴᴠᴇɴᴛᴏʀʏ`, '.inv'],m)
 }
 handler.help = ['my']
 handler.tags = ['xp']
@@ -119,3 +125,13 @@ handler.command = /^(my)$/i
 
 handler.register = false
 export default handler
+
+function clockString(ms) {
+  let ye = isNaN(ms) ? '--' : Math.floor(ms / 31104000000) % 10
+  let mo = isNaN(ms) ? '--' : Math.floor(ms / 2592000000) % 12
+  let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000) % 30
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [ye, ' *ʏᴇᴀʀs 🗓️*\n', mo, ' *ᴍᴏɴᴛʜ 🌙*\n', d, ' *ᴅᴀʏs ☀️*\n', h, ' *ʜᴏᴜʀs 🕐*\n', m, ' *ᴍɪɴᴜᴛᴇ ⏰*\n', s, ' *sᴇᴄᴏɴᴅ ⏱️*'].map(v => v.toString().padStart(2, 0)).join('')
+}
