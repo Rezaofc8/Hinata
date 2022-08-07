@@ -418,7 +418,7 @@ global.htjava = '⫹⫺'
 global.stickpack = '.'
 global.stickauth = `☂︎EzaBot-Md\n⫹⫺ Whatsapp BOT\nwa.me/${global.nomorbot}`
 global.packname = '☂︎ Cʀᴇᴀᴛᴇᴅ Bʏ'
-global.author = 'EzaBot-MD X Wudysoft'
+global.author = 'EzaBot-MD X RezaOfc'
 global.multiplier = 69
 
 /*Pesan*/
