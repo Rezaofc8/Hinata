@@ -57,17 +57,6 @@ await conn.sendHydrated(m.chat, caption, wm, x.result, null, null, null, null, [
     ], m, fdoc)
 }
 
-if (command == 'artikbbi') {
-if (!text) throw `Contoh penggunaan ${usedPrefix + command} Aku`
-let f = await fetch(`https://yuzzu-api.herokuapp.com/api/kbbi?kata=${text}`)
-let x = await f.json()
-let caption = `Lema: ${x.result.lema}
-Arti: ${Array.from(x.result.arti)}`
-await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix + command}`]
-            ], m, fdoc)
-}
-
 if (command == 'cewekracing') {
 let pe = await fetch(`https://mysakura.herokuapp.com/api/cewek/racing?apikey=sakura404`)
 let x = await pe.json()
@@ -419,7 +408,7 @@ await conn.sendButton(m.chat, caption, wm, img, [
 }
 
 }
-handler.command = handler.help = ['twittdl', 'otaku', 'darkjokes', 'artikbbi', 'cewekracing', 'mainslot', 'imdb', 'popss', 'popcolor', 'popcolor2', 'popsong', 'popsteam', 'sadcat', 'oogway', 'popcar', 'popgit', 'popship', 'popbiden', 'poppika', 'popmeme', 'popdrip', 'popclown', 'popuncover', 'popad', 'popblur', 'popinvert', 'poptunes', 'poptext', 'poppet', 'popalert', 'popcaution']
+handler.command = handler.help = ['twittdl', 'otaku', 'darkjokes', 'cewekracing', 'mainslot', 'imdb', 'popss', 'popcolor', 'popcolor2', 'popsong', 'popsteam', 'sadcat', 'oogway', 'popcar', 'popgit', 'popship', 'popbiden', 'poppika', 'popmeme', 'popdrip', 'popclown', 'popuncover', 'popad', 'popblur', 'popinvert', 'poptunes', 'poptext', 'poppet', 'popalert', 'popcaution']
 handler.tags = ['tools']
 
 export default handler
