@@ -425,9 +425,9 @@ global.multiplier = 69
 global.eror = 'Erorr...'
 global.wait = 'Wait...'
 global.render = 'Render...'
-global.webs = 'https://s.id/Cerdasin62'
-global.logo = 'https://i.pinimg.com/564x/f7/d2/e4/f7d2e48fd59a8c01cd396bfc70b0a2d1.jpg'
-global.gcwangsaf = 'https://chat.whatsapp.com/Fxz8FpQ0ddr2GrEjfYkJ1E'
+global.webs = ''
+global.logo = 'https://telegra.ph/file/f96ec61914ac506e56741.jpg'
+global.gcwangsaf = 'https://chat.whatsapp.com/BCgUSCxQltq8SwcpJe1tDf'
 
 /*Donasi*/
 global.saweria = '-'
