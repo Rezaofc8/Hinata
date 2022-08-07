@@ -426,7 +426,7 @@ global.eror = 'Erorr...'
 global.wait = 'Wait...'
 global.render = 'Render...'
 global.webs = ''
-global.logo = 'https://telegra.ph/file/f96ec61914ac506e56741.jpg'
+global.logo = 'https://telegra.ph/file/b22ded093f0afe6cf10da.jpg'
 global.gcwangsaf = 'https://chat.whatsapp.com/BCgUSCxQltq8SwcpJe1tDf'
 
 /*Donasi*/
