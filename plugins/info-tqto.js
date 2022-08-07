@@ -1,66 +1,69 @@
-
+const { makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, downloadContentFromMessage, downloadHistory, proto, getMessage, generateWAMessageContent, prepareWAMessageMedia } = (await import('@adiwajshing/baileys')).default
 import fs from 'fs'
 import fetch from 'node-fetch'
 import moment from 'moment-timezone'
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
-let name = await conn.getName(who)
-let tqto = `*${htki} BIG THANKS TO ${htka}*
+let handler = async (m) => {
+    let who
+    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    else who = m.sender
+    let user = global.db.data.users[who]
+let tqto = `*▸ - - - —「 BIG THANKS TO 」— - - - ◂*
 
-*Adiwajshing:*
+*❉ Adiwajshing:*
 https://github.com/adiwajshing
 
-*Nurutomo:*
+*❉ Nurutomo:*
 https://github.com/Nurutomo
 
-*Istikmal:* 
+*❉ Istikmal:* 
 https://github.com/BochilGaming
 
-*Ariffb:*
+*❉ Ariffb:*
 https://github.com/Ariffb25
 
-*Ilman:*
+*❉ Ilman:*
 https://github.com/ilmanhdyt
 
-*Amirul:*
+*❉ Amirul:*
 https://github.com/amiruldev20
 
-*Rasel:*
+*❉ Rasel:*
 https://github.com/raselcomel
 
-*Fatur:*
+*❉ Fatur:*
 https://github.com/Ftwrr
 
-*Rominaru:*
+*❉ Rominaru:*
 https://github.com/Rominaru
 
-*Kannachann:*
+*❉ Kannachann:*
 https://github.com/Kannachann
 
-*The.sad.boy01:*
+*❉ The.sad.boy01:*
 https://github.com/kangsad01
 
-*Ameliascrf:*
+*❉ Ameliascrf:*
 https://github.com/Ameliascrf
 
-*Fokus ID:*
+*❉ Fokus ID:*
 https://github.com/Fokusdotid
 
-*AmmarBN:*
+*❉ Rezaofc:*
+https://github.com/Rezaofc
+
+*❉ AmmarBN:*
 https://github.com/AmmarrBN
 `
-conn.sendButton(m.chat, tqto, wm, await(await fetch(hwaifu.getRandom())).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
-          externalAdReply :{
-    mediaUrl: sig,
-    mediaType: 2,
-    description: wm, 
-    title: '👋 Hai, ' + name + ' ' + ucapan,
-    body: botdate,
-    thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: sig
-     }}
-  })
+conn.reply(m.chat, tqto, m, { contextInfo: { externalAdReply: {
+            title: `${htjava} ${wm}`,
+            body: botdate,
+            description: bottime,
+            mediaType: 2,
+          thumbnail: await(await fetch(hwaifu.getRandom())).buffer(),
+         mediaUrl: sgh
+        }
+     }
+    })
 }
 handler.help = ['tqto']
 handler.tags = ['main','info']
