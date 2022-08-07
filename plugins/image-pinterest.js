@@ -6,7 +6,8 @@ let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command })
   let res = JSON.parse(readFileSync('./json/emoji.json'))
   let em = res.emoji
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let name = await conn.getName(who)
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
     let type = (args[0] || '').toLowerCase()
     let urut = text.split`|`
     let one = urut[1]
