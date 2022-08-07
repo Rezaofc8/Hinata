@@ -10,7 +10,7 @@ let tqto = `*${htki} SCRIPT ${htka}*
 
 ??? :)
 `
-conn.sendButton(m.chat, tqto, wm, await(await fetch(logo)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+conn.sendButton(m.chat, tqto, wm, await(await fetch(logo)).buffer(), [[' Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,
