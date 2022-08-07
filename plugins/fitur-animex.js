@@ -1,18 +1,9 @@
 let handler = async(m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`Example : ${usedPrefix + command} neon helo \n*List Efek:*\nhusbu\nlatestnekopoi\nloli\nneko\nrandomnhentai\nwaifu`)
         let images = `https://api-xcoders.xyz/api/anime/${text}?apikey=xcoders`
-        let buttons = [
-                    {buttonId: `.animex ${text}`, buttonText: {displayText: '➡️➡️Next Image➡️➡️'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: images },
-                    caption: `*⎔┉━「 Animex 」━┉⎔*
-🤠 *Query* : ${text}`,
-                    footer: conn.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                conn.sendMessage(m.chat, buttonMessage, { quoted: m })
+        let caption: `*⎔┉━「 Animex 」━┉⎔*
+🤠 *Query* : ${text}`
+                await conn.sendButton(m.chat, hasil, wm, await(await fetch(images)).buffer(), [['➡️Next Image➡️', `.animex ${text}`]], m, { quoted: fgif, fileLength: fsizedoc, seconds: fsizedoc })
 }
 handler.help = ['animex <text>']
 handler.tags = ['maker']

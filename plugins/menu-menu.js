@@ -45,36 +45,22 @@ let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 *🏆 Level* ${level}
 *🎋 Role:* ${role}
 *🧬 XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
-*📨 Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}\n\n Ketik ${usedPrefix}inv untuk melihat Inventory RPG`
+*📨 Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}\n\n Ketik ${usedPrefix}inv untuk melihat Inventory RPG
+${cmenua}`
 
 let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
-
-  let buttonMessage= {
-'document': {'url': sgc},
-'mimetype': mim_.getRandom(),
-'fileName': 'Silahkan Pilih Menu Dibawah.',
-'fileLength': fsizedoc,
-'pageCount': fpagedoc,
-'jpegThumbnail': await( await fetch(thumbnailUrl.getRandom())).buffer(),
-'contextInfo': {
-'externalAdReply': {
-'showAdAttribution': true,
-'mediaUrl': lin_.getRandom(),
-'mediaType': 2,
-'previewType': 'pdf',
-'title': '👋 Hai, ' + name + ' ' + ucapan,
-'body': 'Role ' + role + ' bang',
-'thumbnail': await( await fetch(pp)).buffer(),
-'sourceUrl': sgc}},
-'caption': cap,
-'footer': weem,
-'buttons': [
-{'buttonId': usedPrefix + 'allmenu','buttonText': {'displayText': `${em.getRandom()} All Menu`},'type': 1},
-{'buttonId': usedPrefix + 'menulist','buttonText': {'displayText': `${em.getRandom()} List Menu`},'type': 1}
-],
-'headerType': 6}
-    await conn.sendMessage(m.chat, buttonMessage, fdoc)
-    
+    await conn.sendButton(m.chat, cap, weem, Buffer.alloc(0), [[em.getRandom() + ' All Menu', usedPrefix + 'allmenu'], [em.getRandom() + ' List Menu', usedPrefix + 'menulist']], m, { mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(thumbnailUrl.getRandom())).buffer(), contextInfo: {
+          externalAdReply :{
+          showAdAttribution: true,
+    mediaUrl: lin_.getRandom(),
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name,
+    body: botdate,
+    thumbnail: await( await fetch(pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
 }
 
 handler.help = ['menu', 'help', '?']
